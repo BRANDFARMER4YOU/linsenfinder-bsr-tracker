@@ -1,0 +1,27 @@
+name: Daily BSR Update
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # täglich 08:00 Uhr CET (07:00 UTC)
+  workflow_dispatch:       # manueller Start möglich
+
+jobs:
+  update-bsr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 lxml
+
+      - name: Run BSR updater
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ github.repository }}
+        run: python3 update_bsr.py
