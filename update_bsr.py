@@ -40,34 +40,34 @@ TODAY        = date.today().isoformat()
 ASINS_DE = [
     ("fxcontacts_12m",  "B0CRBKG853"),
     ("fxcontacts_day",  "B0CGJCPS1Q"),
-    ("konkurrent_1",    "B08HRWT4HT"),
-    ("konkurrent_2",    "B00H2H5MTI"),
-    ("konkurrent_3",    "B0BQC6R35Y"),
-    ("konkurrent_4",    "B07NGVRYWX"),
+    ("aricona_bars",    "B08HRWT4HT"),
+    ("aricona_vampire", "B00H2H5MTI"),
+    ("designlenses",    "B0BQC6R35Y"),
+    ("crazyfun",        "B07NGVRYWX"),
 ]
 
 # ── IT (amazon.it) – series key: "series_it" ──
 ASINS_IT = [
-    ("fxcontacts_day",  "B0CGJCPS1Q"),
-    ("konkurrent_1",    "B0BQC5VM9T"),
-    ("konkurrent_2",    "B0D7CW19DR"),
-    ("konkurrent_3",    "B07NGVRYWX"),
+    ("fxcontacts_it",     "B09NQGVSPD"),  # FIX: correct ASIN for IT marketplace
+    ("konkurrent_it_1",   "B0BQC5VM9T"),
+    ("konkurrent_it_2",   "B0D7CW19DR"),
+    ("konkurrent_it_3",   "B07NGVRYWX"),
 ]
 
 # ── FR (amazon.fr) – series key: "series_fr" ──
 ASINS_FR = [
-    ("fxcontacts_day",  "B0CGJCPS1Q"),
-    ("konkurrent_1",    "B0CPYG28K3"),
-    ("konkurrent_2",    "B0FBX1YXWK"),
-    ("konkurrent_3",    "B0CRZCW2JN"),
+    ("fxcontacts_fr",     "B09NQGVSPD"),  # FIX: correct ASIN for FR marketplace
+    ("konkurrent_fr_1",   "B0CPYG28K3"),
+    ("konkurrent_fr_2",   "B0FBX1YXWK"),
+    ("konkurrent_fr_3",   "B0CRZCW2JN"),
 ]
 
 # ── ES (amazon.es) – series key: "series_es" ──
 ASINS_ES = [
-    ("fxcontacts_day",  "B0CGJCPS1Q"),
-    ("konkurrent_1",    "B0BQC6R35Y"),
-    ("konkurrent_2",    "B0CRZC4226"),
-    ("konkurrent_3",    "B002Y4I7QE"),
+    ("fxcontacts_es",     "B09NQGVSPD"),  # FIX: correct ASIN for ES marketplace
+    ("konkurrent_es_1",   "B0BQC6R35Y"),
+    ("konkurrent_es_2",   "B0CRZC4226"),
+    ("konkurrent_es_3",   "B002Y4I7QE"),
 ]
 
 BASE_HEADERS = {
