@@ -14,7 +14,9 @@
           "reviews": 5880,
           "rating": 4.3
         }
-      ]
+      ],
+      "url": "https://www.amazon.de/dp/B0CRBKG853",
+      "domain": "de"
     },
     {
       "id": "fxcontacts_day",
@@ -29,7 +31,9 @@
           "reviews": 4950,
           "rating": 4.2
         }
-      ]
+      ],
+      "url": "https://www.amazon.de/dp/B0CGJCPS1Q",
+      "domain": "de"
     },
     {
       "id": "aricona_bars",
@@ -44,7 +48,9 @@
           "reviews": 2007,
           "rating": 4.2
         }
-      ]
+      ],
+      "url": "https://www.amazon.de/dp/B08HRWT4HT",
+      "domain": "de"
     },
     {
       "id": "aricona_vampire",
@@ -59,7 +65,9 @@
           "reviews": 2865,
           "rating": 4.2
         }
-      ]
+      ],
+      "url": "https://www.amazon.de/dp/B00H2H5MTI",
+      "domain": "de"
     },
     {
       "id": "designlenses",
@@ -74,7 +82,9 @@
           "reviews": 3047,
           "rating": 4.1
         }
-      ]
+      ],
+      "url": "https://www.amazon.de/dp/B0BQC6R35Y",
+      "domain": "de"
     },
     {
       "id": "crazyfun",
@@ -89,7 +99,9 @@
           "reviews": 7371,
           "rating": 4.3
         }
-      ]
+      ],
+      "url": "https://www.amazon.de/dp/B07NGVRYWX",
+      "domain": "de"
     }
   ],
   "series_it": [
@@ -106,7 +118,9 @@
           "reviews": 4267,
           "rating": 4.2
         }
-      ]
+      ],
+      "url": "https://www.amazon.it/dp/B09NQGVSPD",
+      "domain": "it"
     },
     {
       "id": "konkurrent_it_1",
@@ -121,7 +135,9 @@
           "reviews": 2893,
           "rating": 4.1
         }
-      ]
+      ],
+      "url": "https://www.amazon.it/dp/B0BQC5VM9T",
+      "domain": "it"
     },
     {
       "id": "konkurrent_it_2",
@@ -136,7 +152,9 @@
           "reviews": 421,
           "rating": 4.3
         }
-      ]
+      ],
+      "url": "https://www.amazon.it/dp/B0D7CW19DR",
+      "domain": "it"
     },
     {
       "id": "konkurrent_it_3",
@@ -151,7 +169,9 @@
           "reviews": 10827,
           "rating": 4.2
         }
-      ]
+      ],
+      "url": "https://www.amazon.it/dp/B07NGVRYWX",
+      "domain": "it"
     }
   ],
   "series_fr": [
@@ -168,7 +188,9 @@
           "reviews": 3533,
           "rating": 4.1
         }
-      ]
+      ],
+      "url": "https://www.amazon.fr/dp/B09NQGVSPD",
+      "domain": "fr"
     },
     {
       "id": "konkurrent_fr_1",
@@ -183,7 +205,9 @@
           "reviews": 172,
           "rating": 4.1
         }
-      ]
+      ],
+      "url": "https://www.amazon.fr/dp/B0CPYG28K3",
+      "domain": "fr"
     },
     {
       "id": "konkurrent_fr_2",
@@ -198,7 +222,9 @@
           "reviews": 2763,
           "rating": 4.1
         }
-      ]
+      ],
+      "url": "https://www.amazon.fr/dp/B0FBX1YXWK",
+      "domain": "fr"
     },
     {
       "id": "konkurrent_fr_3",
@@ -213,7 +239,9 @@
           "reviews": 123,
           "rating": 4.1
         }
-      ]
+      ],
+      "url": "https://www.amazon.fr/dp/B0CRZCW2JN",
+      "domain": "fr"
     }
   ],
   "series_es": [
@@ -230,7 +258,9 @@
           "reviews": 4586,
           "rating": 4.2
         }
-      ]
+      ],
+      "url": "https://www.amazon.es/dp/B09NQGVSPD",
+      "domain": "es"
     },
     {
       "id": "konkurrent_es_1",
@@ -245,7 +275,9 @@
           "reviews": 2834,
           "rating": 4.2
         }
-      ]
+      ],
+      "url": "https://www.amazon.es/dp/B0BQC6R35Y",
+      "domain": "es"
     },
     {
       "id": "konkurrent_es_2",
@@ -260,7 +292,9 @@
           "reviews": 224,
           "rating": 3.9
         }
-      ]
+      ],
+      "url": "https://www.amazon.es/dp/B0CRZC4226",
+      "domain": "es"
     },
     {
       "id": "konkurrent_es_3",
@@ -275,7 +309,9 @@
           "reviews": 2324,
           "rating": 4.3
         }
-      ]
+      ],
+      "url": "https://www.amazon.es/dp/B002Y4I7QE",
+      "domain": "es"
     }
   ],
   "last_run": "2026-08-19T15:22:47.197715"
