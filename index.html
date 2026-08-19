@@ -1,754 +1,568 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FXCONTACTS BSR Tracker</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linsenfinder BSR Tracker</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --accent: #00C853;
+      --accent-light: #69F0AE;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+      --text-bright: #f0f6fc;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #0a0e1a;
-      color: #e0e6f0;
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       min-height: 100vh;
-      padding: 24px;
     }
 
     header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 16px;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 0.75rem;
     }
 
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, #00C853, #69F0AE);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-    }
-
-    h1 {
-      font-size: 1.7rem;
+    header h1 {
+      font-size: 1.2rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #00C853, #69F0AE);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text-bright);
     }
 
-    .subtitle {
-      font-size: 0.82rem;
-      color: #607090;
-      margin-top: 2px;
+    header h1 span {
+      color: var(--accent);
     }
 
-    .meta-badge {
-      background: #161d30;
-      border: 1px solid #1e2d48;
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 0.8rem;
-      color: #8899bb;
-    }
-
-    .meta-badge span {
-      color: #00C853;
-      font-weight: 600;
-    }
-
-    /* Country Navigation */
-    .country-nav {
+    nav {
       display: flex;
-      gap: 8px;
-      margin-bottom: 28px;
+      gap: 0.5rem;
       flex-wrap: wrap;
     }
 
-    .country-nav a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #0f1525;
-      border: 1px solid #1a2540;
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-size: 0.85rem;
-      color: #8899bb;
+    nav a {
+      color: var(--text-muted);
       text-decoration: none;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      transition: all 0.2s;
     }
 
-    .country-nav a:hover {
-      color: #00C853;
-      border-color: #00C853;
-      background: #0a1520;
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(0, 200, 83, 0.08);
     }
 
-    .country-nav a.active {
-      color: #00C853;
-      border-color: #00C853;
-      background: #0a1520;
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
     }
 
-    /* Country Section */
-    .country-section {
-      margin-bottom: 48px;
+    .section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 70px;
     }
 
-    .country-divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 40px 0 24px 0;
-    }
-
-    .country-divider:first-child {
-      margin-top: 0;
-    }
-
-    .country-divider hr {
-      flex: 1;
-      border: none;
-      border-top: 1px solid #1a2540;
-    }
-
-    .country-header {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #c0d0f0;
-      white-space: nowrap;
-    }
-
-    .country-sub {
-      font-size: 0.8rem;
-      color: #445070;
-      margin-top: 2px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .stat-card {
-      background: #0f1525;
-      border: 1px solid #1a2540;
-      border-radius: 12px;
-      padding: 16px 18px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-2px);
-      border-color: #2a3a60;
-    }
-
-    .stat-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      border-radius: 12px 12px 0 0;
-    }
-
-    .stat-label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #607090;
-      margin-bottom: 8px;
-    }
-
-    .stat-asin {
-      font-size: 0.68rem;
-      color: #445070;
-      font-family: monospace;
-      margin-bottom: 6px;
-    }
-
-    .stat-value {
-      font-size: 1.6rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .stat-rank {
-      font-size: 0.75rem;
-      color: #607090;
-    }
-
-    .stat-rank strong { color: #8899bb; }
-
-    /* Index cards */
-    .index-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .index-card {
-      background: #0f1525;
-      border: 1px solid #1a2540;
-      border-radius: 12px;
-      padding: 14px 16px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-      text-align: center;
-    }
-
-    .index-card:hover {
-      transform: translateY(-2px);
-      border-color: #2a3a60;
-    }
-
-    .index-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      border-radius: 12px 12px 0 0;
-    }
-
-    .index-label {
-      font-size: 0.70rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #607090;
-      margin-bottom: 8px;
-    }
-
-    .index-value {
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-
-    .index-value.green { color: #00C853; }
-    .index-value.red   { color: #FF5252; }
-    .index-value.neutral { color: #8899bb; }
-
-    .index-hint {
-      font-size: 0.68rem;
-      color: #445070;
-    }
-
-    .index-hint.green { color: #00C853aa; }
-    .index-hint.red   { color: #FF5252aa; }
-
-    .section-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #334060;
-      margin-bottom: 10px;
-      padding-left: 2px;
-    }
-
-    .chart-container {
-      background: #0f1525;
-      border: 1px solid #1a2540;
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 24px;
-    }
-
-    .chart-header {
+    .section-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 0.5rem;
     }
 
-    .chart-title {
-      font-size: 1rem;
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-bright);
+    }
+
+    .last-updated {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .charts-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .charts-row { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .card-title {
+      font-size: 0.85rem;
       font-weight: 600;
-      color: #c0d0f0;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
     }
 
-    .chart-hint {
-      font-size: 0.75rem;
-      color: #445070;
-    }
-
-    .canvas-wrapper {
+    .chart-wrapper {
       position: relative;
-      height: 380px;
+      height: 280px;
     }
 
-    .canvas-wrapper.tall {
-      height: 420px;
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
     }
 
-    .legend-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      transition: border-color 0.2s;
     }
 
-    .legend-item {
+    .product-card:hover {
+      border-color: var(--accent);
+    }
+
+    .product-card.fx {
+      border-color: rgba(0, 200, 83, 0.4);
+      background: rgba(0, 200, 83, 0.04);
+    }
+
+    .product-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-bright);
+      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
-      gap: 8px;
-      background: #0a0e1a;
-      border: 1px solid #1a2540;
-      border-radius: 6px;
-      padding: 6px 12px;
-      font-size: 0.78rem;
-      color: #a0b0d0;
+      gap: 0.4rem;
     }
 
-    .legend-dot {
+    .color-dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       flex-shrink: 0;
     }
 
-    footer {
-      text-align: center;
-      color: #334060;
-      font-size: 0.72rem;
-      margin-top: 32px;
-      padding-top: 20px;
-      border-top: 1px solid #12192c;
+    .product-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      color: var(--text-bright);
+      font-weight: 600;
+    }
+
+    .bsr-value {
+      color: var(--accent-light);
     }
 
     .loading {
-      text-align: center;
-      padding: 80px;
-      color: #445070;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: var(--text-muted);
+      font-size: 1rem;
     }
 
-    .error-msg {
-      background: #1a0810;
-      border: 1px solid #4a1020;
-      border-radius: 10px;
-      padding: 20px;
-      color: #ff6b6b;
-      text-align: center;
-      margin: 40px auto;
-      max-width: 500px;
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 0.75rem;
     }
 
-    .no-data-notice {
-      background: #0f1525;
-      border: 1px solid #1a2540;
-      border-radius: 10px;
-      padding: 20px;
-      color: #607090;
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error {
       text-align: center;
-      font-size: 0.85rem;
-      margin-bottom: 16px;
+      padding: 3rem;
+      color: #f85149;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2.5rem 0;
+    }
+
+    .country-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(0, 200, 83, 0.1);
+      border: 1px solid rgba(0, 200, 83, 0.3);
+      color: var(--accent-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-area">
-    <div class="logo-icon">👁️</div>
-    <div>
-      <h1>FXCONTACTS BSR Tracker</h1>
-      <div class="subtitle">Amazon · Drogerie &amp; Körperpflege · Kontaktlinsen</div>
-    </div>
-  </div>
-  <div class="meta-badge">
-    Zuletzt aktualisiert: <span id="updated-date">–</span>
-  </div>
+  <h1>📊 Linsenfinder <span>BSR Tracker</span></h1>
+  <nav id="nav">
+    <a href="#de">🇩🇪 DE</a>
+    <a href="#it">🇮🇹 IT</a>
+    <a href="#fr">🇫🇷 FR</a>
+    <a href="#es">🇪🇸 ES</a>
+  </nav>
 </header>
 
-<!-- Country Navigation -->
-<nav class="country-nav">
-  <a href="#section-de">🇩🇪 Deutschland</a>
-  <a href="#section-it">🇮🇹 Italien</a>
-  <a href="#section-fr">🇫🇷 Frankreich</a>
-  <a href="#section-es">🇪🇸 Spanien</a>
-</nav>
-
-<div id="app">
-  <div class="loading">⏳ Lade BSR-Daten…</div>
-</div>
-
-<footer>
-  FXCONTACTS BSR Tracker · BRANDFARMER4YOU · Automatisch aktualisiert via GitHub Actions
-</footer>
+<main id="app">
+  <div class="loading">
+    <div class="spinner"></div>
+    Lade Daten…
+  </div>
+</main>
 
 <script>
-const DATA_URL = './data.json';
-
-let chartIdCounter = 0;
-function uniqueId(prefix) {
-  return prefix + '-' + (++chartIdCounter);
-}
-
-function formatBsr(n) {
-  return n ? n.toLocaleString('de-DE') : '–';
-}
-
-function getRankLabel(n) {
-  if (!n) return '–';
-  if (n <= 5000) return '🟢 Sehr gut';
-  if (n <= 15000) return '🟡 Gut';
-  if (n <= 50000) return '🟠 Mittel';
-  return '🔴 Schwach';
-}
-
-async function loadData() {
-  const resp = await fetch(DATA_URL + '?t=' + Date.now());
-  if (!resp.ok) throw new Error('HTTP ' + resp.status);
-  return resp.json();
-}
-
-// ── Stat Cards (BSR absolut) ──────────────────────────────
-function buildStatCards(series) {
-  return series.map((s, i) => {
-    const latest = s.data[s.data.length - 1];
-    const bsr = latest ? latest.bsr : null;
-    return `
-      <div class="stat-card" style="--card-color:${s.color}">
-        <div class="stat-card-bar" style="background:${s.color};position:absolute;top:0;left:0;right:0;height:3px;border-radius:12px 12px 0 0;"></div>
-        <div class="stat-label">${s.label}</div>
-        <div class="stat-asin">${s.asin}</div>
-        <div class="stat-value" style="color:${s.color}">${bsr ? '#' + formatBsr(bsr) : '–'}</div>
-        <div class="stat-rank">${getRankLabel(bsr)}</div>
-      </div>`;
-  }).join('');
-}
-
-// ── Ranking Chart ─────────────────────────────────────────
-function buildRankingChart(series, canvasId) {
-  const seriesWithData = series.filter(s => s.data.length > 0);
-  if (!seriesWithData.length) return false;
-
-  const allDates = [...new Set(series.flatMap(s => s.data.map(d => d.date)))].sort();
-
-  const datasets = series.map(s => {
-    const isFx = s.id.startsWith('fxcontacts');
-    const bsrMap = Object.fromEntries(s.data.map(d => [d.date, d.bsr]));
-    const rankData = allDates.map(date => {
-      const bsrs = seriesWithData.map(ss => {
-        const m = Object.fromEntries(ss.data.map(d => [d.date, d.bsr]));
-        return { id: ss.id, bsr: m[date] ?? null };
-      }).filter(x => x.bsr !== null);
-      bsrs.sort((a, b) => a.bsr - b.bsr);
-      const myBsr = bsrMap[date];
-      if (myBsr == null) return null;
-      const rank = bsrs.findIndex(x => x.id === s.id) + 1;
-      return rank > 0 ? rank : null;
-    });
-    return {
-      label: s.label,
-      data: rankData,
-      borderColor: s.color,
-      backgroundColor: s.color + '22',
-      pointBackgroundColor: s.color,
-      pointRadius: isFx ? 7 : 5,
-      pointHoverRadius: 10,
-      borderWidth: isFx ? 4 : 2,
-      tension: 0.3,
-      fill: false,
-      spanGaps: true,
-    };
+// ─── Ranking-Logik ───────────────────────────────────────────────────────────
+function computeRankings(seriesData) {
+  const dates = [...new Set(seriesData.flatMap(s => s.data.map(d => d.date)))].sort();
+  const rankings = {};
+  seriesData.forEach(s => rankings[s.id] = []);
+  dates.forEach(date => {
+    const entries = seriesData
+      .map(s => ({ id: s.id, bsr: s.data.find(d => d.date === date)?.bsr }))
+      .filter(e => e.bsr != null)
+      .sort((a, b) => a.bsr - b.bsr);
+    entries.forEach((e, i) => rankings[e.id].push({ x: e.date || date, y: i + 1 }));
+    // fix: need date in x
   });
+  // Re-compute properly with date in scope
+  seriesData.forEach(s => rankings[s.id] = []);
+  dates.forEach(date => {
+    const entries = seriesData
+      .map(s => ({ id: s.id, bsr: s.data.find(d => d.date === date)?.bsr }))
+      .filter(e => e.bsr != null)
+      .sort((a, b) => a.bsr - b.bsr);
+    entries.forEach((e, i) => rankings[e.id].push({ x: date, y: i + 1 }));
+  });
+  return { rankings, dates };
+}
 
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return false;
-  new Chart(canvas, {
+// ─── Farben & Stil ──────────────────────────────────────────────────────────
+function isFX(id) {
+  return id && (id.toLowerCase().includes('fx') || id.toLowerCase().includes('fxcontacts'));
+}
+
+function getLineStyle(series) {
+  const fx = isFX(series.id);
+  return {
+    borderWidth: fx ? 3 : 1.5,
+    borderDash: fx ? [] : [],
+    pointRadius: fx ? 4 : 2,
+    pointHoverRadius: fx ? 6 : 4,
+    tension: 0.3,
+  };
+}
+
+// ─── Chart-Defaults ──────────────────────────────────────────────────────────
+Chart.defaults.color = '#8b949e';
+Chart.defaults.borderColor = '#30363d';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ─── Ranking-Chart erstellen ─────────────────────────────────────────────────
+function createRankingChart(canvasId, seriesData) {
+  const { rankings, dates } = computeRankings(seriesData);
+  const maxRank = seriesData.length;
+
+  const datasets = seriesData.map(s => ({
+    label: s.label,
+    data: rankings[s.id],
+    borderColor: s.color,
+    backgroundColor: s.color + '22',
+    parsing: { xAxisKey: 'x', yAxisKey: 'y' },
+    ...getLineStyle(s),
+  }));
+
+  return new Chart(document.getElementById(canvasId), {
     type: 'line',
-    data: { labels: allDates, datasets },
+    data: { datasets },
     options: {
-      responsive: true, maintainAspectRatio: false,
+      responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { display: false },
+        legend: {
+          position: 'bottom',
+          labels: { boxWidth: 12, padding: 10, font: { size: 11 } }
+        },
         tooltip: {
-          backgroundColor: '#0f1525', borderColor: '#1a2540', borderWidth: 1,
-          titleColor: '#c0d0f0', bodyColor: '#8899bb', padding: 12,
-          callbacks: { label: ctx => ` ${ctx.dataset.label}: Platz ${ctx.parsed.y ?? '–'}` }
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: Rang ${ctx.parsed.y}`
+          }
         }
       },
       scales: {
-        x: { grid: { color: '#121a2c' }, ticks: { color: '#445070', font: { size: 11 } } },
+        x: {
+          type: 'category',
+          grid: { color: '#21262d' },
+          ticks: { maxRotation: 45, font: { size: 10 } }
+        },
         y: {
-          reverse: true, min: 1, max: seriesWithData.length,
-          grid: { color: '#121a2c' },
-          ticks: { color: '#445070', font: { size: 12 }, stepSize: 1, callback: v => 'Platz ' + v },
-          title: { display: true, text: '← Besser    Ranking    Schlechter →', color: '#334060', font: { size: 10 } }
+          reverse: true,
+          min: 1,
+          max: maxRank,
+          ticks: {
+            stepSize: 1,
+            callback: v => `#${v}`,
+            font: { size: 11 }
+          },
+          grid: { color: '#21262d' },
+          title: { display: true, text: 'Rang', font: { size: 11 } }
         }
       }
     }
   });
-  return true;
 }
 
-// ── BSR Index Cards ───────────────────────────────────────
-function buildIndexCards(series) {
-  const seriesWithData = series.filter(s => s.data.length > 0);
-  if (!seriesWithData.length) {
-    return '<div class="no-data-notice">⚠️ Noch keine BSR-Daten verfügbar</div>';
-  }
+// ─── BSR-Chart erstellen ─────────────────────────────────────────────────────
+function createBsrChart(canvasId, seriesData) {
+  const datasets = seriesData.map(s => ({
+    label: s.label,
+    data: s.data.map(d => ({ x: d.date, y: d.bsr })),
+    borderColor: s.color,
+    backgroundColor: s.color + '22',
+    ...getLineStyle(s),
+  }));
 
-  // Basis: FXCONTACTS (first series with data), or first with data
-  const fxSeries = series.find(s => s.id.startsWith('fxcontacts') && s.data.length > 0);
-  const basisSeries = fxSeries || seriesWithData[0];
-  const latestBasis = basisSeries.data[basisSeries.data.length - 1].bsr;
-
-  return series.map((s, i) => {
-    const latest = s.data[s.data.length - 1];
-    const bsr = latest ? latest.bsr : null;
-    let cls = 'neutral';
-    let displayVal = '–';
-    let hint = '';
-
-    if (s.id === basisSeries.id) {
-      displayVal = '100';
-      cls = 'neutral';
-      hint = 'Basis (= wir)';
-    } else if (bsr && latestBasis) {
-      const idx = Math.round((latestBasis / bsr) * 100);
-      displayVal = idx.toString();
-      if (idx >= 100) { cls = 'green'; hint = '✅ Schlechter als wir'; }
-      else { cls = 'red'; hint = '⚠️ Besser als wir'; }
-    } else if (!bsr) {
-      hint = 'Keine Daten';
-    }
-
-    return `
-      <div class="index-card">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;border-radius:12px 12px 0 0;background:${s.color};"></div>
-        <div class="index-label">${s.label}</div>
-        <div class="index-value ${cls}">${displayVal}</div>
-        <div class="index-hint ${cls}">${hint}</div>
-      </div>`;
-  }).join('');
-}
-
-// ── BSR Absolute Chart ────────────────────────────────────
-function buildBsrChart(series, canvasId) {
-  const seriesWithData = series.filter(s => s.data.length > 0);
-  if (!seriesWithData.length) return false;
-
-  const allDates = [...new Set(series.flatMap(s => s.data.map(d => d.date)))].sort();
-  const datasets = series.map(s => {
-    const isFx = s.id.startsWith('fxcontacts');
-    const dataMap = Object.fromEntries(s.data.map(d => [d.date, d.bsr]));
-    return {
-      label: s.label,
-      data: allDates.map(d => dataMap[d] ?? null),
-      borderColor: s.color,
-      backgroundColor: s.color + '22',
-      pointBackgroundColor: s.color,
-      pointRadius: 5, pointHoverRadius: 8,
-      borderWidth: isFx ? 3.5 : 2,
-      tension: 0.3, fill: false, spanGaps: true,
-    };
-  });
-
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return false;
-  new Chart(canvas, {
+  return new Chart(document.getElementById(canvasId), {
     type: 'line',
-    data: { labels: allDates, datasets },
+    data: { datasets },
     options: {
-      responsive: true, maintainAspectRatio: false,
+      responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { display: false },
+        legend: {
+          position: 'bottom',
+          labels: { boxWidth: 12, padding: 10, font: { size: 11 } }
+        },
         tooltip: {
-          backgroundColor: '#0f1525', borderColor: '#1a2540', borderWidth: 1,
-          titleColor: '#c0d0f0', bodyColor: '#8899bb', padding: 12,
-          callbacks: { label: ctx => ` ${ctx.dataset.label}: #${ctx.parsed.y ? ctx.parsed.y.toLocaleString('de-DE') : '–'}` }
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: BSR ${ctx.parsed.y.toLocaleString('de-DE')}`
+          }
         }
       },
       scales: {
-        x: { grid: { color: '#121a2c' }, ticks: { color: '#445070', font: { size: 11 } } },
+        x: {
+          type: 'category',
+          grid: { color: '#21262d' },
+          ticks: { maxRotation: 45, font: { size: 10 } }
+        },
         y: {
-          reverse: true, grid: { color: '#121a2c' },
-          ticks: { color: '#445070', font: { size: 11 }, callback: v => '#' + v.toLocaleString('de-DE') },
-          title: { display: true, text: '← Besser    BSR-Rang    Schlechter →', color: '#334060', font: { size: 10 } }
+          type: 'logarithmic',
+          grid: { color: '#21262d' },
+          ticks: {
+            callback: v => v.toLocaleString('de-DE'),
+            font: { size: 10 }
+          },
+          title: { display: true, text: 'BSR (Log)', font: { size: 11 } }
         }
       }
     }
   });
-  return true;
 }
 
-function buildLegend(series) {
-  return series.map(s => `
-    <div class="legend-item">
-      <div class="legend-dot" style="background:${s.color}"></div>
-      <span>${s.label}</span>
-    </div>`).join('');
-}
+// ─── Produkt-Cards ───────────────────────────────────────────────────────────
+function renderProductCards(container, seriesData) {
+  const grid = document.createElement('div');
+  grid.className = 'products-grid';
 
-// ── Build country section HTML ────────────────────────────
-function buildCountrySection(opts) {
-  const { id, flag, title, subtitle, series } = opts;
-  const rankId = 'ranking-' + id;
-  const bsrId = 'bsr-' + id;
-  const hasData = series.some(s => s.data.length > 0);
+  seriesData.forEach(s => {
+    const latest = s.data[s.data.length - 1];
+    if (!latest) return;
 
-  return `
-    <div class="country-divider" id="section-${id}">
-      <hr>
-      <div>
-        <div class="country-header">${flag} ${title}</div>
-        <div class="country-sub">${subtitle}</div>
+    const card = document.createElement('div');
+    card.className = 'product-card' + (isFX(s.id) ? ' fx' : '');
+
+    card.innerHTML = `
+      <div class="product-label">
+        <div class="color-dot" style="background:${s.color}"></div>
+        ${s.label}
       </div>
-      <hr>
-    </div>
-
-    <div class="section-label">📊 Aktueller BSR</div>
-    <div class="stats-grid">${buildStatCards(series)}</div>
-
-    ${hasData ? `
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="chart-title">🏆 Ranking über Zeit (Platz 1 = Bester BSR)</div>
-        <div class="chart-hint">FXCONTACTS-Linien = fett · Platz 1 = niedrigster BSR</div>
-      </div>
-      <div class="canvas-wrapper tall"><canvas id="${rankId}"></canvas></div>
-      <div class="legend-grid">${buildLegend(series)}</div>
-    </div>
-
-    <div class="section-label">🎯 BSR-Index (FXCONTACTS = 100)</div>
-    <div class="index-grid">${buildIndexCards(series)}</div>
-
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="chart-title">📈 BSR-Verlauf absolut – Detail-Ansicht</div>
-        <div class="chart-hint">Invertierte Y-Achse: niedriger = besser</div>
-      </div>
-      <div class="canvas-wrapper"><canvas id="${bsrId}"></canvas></div>
-      <div class="legend-grid">${buildLegend(series)}</div>
-    </div>
-    ` : `
-    <div class="no-data-notice">⚠️ Noch keine BSR-Daten für dieses Land – FXCONTACTS ist hier möglicherweise nicht gelistet. Konkurrenten werden täglich aktualisiert.</div>
-    <div class="section-label">🎯 BSR-Index (FXCONTACTS = 100)</div>
-    <div class="index-grid">${buildIndexCards(series)}</div>
-    <div class="chart-container">
-      <div class="chart-header">
-        <div class="chart-title">📈 BSR-Verlauf absolut – Detail-Ansicht</div>
-        <div class="chart-hint">Invertierte Y-Achse: niedriger = besser</div>
-      </div>
-      <div class="canvas-wrapper"><canvas id="${bsrId}"></canvas></div>
-      <div class="legend-grid">${buildLegend(series)}</div>
-    </div>
-    `}
-  `;
-}
-
-async function init() {
-  const app = document.getElementById('app');
-  try {
-    const data = await loadData();
-    document.getElementById('updated-date').textContent = data.updated;
-
-    // ── DE Section (original layout preserved) ──
-    const deHtml = `
-      <div class="country-divider" id="section-de">
-        <hr>
-        <div>
-          <div class="country-header">🇩🇪 Deutschland</div>
-          <div class="country-sub">amazon.de · Drogerie &amp; Körperpflege</div>
+      <div class="product-stats">
+        <div class="stat-row">
+          <span class="stat-label">BSR</span>
+          <span class="stat-value bsr-value">#${latest.bsr?.toLocaleString('de-DE') ?? '–'}</span>
         </div>
-        <hr>
-      </div>
-
-      <div class="section-label">📊 Aktueller BSR</div>
-      <div class="stats-grid">${buildStatCards(data.series)}</div>
-
-      <div class="chart-container">
-        <div class="chart-header">
-          <div class="chart-title">🏆 Ranking über Zeit (Platz 1 = Bester BSR)</div>
-          <div class="chart-hint">FXCONTACTS-Linien = fett · Platz 1 = niedrigster BSR</div>
+        <div class="stat-row">
+          <span class="stat-label">💰 Preis</span>
+          <span class="stat-value">${latest.price != null ? latest.price.toFixed(2) + ' €' : '–'}</span>
         </div>
-        <div class="canvas-wrapper tall"><canvas id="ranking-de"></canvas></div>
-        <div class="legend-grid">${buildLegend(data.series)}</div>
-      </div>
-
-      <div class="section-label">🎯 BSR-Index (FXCONTACTS 12M = 100)</div>
-      <div class="index-grid">${buildIndexCards(data.series)}</div>
-
-      <div class="chart-container">
-        <div class="chart-header">
-          <div class="chart-title">📈 BSR-Verlauf absolut – Detail-Ansicht</div>
-          <div class="chart-hint">Invertierte Y-Achse: niedriger = besser</div>
+        <div class="stat-row">
+          <span class="stat-label">⭐ Reviews</span>
+          <span class="stat-value">${latest.reviews?.toLocaleString('de-DE') ?? '–'}</span>
         </div>
-        <div class="canvas-wrapper"><canvas id="bsr-de"></canvas></div>
-        <div class="legend-grid">${buildLegend(data.series)}</div>
+        <div class="stat-row">
+          <span class="stat-label">Rating</span>
+          <span class="stat-value">${latest.rating != null ? '⭐ ' + latest.rating.toFixed(1) : '–'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Datum</span>
+          <span class="stat-value" style="color:var(--text-muted);font-size:0.78rem">${latest.date}</span>
+        </div>
       </div>
     `;
+    grid.appendChild(card);
+  });
 
-    // ── IT Section ──
-    const itHtml = data.series_it ? buildCountrySection({
-      id: 'it', flag: '🇮🇹', title: 'Italien', subtitle: 'amazon.it · Salute e cura della persona',
-      series: data.series_it
-    }) : '';
+  container.appendChild(grid);
+}
 
-    // ── FR Section ──
-    const frHtml = data.series_fr ? buildCountrySection({
-      id: 'fr', flag: '🇫🇷', title: 'Frankreich', subtitle: 'amazon.fr · Hygiène et Santé',
-      series: data.series_fr
-    }) : '';
+// ─── Sektion rendern ─────────────────────────────────────────────────────────
+let chartCount = 0;
 
-    // ── ES Section ──
-    const esHtml = data.series_es ? buildCountrySection({
-      id: 'es', flag: '🇪🇸', title: 'Spanien', subtitle: 'amazon.es · Salud y cuidado personal',
-      series: data.series_es
-    }) : '';
+function renderSection(app, id, flag, name, seriesData, updated) {
+  if (!seriesData || seriesData.length === 0) return;
 
-    app.innerHTML = deHtml + itHtml + frHtml + esHtml;
+  const rankId = `chart-rank-${++chartCount}`;
+  const bsrId = `chart-bsr-${++chartCount}`;
 
-    // Build all charts
-    buildRankingChart(data.series, 'ranking-de');
-    buildBsrChart(data.series, 'bsr-de');
+  const section = document.createElement('div');
+  section.className = 'section';
+  section.id = id;
 
-    if (data.series_it) {
-      buildRankingChart(data.series_it, 'ranking-it');
-      buildBsrChart(data.series_it, 'bsr-it');
-    }
-    if (data.series_fr) {
-      buildRankingChart(data.series_fr, 'ranking-fr');
-      buildBsrChart(data.series_fr, 'bsr-fr');
-    }
-    if (data.series_es) {
-      buildRankingChart(data.series_es, 'ranking-es');
-      buildBsrChart(data.series_es, 'bsr-es');
-    }
+  section.innerHTML = `
+    <div class="section-header">
+      <div class="section-title">${flag} ${name}</div>
+      <span class="last-updated">Zuletzt aktualisiert: ${updated ?? '–'}</span>
+    </div>
+    <div class="charts-row">
+      <div class="card">
+        <div class="card-title">📈 Ranking-Verlauf</div>
+        <div class="chart-wrapper"><canvas id="${rankId}"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Absoluter BSR</div>
+        <div class="chart-wrapper"><canvas id="${bsrId}"></canvas></div>
+      </div>
+    </div>
+  `;
 
+  app.appendChild(section);
+
+  // Render charts
+  createRankingChart(rankId, seriesData);
+  createBsrChart(bsrId, seriesData);
+
+  // Product cards
+  const cardsSection = document.createElement('div');
+  cardsSection.innerHTML = `<div class="card-title" style="margin-bottom:0.75rem;font-size:0.85rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Aktuelle Produkt-Infos</div>`;
+  renderProductCards(cardsSection, seriesData);
+  section.appendChild(cardsSection);
+
+  // Divider
+  const div = document.createElement('div');
+  div.className = 'divider';
+  app.appendChild(div);
+}
+
+// ─── Haupt-App ───────────────────────────────────────────────────────────────
+async function init() {
+  const app = document.getElementById('app');
+
+  let data;
+  try {
+    const res = await fetch('./data.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    data = await res.json();
   } catch (err) {
-    app.innerHTML = `<div class="error-msg">
-      <strong>Fehler beim Laden der BSR-Daten</strong><br>
-      <small>${err.message}</small>
+    app.innerHTML = `<div class="error">
+      <p>⚠️ Fehler beim Laden von data.json</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem;opacity:0.6">${err.message}</p>
     </div>`;
+    return;
   }
+
+  app.innerHTML = '';
+
+  const countries = [
+    { id: 'de', flag: '🇩🇪', name: 'Deutschland', key: 'series' },
+    { id: 'it', flag: '🇮🇹', name: 'Italien',     key: 'series_it' },
+    { id: 'fr', flag: '🇫🇷', name: 'Frankreich',  key: 'series_fr' },
+    { id: 'es', flag: '🇪🇸', name: 'Spanien',     key: 'series_es' },
+  ];
+
+  const updated = data.updated ?? null;
+
+  countries.forEach(c => {
+    const series = data[c.key];
+    renderSection(app, c.id, c.flag, c.name, series, updated);
+  });
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
 }
 
 init();
