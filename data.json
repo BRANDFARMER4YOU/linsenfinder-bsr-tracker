@@ -6,42 +6,72 @@
       "label": "FXCONTACTS 12M",
       "asin": "B0CRBKG853",
       "color": "#00C853",
-      "data": [{"date": "2026-08-19", "bsr": 8915}]
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 8915
+        }
+      ]
     },
     {
       "id": "fxcontacts_day",
       "label": "FXCONTACTS Day",
       "asin": "B0CGJCPS1Q",
       "color": "#69F0AE",
-      "data": [{"date": "2026-08-19", "bsr": 6209}]
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 6209
+        }
+      ]
     },
     {
       "id": "konkurrent_1",
-      "label": "Konkurrent 1",
+      "label": "Aricona (Behind Bars)",
       "asin": "B08HRWT4HT",
       "color": "#FF5252",
-      "data": [{"date": "2026-08-19", "bsr": 11777}]
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 11777
+        }
+      ]
     },
     {
       "id": "konkurrent_2",
-      "label": "Konkurrent 2",
+      "label": "Aricona (Vampire 12M)",
       "asin": "B00H2H5MTI",
       "color": "#FF6D00",
-      "data": [{"date": "2026-08-19", "bsr": 12151}]
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 12151
+        }
+      ]
     },
     {
       "id": "konkurrent_3",
-      "label": "Konkurrent 3",
+      "label": "DESIGNLENSES (Day)",
       "asin": "B0BQC6R35Y",
       "color": "#D500F9",
-      "data": [{"date": "2026-08-19", "bsr": 12990}]
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 12990
+        }
+      ]
     },
     {
       "id": "konkurrent_4",
-      "label": "Konkurrent 4",
+      "label": "Crazy Fun (Red Flower)",
       "asin": "B07NGVRYWX",
       "color": "#FF1744",
-      "data": [{"date": "2026-08-19", "bsr": 12048}]
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 12048
+        }
+      ]
     }
   ]
 }
