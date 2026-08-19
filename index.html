@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FXCONTACTS BSR Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0e1a;
+      color: #e0e6f0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #00C853, #69F0AE);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #00C853, #69F0AE);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 0.82rem;
+      color: #607090;
+      margin-top: 2px;
+    }
+
+    .meta-badge {
+      background: #161d30;
+      border: 1px solid #1e2d48;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      color: #8899bb;
+    }
+
+    .meta-badge span {
+      color: #00C853;
+      font-weight: 600;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: #0f1525;
+      border: 1px solid #1a2540;
+      border-radius: 12px;
+      padding: 16px 18px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: #2a3a60;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #607090;
+      margin-bottom: 8px;
+    }
+
+    .stat-asin {
+      font-size: 0.68rem;
+      color: #445070;
+      font-family: monospace;
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-rank {
+      font-size: 0.75rem;
+      color: #607090;
+    }
+
+    .stat-rank strong { color: #8899bb; }
+
+    .chart-container {
+      background: #0f1525;
+      border: 1px solid #1a2540;
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chart-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #c0d0f0;
+    }
+
+    .chart-hint {
+      font-size: 0.75rem;
+      color: #445070;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      height: 380px;
+    }
+
+    .legend-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0a0e1a;
+      border: 1px solid #1a2540;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      color: #a0b0d0;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    footer {
+      text-align: center;
+      color: #334060;
+      font-size: 0.72rem;
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #12192c;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 80px;
+      color: #445070;
+    }
+
+    .error-msg {
+      background: #1a0810;
+      border: 1px solid #4a1020;
+      border-radius: 10px;
+      padding: 20px;
+      color: #ff6b6b;
+      text-align: center;
+      margin: 40px auto;
+      max-width: 500px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <div class="logo-icon">👁️</div>
+    <div>
+      <h1>FXCONTACTS BSR Tracker</h1>
+      <div class="subtitle">Amazon.de · Drogerie &amp; Körperpflege · Kontaktlinsen</div>
+    </div>
+  </div>
+  <div class="meta-badge">
+    Zuletzt aktualisiert: <span id="updated-date">–</span>
+  </div>
+</header>
+
+<div id="app">
+  <div class="loading">⏳ Lade BSR-Daten…</div>
+</div>
+
+<footer>
+  FXCONTACTS BSR Tracker · BRANDFARMER4YOU · Automatisch aktualisiert via GitHub Actions
+</footer>
+
+<script>
+const DATA_URL = './data.json';
+
+function parseBsr(text) {
+  return parseInt(text.replace(/[^\d]/g, ''), 10);
+}
+
+function formatBsr(n) {
+  return n ? n.toLocaleString('de-DE') : '–';
+}
+
+function getRankLabel(n) {
+  if (!n) return '–';
+  if (n <= 5000) return '🟢 Sehr gut';
+  if (n <= 15000) return '🟡 Gut';
+  if (n <= 50000) return '🟠 Mittel';
+  return '🔴 Schwach';
+}
+
+async function loadData() {
+  const resp = await fetch(DATA_URL + '?t=' + Date.now());
+  if (!resp.ok) throw new Error('HTTP ' + resp.status);
+  return resp.json();
+}
+
+function buildStatCards(series) {
+  return series.map(s => {
+    const latest = s.data[s.data.length - 1];
+    const bsr = latest ? latest.bsr : null;
+    return `
+      <div class="stat-card">
+        <style>.stat-card:nth-child(${series.indexOf(s)+1})::before { background: ${s.color}; }</style>
+        <div class="stat-label">${s.label}</div>
+        <div class="stat-asin">${s.asin}</div>
+        <div class="stat-value" style="color:${s.color}">#${formatBsr(bsr)}</div>
+        <div class="stat-rank">${getRankLabel(bsr)}</div>
+      </div>`;
+  }).join('');
+}
+
+function buildChart(series) {
+  const allDates = [...new Set(series.flatMap(s => s.data.map(d => d.date)))].sort();
+
+  const datasets = series.map(s => {
+    const dataMap = Object.fromEntries(s.data.map(d => [d.date, d.bsr]));
+    return {
+      label: s.label,
+      data: allDates.map(d => dataMap[d] ?? null),
+      borderColor: s.color,
+      backgroundColor: s.color + '22',
+      pointBackgroundColor: s.color,
+      pointRadius: 5,
+      pointHoverRadius: 8,
+      borderWidth: 2.5,
+      tension: 0.3,
+      fill: false,
+      spanGaps: true,
+    };
+  });
+
+  const canvas = document.getElementById('bsr-chart');
+  new Chart(canvas, {
+    type: 'line',
+    data: { labels: allDates, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f1525',
+          borderColor: '#1a2540',
+          borderWidth: 1,
+          titleColor: '#c0d0f0',
+          bodyColor: '#8899bb',
+          padding: 12,
+          callbacks: {
+            label: ctx => ` ${ctx.dataset.label}: #${ctx.parsed.y ? ctx.parsed.y.toLocaleString('de-DE') : '–'}`,
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: '#121a2c' },
+          ticks: { color: '#445070', font: { size: 11 } },
+        },
+        y: {
+          reverse: true,
+          grid: { color: '#121a2c' },
+          ticks: {
+            color: '#445070',
+            font: { size: 11 },
+            callback: v => '#' + v.toLocaleString('de-DE'),
+          },
+          title: {
+            display: true,
+            text: '← Besser    BSR-Rang    Schlechter →',
+            color: '#334060',
+            font: { size: 10 },
+          }
+        }
+      }
+    }
+  });
+}
+
+function buildLegend(series) {
+  return series.map(s => `
+    <div class="legend-item">
+      <div class="legend-dot" style="background:${s.color}"></div>
+      <span>${s.label}</span>
+    </div>`).join('');
+}
+
+async function init() {
+  const app = document.getElementById('app');
+  try {
+    const data = await loadData();
+
+    document.getElementById('updated-date').textContent = data.updated;
+
+    app.innerHTML = `
+      <div class="stats-grid">
+        ${buildStatCards(data.series)}
+      </div>
+      <div class="chart-container">
+        <div class="chart-header">
+          <div class="chart-title">📈 BSR-Verlauf (Drogerie &amp; Körperpflege)</div>
+          <div class="chart-hint">Invertierte Y-Achse: niedriger = besser</div>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="bsr-chart"></canvas>
+        </div>
+        <div class="legend-grid">
+          ${buildLegend(data.series)}
+        </div>
+      </div>
+    `;
+
+    buildChart(data.series);
+
+  } catch (err) {
+    app.innerHTML = `<div class="error-msg">
+      <strong>Fehler beim Laden der BSR-Daten</strong><br>
+      <small>${err.message}</small>
+    </div>`;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
