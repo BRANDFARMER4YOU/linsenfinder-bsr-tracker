@@ -130,6 +130,74 @@
 
     .stat-rank strong { color: #8899bb; }
 
+    /* Index cards */
+    .index-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .index-card {
+      background: #0f1525;
+      border: 1px solid #1a2540;
+      border-radius: 12px;
+      padding: 14px 16px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      text-align: center;
+    }
+
+    .index-card:hover {
+      transform: translateY(-2px);
+      border-color: #2a3a60;
+    }
+
+    .index-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .index-label {
+      font-size: 0.70rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #607090;
+      margin-bottom: 8px;
+    }
+
+    .index-value {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .index-value.green { color: #00C853; }
+    .index-value.red   { color: #FF5252; }
+    .index-value.neutral { color: #8899bb; }
+
+    .index-hint {
+      font-size: 0.68rem;
+      color: #445070;
+    }
+
+    .index-hint.green { color: #00C853aa; }
+    .index-hint.red   { color: #FF5252aa; }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #334060;
+      margin-bottom: 10px;
+      padding-left: 2px;
+    }
+
     .chart-container {
       background: #0f1525;
       border: 1px solid #1a2540;
@@ -161,6 +229,10 @@
     .canvas-wrapper {
       position: relative;
       height: 380px;
+    }
+
+    .canvas-wrapper.tall {
+      height: 420px;
     }
 
     .legend-grid {
@@ -214,6 +286,25 @@
       margin: 40px auto;
       max-width: 500px;
     }
+
+    .detail-toggle {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #607090;
+      border: 1px solid #1a2540;
+      border-radius: 6px;
+      padding: 5px 12px;
+      background: #0a0e1a;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .detail-toggle:hover {
+      color: #a0b0d0;
+      border-color: #2a3a60;
+    }
   </style>
 </head>
 <body>
@@ -264,13 +355,14 @@ async function loadData() {
   return resp.json();
 }
 
+// ── Stat Cards (BSR absolut) ──────────────────────────────
 function buildStatCards(series) {
-  return series.map(s => {
+  return series.map((s, i) => {
     const latest = s.data[s.data.length - 1];
     const bsr = latest ? latest.bsr : null;
     return `
       <div class="stat-card">
-        <style>.stat-card:nth-child(${series.indexOf(s)+1})::before { background: ${s.color}; }</style>
+        <style>.stat-card:nth-child(${i+1})::before { background: ${s.color}; }</style>
         <div class="stat-label">${s.label}</div>
         <div class="stat-asin">${s.asin}</div>
         <div class="stat-value" style="color:${s.color}">#${formatBsr(bsr)}</div>
@@ -279,10 +371,146 @@ function buildStatCards(series) {
   }).join('');
 }
 
+// ── Ranking Chart (Platz 1–N, invertiert) ─────────────────
+function buildRankingChart(series) {
+  const allDates = [...new Set(series.flatMap(s => s.data.map(d => d.date)))].sort();
+
+  const datasets = series.map(s => {
+    const isFxcontacts = s.id.startsWith('fxcontacts');
+    // Build per-day ranking
+    const bsrMap = Object.fromEntries(s.data.map(d => [d.date, d.bsr]));
+    const rankData = allDates.map(date => {
+      // Get BSR for each series on this date
+      const bsrs = series.map(ss => {
+        const m = Object.fromEntries(ss.data.map(d => [d.date, d.bsr]));
+        return { id: ss.id, bsr: m[date] ?? null };
+      }).filter(x => x.bsr !== null);
+
+      // Sort ascending (lower BSR = better = rank 1)
+      bsrs.sort((a, b) => a.bsr - b.bsr);
+      const myBsr = bsrMap[date];
+      if (myBsr === null || myBsr === undefined) return null;
+      const rank = bsrs.findIndex(x => x.id === s.id) + 1;
+      return rank > 0 ? rank : null;
+    });
+
+    return {
+      label: s.label,
+      data: rankData,
+      borderColor: s.color,
+      backgroundColor: s.color + '22',
+      pointBackgroundColor: s.color,
+      pointRadius: isFxcontacts ? 7 : 5,
+      pointHoverRadius: 10,
+      borderWidth: isFxcontacts ? 4 : 2,
+      tension: 0.3,
+      fill: false,
+      spanGaps: true,
+    };
+  });
+
+  const canvas = document.getElementById('ranking-chart');
+  new Chart(canvas, {
+    type: 'line',
+    data: { labels: allDates, datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f1525',
+          borderColor: '#1a2540',
+          borderWidth: 1,
+          titleColor: '#c0d0f0',
+          bodyColor: '#8899bb',
+          padding: 12,
+          callbacks: {
+            label: ctx => ` ${ctx.dataset.label}: Platz ${ctx.parsed.y ?? '–'}`,
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: '#121a2c' },
+          ticks: { color: '#445070', font: { size: 11 } },
+        },
+        y: {
+          reverse: true,
+          min: 1,
+          max: series.length,
+          grid: { color: '#121a2c' },
+          ticks: {
+            color: '#445070',
+            font: { size: 12 },
+            stepSize: 1,
+            callback: v => 'Platz ' + v,
+          },
+          title: {
+            display: true,
+            text: '← Besser    Ranking    Schlechter →',
+            color: '#334060',
+            font: { size: 10 },
+          }
+        }
+      }
+    }
+  });
+}
+
+// ── BSR Index Cards ───────────────────────────────────────
+function buildIndexCards(series) {
+  // Basis: FXCONTACTS 12M, aktueller Tag
+  const basis = series.find(s => s.id === 'fxcontacts_12m');
+  if (!basis || !basis.data.length) return '<p style="color:#445070">Keine Basisdaten für Index.</p>';
+
+  const latestBasis = basis.data[basis.data.length - 1].bsr;
+
+  return series.map((s, i) => {
+    const latest = s.data[s.data.length - 1];
+    const bsr = latest ? latest.bsr : null;
+    let indexVal = null;
+    let cls = 'neutral';
+    let hint = '';
+    let displayVal = '–';
+
+    if (s.id === 'fxcontacts_12m') {
+      indexVal = 100;
+      cls = 'neutral';
+      hint = 'Basis (= wir)';
+      displayVal = '100';
+    } else if (bsr && latestBasis) {
+      // Index = (unser BSR / deren BSR) * 100
+      // Wert > 100 → Konkurrent schlechter (gut für uns)
+      // Wert < 100 → Konkurrent besser (schlecht für uns)
+      indexVal = Math.round((latestBasis / bsr) * 100);
+      displayVal = indexVal.toString();
+      if (indexVal >= 100) {
+        cls = 'green';
+        hint = '✅ Schlechter als wir';
+      } else {
+        cls = 'red';
+        hint = '⚠️ Besser als wir';
+      }
+    }
+
+    return `
+      <div class="index-card">
+        <style>.index-card:nth-child(${i+1})::before { background: ${s.color}; }</style>
+        <div class="index-label">${s.label}</div>
+        <div class="index-value ${cls}">${displayVal}</div>
+        <div class="index-hint ${cls}">${hint}</div>
+      </div>`;
+  }).join('');
+}
+
+// ── BSR Absolute Chart (Detail) ───────────────────────────
 function buildChart(series) {
   const allDates = [...new Set(series.flatMap(s => s.data.map(d => d.date)))].sort();
 
   const datasets = series.map(s => {
+    const isFxcontacts = s.id.startsWith('fxcontacts');
     const dataMap = Object.fromEntries(s.data.map(d => [d.date, d.bsr]));
     return {
       label: s.label,
@@ -292,7 +520,7 @@ function buildChart(series) {
       pointBackgroundColor: s.color,
       pointRadius: 5,
       pointHoverRadius: 8,
-      borderWidth: 2.5,
+      borderWidth: isFxcontacts ? 3.5 : 2,
       tension: 0.3,
       fill: false,
       spanGaps: true,
@@ -362,12 +590,36 @@ async function init() {
     document.getElementById('updated-date').textContent = data.updated;
 
     app.innerHTML = `
+      <!-- BSR Stat Cards -->
+      <div class="section-label">📊 Aktueller BSR</div>
       <div class="stats-grid">
         ${buildStatCards(data.series)}
       </div>
+
+      <!-- Ranking Chart -->
       <div class="chart-container">
         <div class="chart-header">
-          <div class="chart-title">📈 BSR-Verlauf (Drogerie &amp; Körperpflege)</div>
+          <div class="chart-title">🏆 Ranking über Zeit (Platz 1 = Bester BSR)</div>
+          <div class="chart-hint">FXCONTACTS-Linien = fett · Platz 1 = niedrigster BSR</div>
+        </div>
+        <div class="canvas-wrapper tall">
+          <canvas id="ranking-chart"></canvas>
+        </div>
+        <div class="legend-grid">
+          ${buildLegend(data.series)}
+        </div>
+      </div>
+
+      <!-- BSR Index Cards -->
+      <div class="section-label">🎯 BSR-Index (Wir = 100)</div>
+      <div class="index-grid">
+        ${buildIndexCards(data.series)}
+      </div>
+
+      <!-- Absolute BSR Chart (Detail) -->
+      <div class="chart-container">
+        <div class="chart-header">
+          <div class="chart-title">📈 BSR-Verlauf absolut – Detail-Ansicht</div>
           <div class="chart-hint">Invertierte Y-Achse: niedriger = besser</div>
         </div>
         <div class="canvas-wrapper">
@@ -379,6 +631,7 @@ async function init() {
       </div>
     `;
 
+    buildRankingChart(data.series);
     buildChart(data.series);
 
   } catch (err) {
