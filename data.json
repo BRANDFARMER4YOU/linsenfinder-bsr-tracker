@@ -21,12 +21,12 @@
       "data": [
         {
           "date": "2026-08-19",
-          "bsr": 6209
+          "bsr": 6771
         }
       ]
     },
     {
-      "id": "konkurrent_1",
+      "id": "aricona_bars",
       "label": "Aricona (Behind Bars)",
       "asin": "B08HRWT4HT",
       "color": "#FF5252",
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "id": "konkurrent_2",
+      "id": "aricona_vampire",
       "label": "Aricona (Vampire 12M)",
       "asin": "B00H2H5MTI",
       "color": "#FF6D00",
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "id": "konkurrent_3",
+      "id": "designlenses",
       "label": "DESIGNLENSES (Day)",
       "asin": "B0BQC6R35Y",
       "color": "#D500F9",
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "id": "konkurrent_4",
+      "id": "crazyfun",
       "label": "Crazy Fun (Red Flower)",
       "asin": "B07NGVRYWX",
       "color": "#FF1744",
@@ -76,14 +76,19 @@
   ],
   "series_it": [
     {
-      "id": "fxcontacts_day",
-      "label": "FXCONTACTS Day",
-      "asin": "B0CGJCPS1Q",
+      "id": "fxcontacts_it",
+      "label": "FXCONTACTS (IT)",
+      "asin": "B09NQGVSPD",
       "color": "#00C853",
-      "data": []
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 9342
+        }
+      ]
     },
     {
-      "id": "konkurrent_1",
+      "id": "konkurrent_it_1",
       "label": "Lenti a contatto giornaliere colorate bianche per costume di",
       "asin": "B0BQC5VM9T",
       "color": "#FF5252",
@@ -95,19 +100,19 @@
       ]
     },
     {
-      "id": "konkurrent_2",
+      "id": "konkurrent_it_2",
       "label": "MeralenS Lenti a Contatto Colorate Purple Flower Viola - Her",
       "asin": "B0D7CW19DR",
       "color": "#FF6D00",
       "data": [
         {
           "date": "2026-08-19",
-          "bsr": 9624
+          "bsr": 9055
         }
       ]
     },
     {
-      "id": "konkurrent_3",
+      "id": "konkurrent_it_3",
       "label": "Meralens Lenti a Contatto Colorate Lupo Rossa rosse Flower L",
       "asin": "B07NGVRYWX",
       "color": "#D500F9",
@@ -121,14 +126,19 @@
   ],
   "series_fr": [
     {
-      "id": "fxcontacts_day",
-      "label": "FXCONTACTS Day",
-      "asin": "B0CGJCPS1Q",
+      "id": "fxcontacts_fr",
+      "label": "FXCONTACTS (FR)",
+      "asin": "B09NQGVSPD",
       "color": "#00C853",
-      "data": []
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 4446
+        }
+      ]
     },
     {
-      "id": "konkurrent_1",
+      "id": "konkurrent_fr_1",
       "label": "Lentilles couleur rouge noir - vampire red flower. Pour Hall",
       "asin": "B0CPYG28K3",
       "color": "#FF5252",
@@ -140,7 +150,7 @@
       ]
     },
     {
-      "id": "konkurrent_2",
+      "id": "konkurrent_fr_2",
       "label": "DESIGNLENSES lentilles journalières couleur vert toxique pou",
       "asin": "B0FBX1YXWK",
       "color": "#FF6D00",
@@ -152,7 +162,7 @@
       ]
     },
     {
-      "id": "konkurrent_3",
+      "id": "konkurrent_fr_3",
       "label": "MeralenS Lentilles couleur rouge - Red Lunatic Halloween, Sh",
       "asin": "B0CRZCW2JN",
       "color": "#D500F9",
@@ -166,14 +176,19 @@
   ],
   "series_es": [
     {
-      "id": "fxcontacts_day",
-      "label": "FXCONTACTS Day",
-      "asin": "B0CGJCPS1Q",
+      "id": "fxcontacts_es",
+      "label": "FXCONTACTS (ES)",
+      "asin": "B09NQGVSPD",
       "color": "#00C853",
-      "data": []
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 14513
+        }
+      ]
     },
     {
-      "id": "konkurrent_1",
+      "id": "konkurrent_es_1",
       "label": "Dos lentillas diarias colores rojos para Halloween vampiro d",
       "asin": "B0BQC6R35Y",
       "color": "#FF5252",
@@ -185,7 +200,7 @@
       ]
     },
     {
-      "id": "konkurrent_2",
+      "id": "konkurrent_es_2",
       "label": "Lentillas de color blanco Blind White 1 par. Cómodas y perfe",
       "asin": "B0CRZC4226",
       "color": "#FF6D00",
@@ -197,14 +212,14 @@
       ]
     },
     {
-      "id": "konkurrent_3",
+      "id": "konkurrent_es_3",
       "label": "Meralens - Lentes de Contacto \"White Out \" con caja de lente",
       "asin": "B002Y4I7QE",
       "color": "#D500F9",
       "data": [
         {
           "date": "2026-08-19",
-          "bsr": 9531
+          "bsr": 6847
         }
       ]
     }
