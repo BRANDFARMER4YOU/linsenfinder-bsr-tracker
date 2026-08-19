@@ -3,6 +3,9 @@
 BSR Tracker Updater — FXCONTACTS / BRANDFARMER4YOU
 Fetches BSR from Amazon.de for 6 ASINs and updates data.json via GitHub API.
 
+Appends one data point per series per day (idempotent — duplicate runs on the
+same day update the existing entry instead of inserting a second one).
+
 Usage:
     GITHUB_TOKEN=ghp_xxx python3 update_bsr.py
 
@@ -166,7 +169,7 @@ def main():
     else:
         data, sha = get_current_data()
 
-    # 3. Add new data points
+    # 3. Append new data points (idempotent: update existing entry if same date)
     updated_count = 0
     for series in data["series"]:
         sid = series["id"]
@@ -174,17 +177,31 @@ def main():
             log.warning(f"[{sid}] No new BSR — keeping existing data")
             continue
         new_bsr = bsr_results[sid]
-        # Avoid duplicate entries for same date
-        existing_dates = {d["date"] for d in series.get("data", [])}
-        if TODAY in existing_dates:
-            log.info(f"[{sid}] Already has entry for {TODAY}, updating value")
-            for entry in series["data"]:
-                if entry["date"] == TODAY:
-                    entry["bsr"] = new_bsr
+
+        # Ensure 'data' list exists
+        series.setdefault("data", [])
+
+        # Check if an entry for TODAY already exists
+        existing_entry = next(
+            (entry for entry in series["data"] if entry["date"] == TODAY), None
+        )
+
+        if existing_entry is not None:
+            # Idempotent: update value, do not insert duplicate
+            if existing_entry["bsr"] != new_bsr:
+                log.info(
+                    f"[{sid}] Updating existing {TODAY} entry: "
+                    f"#{existing_entry['bsr']:,} → #{new_bsr:,}"
+                )
+                existing_entry["bsr"] = new_bsr
+            else:
+                log.info(f"[{sid}] {TODAY} already up-to-date (#{new_bsr:,}), no change")
         else:
-            series.setdefault("data", []).append({"date": TODAY, "bsr": new_bsr})
+            # New day — append to keep full history
+            series["data"].append({"date": TODAY, "bsr": new_bsr})
+            log.info(f"[{sid}] Appended new entry for {TODAY}: #{new_bsr:,}")
+
         updated_count += 1
-        log.info(f"[{sid}] #{new_bsr:,}")
 
     data["updated"] = TODAY
 
