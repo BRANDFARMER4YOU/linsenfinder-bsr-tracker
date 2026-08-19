@@ -1,301 +1,275 @@
 #!/usr/bin/env python3
 """
-BSR Tracker Updater — FXCONTACTS / BRANDFARMER4YOU
-Fetches BSR from Amazon.de/it/fr/es for multiple ASINs and updates data.json via GitHub API.
-
-Appends one data point per series per day (idempotent — duplicate runs on the
-same day update the existing entry instead of inserting a second one).
-
-Usage:
-    GITHUB_TOKEN=ghp_xxx python3 update_bsr.py
-
-Env vars:
-    GITHUB_TOKEN   – required, GitHub PAT with repo write access
-    GITHUB_REPO    – optional (default: BRANDFARMER4YOU/linsenfinder-bsr-tracker)
-    DRY_RUN        – optional, set to 1 to skip GitHub push
+BSR Tracker — tägliches Update Script
+Scrapet Amazon BSR via Apify, speichert in data.json auf GitHub
+Alerts: Preis-Änderungen + Amazon Choice Badge per Telegram
 """
+import requests, json, base64, datetime, time, sys, os
 
-import os
-import re
-import json
-import base64
-import time
-import random
-import logging
-from datetime import date
-from typing import Optional
-
-import requests
-from bs4 import BeautifulSoup
-
-# ─────────────────────────── Config ───────────────────────────
-
+APIFY_TOKEN = os.environ.get("APIFY_TOKEN", "")
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-GITHUB_REPO  = os.environ.get("GITHUB_REPO", "BRANDFARMER4YOU/linsenfinder-bsr-tracker")
-DRY_RUN      = os.environ.get("DRY_RUN", "0") == "1"
-DATA_FILE    = "data.json"
-TODAY        = date.today().isoformat()
+GITHUB_REPO = "BRANDFARMER4YOU/linsenfinder-bsr-tracker"
+ACTOR_ID = "BG3WDrGdteHgZgbPK"
+TELEGRAM_CHAT_ID = "959128749"
+TODAY = str(datetime.date.today())
 
-# ── DE (amazon.de) – series key: "series" ──
-ASINS_DE = [
-    ("fxcontacts_12m",  "B0CRBKG853"),
-    ("fxcontacts_day",  "B0CGJCPS1Q"),
-    ("aricona_bars",    "B08HRWT4HT"),
-    ("aricona_vampire", "B00H2H5MTI"),
-    ("designlenses",    "B0BQC6R35Y"),
-    ("crazyfun",        "B07NGVRYWX"),
-]
+# Telegram Token aus openclaw.json lesen
+def get_telegram_token():
+    try:
+        with open("/Users/felix/.openclaw/openclaw.json") as f:
+            d = json.load(f)
+        bots = d.get("telegram", {}).get("bots", [])
+        if bots:
+            return bots[0].get("token", "")
+        return d.get("telegram", {}).get("token", "")
+    except:
+        return ""
 
-# ── IT (amazon.it) – series key: "series_it" ──
-ASINS_IT = [
-    ("fxcontacts_it",     "B09NQGVSPD"),  # FIX: correct ASIN for IT marketplace
-    ("konkurrent_it_1",   "B0BQC5VM9T"),
-    ("konkurrent_it_2",   "B0D7CW19DR"),
-    ("konkurrent_it_3",   "B07NGVRYWX"),
-]
-
-# ── FR (amazon.fr) – series key: "series_fr" ──
-ASINS_FR = [
-    ("fxcontacts_fr",     "B09NQGVSPD"),  # FIX: correct ASIN for FR marketplace
-    ("konkurrent_fr_1",   "B0CPYG28K3"),
-    ("konkurrent_fr_2",   "B0FBX1YXWK"),
-    ("konkurrent_fr_3",   "B0CRZCW2JN"),
-]
-
-# ── ES (amazon.es) – series key: "series_es" ──
-ASINS_ES = [
-    ("fxcontacts_es",     "B09NQGVSPD"),  # FIX: correct ASIN for ES marketplace
-    ("konkurrent_es_1",   "B0BQC6R35Y"),
-    ("konkurrent_es_2",   "B0CRZC4226"),
-    ("konkurrent_es_3",   "B002Y4I7QE"),
-]
-
-BASE_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/126.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Encoding": "gzip, deflate, br",
-}
-
-LANG_HEADERS = {
-    "de": "de-DE,de;q=0.9,en;q=0.8",
-    "it": "it-IT,it;q=0.9,en;q=0.8",
-    "fr": "fr-FR,fr;q=0.9,en;q=0.8",
-    "es": "es-ES,es;q=0.9,en;q=0.8",
-}
-
-# BSR row keywords per marketplace
-BSR_KEYWORDS = [
-    "Amazon Bestseller-Rang",            # DE
-    "Posizione nella classifica",        # IT
-    "Classement des meilleures ventes",  # FR
-    "Clasificación en los más vendidos", # ES
-    "Best Sellers Rank",                 # EN fallback
-]
-
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-log = logging.getLogger("bsr-updater")
-
-# ─────────────────────────── BSR Fetcher ───────────────────────────
-
-def extract_bsr(soup: BeautifulSoup, text: str) -> Optional[int]:
-    """Extract top-level BSR from Amazon product page (any EU locale)."""
-    for el in soup.select("tr, li, li.a-list-item"):
-        t = el.get_text(" ", strip=True)
-        if any(kw.lower() in t.lower() for kw in BSR_KEYWORDS):
-            # Patterns: nº2.230 / n. 6.839 / #4.290 / 4 290 / Nr. 1.234
-            nums = re.findall(
-                r'(?:n[º°]\s*|n\.\s*|Nr\.\s*|#\s*)([\d](?:[\d\s\.,]{1,10}[\d])|\d{1,7})', t
-            )
-            for num_str in nums:
-                cleaned = re.sub(r'[\s\.,]', '', num_str)
-                if cleaned.isdigit():
-                    val = int(cleaned)
-                    if 10 <= val <= 9_999_999:
-                        return val
-    # JSON fallback
-    m = re.search(r'"salesRank"\s*:\s*(\d+)', text)
-    if m:
-        return int(m.group(1))
-    return None
-
-
-def fetch_bsr(asin: str, domain: str = "de", retries: int = 3) -> Optional[int]:
-    """Fetch BSR from Amazon.<domain> product page."""
-    url = f"https://www.amazon.{domain}/dp/{asin}"
-    headers = {**BASE_HEADERS, "Accept-Language": LANG_HEADERS.get(domain, "en-US")}
-
-    for attempt in range(1, retries + 1):
-        try:
-            time.sleep(random.uniform(3.0, 7.0))  # polite delay
-            resp = requests.get(url, headers=headers, timeout=25, allow_redirects=True)
-
-            if resp.status_code == 404:
-                log.info(f"[{domain}/{asin}] 404 – not listed in this marketplace, skipping")
-                return None
-
-            if resp.status_code == 503 or "captcha" in resp.url.lower():
-                log.warning(f"[{domain}/{asin}] Attempt {attempt}: CAPTCHA/503, waiting…")
-                time.sleep(30 * attempt)
-                continue
-
-            if resp.status_code != 200:
-                log.warning(f"[{domain}/{asin}] Attempt {attempt}: HTTP {resp.status_code}")
-                continue
-
-            soup = BeautifulSoup(resp.text, "html.parser")
-            bsr = extract_bsr(soup, resp.text)
-
-            if bsr is not None:
-                log.info(f"[{domain}/{asin}] BSR = {bsr:,}")
-                return bsr
-            else:
-                log.warning(f"[{domain}/{asin}] Attempt {attempt}: BSR not found in page")
-
-        except Exception as e:
-            log.error(f"[{domain}/{asin}] Attempt {attempt}: {e}")
-            time.sleep(10)
-
-    log.error(f"[{domain}/{asin}] All {retries} attempts failed, skipping")
-    return None
-
-
-# ─────────────────────────── GitHub API ───────────────────────────
-
-API = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{DATA_FILE}"
-
-def gh_headers():
-    return {
-        "Authorization": f"token {GITHUB_TOKEN}",
-        "Accept": "application/vnd.github.v3+json",
-    }
-
-def get_current_data() -> tuple[dict, str]:
-    """Returns (data_dict, sha) from GitHub."""
-    resp = requests.get(API, headers=gh_headers())
-    resp.raise_for_status()
-    info = resp.json()
-    sha = info["sha"]
-    content = base64.b64decode(info["content"]).decode("utf-8")
-    return json.loads(content), sha
-
-def push_data(data: dict, sha: str, message: str = None):
-    """Push updated data.json back to GitHub."""
-    if DRY_RUN:
-        log.info("DRY_RUN: skipping GitHub push")
-        log.info(json.dumps(data, indent=2, ensure_ascii=False))
+def send_telegram(msg):
+    token = get_telegram_token()
+    if not token:
+        print(f"  ⚠️ Kein Telegram Token — Alert nur in Console: {msg[:80]}")
         return
-    msg = message or f"BSR update {TODAY}"
-    encoded = base64.b64encode(json.dumps(data, indent=2, ensure_ascii=False).encode()).decode()
-    payload = {"message": msg, "content": encoded, "sha": sha}
-    resp = requests.put(API, headers=gh_headers(), json=payload)
-    resp.raise_for_status()
-    log.info(f"✅ data.json updated on GitHub (commit: {resp.json()['commit']['sha'][:8]})")
+    requests.post(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        json={"chat_id": TELEGRAM_CHAT_ID, "text": msg, "parse_mode": "HTML"}
+    )
+    print(f"  📱 Telegram Alert gesendet")
 
+CONFIG = {
+    "series": {
+        "fxcontacts_12m": {"asin": "B0CRBKG853", "domain": "de", "label": "FXCONTACTS 12M", "color": "#00C853"},
+        "fxcontacts_day": {"asin": "B0CGJCPS1Q", "domain": "de", "label": "FXCONTACTS Day", "color": "#69F0AE"},
+        "aricona_bars":   {"asin": "B08HRWT4HT", "domain": "de", "label": "Aricona (Behind Bars)", "color": "#FF5252"},
+        "aricona_vampire":{"asin": "B00H2H5MTI", "domain": "de", "label": "Aricona (Vampire 12M)", "color": "#FF6D00"},
+        "designlenses":   {"asin": "B0BQC6R35Y", "domain": "de", "label": "DESIGNLENSES (Day)", "color": "#D500F9"},
+        "crazyfun":       {"asin": "B07NGVRYWX", "domain": "de", "label": "Crazy Fun (Red Flower)", "color": "#FF1744"},
+    },
+    "series_it": {
+        "fxcontacts_it":   {"asin": "B09NQGVSPD", "domain": "it", "label": "FXCONTACTS (IT)", "color": "#00C853"},
+        "konkurrent_it_1": {"asin": "B0BQC5VM9T", "domain": "it", "label": "Konkurrent IT 1", "color": "#FF5252"},
+        "konkurrent_it_2": {"asin": "B0D7CW19DR", "domain": "it", "label": "Konkurrent IT 2", "color": "#FF6D00"},
+        "konkurrent_it_3": {"asin": "B07NGVRYWX", "domain": "it", "label": "Konkurrent IT 3", "color": "#D500F9"},
+    },
+    "series_fr": {
+        "fxcontacts_fr":   {"asin": "B09NQGVSPD", "domain": "fr", "label": "FXCONTACTS (FR)", "color": "#00C853"},
+        "konkurrent_fr_1": {"asin": "B0CPYG28K3", "domain": "fr", "label": "Konkurrent FR 1", "color": "#FF5252"},
+        "konkurrent_fr_2": {"asin": "B0FBX1YXWK", "domain": "fr", "label": "Konkurrent FR 2", "color": "#FF6D00"},
+        "konkurrent_fr_3": {"asin": "B0CRZCW2JN", "domain": "fr", "label": "Konkurrent FR 3", "color": "#D500F9"},
+    },
+    "series_es": {
+        "fxcontacts_es":   {"asin": "B09NQGVSPD", "domain": "es", "label": "FXCONTACTS (ES)", "color": "#00C853"},
+        "konkurrent_es_1": {"asin": "B0BQC6R35Y", "domain": "es", "label": "Konkurrent ES 1", "color": "#FF5252"},
+        "konkurrent_es_2": {"asin": "B0CRZC4226", "domain": "es", "label": "Konkurrent ES 2", "color": "#FF6D00"},
+        "konkurrent_es_3": {"asin": "B002Y4I7QE", "domain": "es", "label": "Konkurrent ES 3", "color": "#D500F9"},
+    }
+}
 
-# ─────────────────────────── Helpers ───────────────────────────
+def scrape_asin(asin, domain="de"):
+    url = f"https://www.amazon.{domain}/dp/{asin}"
+    print(f"  Scraping {asin} on amazon.{domain}...", flush=True)
+    try:
+        run = requests.post(
+            f"https://api.apify.com/v2/acts/{ACTOR_ID}/runs?waitForFinish=120",
+            headers={"Authorization": f"Bearer {APIFY_TOKEN}"},
+            json={"categoryOrProductUrls": [{"url": url}], "maxItems": 1, "scrapeProductDetails": True},
+            timeout=150
+        ).json()
+        run_id = run.get("data", {}).get("id")
+        if not run_id:
+            print(f"    ❌ Kein Run-ID: {run.get('error', 'unbekannt')}")
+            return None
+        items = requests.get(
+            f"https://api.apify.com/v2/actor-runs/{run_id}/dataset/items",
+            headers={"Authorization": f"Bearer {APIFY_TOKEN}"}
+        ).json()
+        if not items:
+            print(f"    ❌ Keine Ergebnisse")
+            return None
+        p = items[0]
+        bsr_list = p.get("bestsellerRanks", [])
+        bsr, bsr_cat = None, None
+        if bsr_list:
+            specific = bsr_list[-1] if len(bsr_list) > 1 else bsr_list[0]
+            bsr = specific.get("rank")
+            bsr_cat = specific.get("category")
+        price = p.get("price", {})
+        if isinstance(price, dict):
+            price = price.get("value")
+        title = (p.get("title") or "")[:60]
+        is_ac = bool(p.get("isAmazonChoice", False))
+        print(f"    ✅ BSR={bsr} Preis={price} AC={'JA ⭐' if is_ac else 'nein'} Title={title[:35]}")
+        return {
+            "bsr": bsr,
+            "bsr_category": bsr_cat,
+            "price": price,
+            "reviews": p.get("reviewsCount"),
+            "rating": p.get("stars"),
+            "isAmazonChoice": is_ac,
+            "title": title
+        }
+    except Exception as e:
+        print(f"    ❌ Fehler: {e}")
+        return None
 
-def update_series(series_list: list, bsr_results: dict, label_prefix: str = ""):
-    """
-    Append or update today's BSR entry for each series.
-    Idempotent: if today's entry already exists, updates the value.
-    """
-    updated = 0
-    for series in series_list:
-        sid = series["id"]
-        if sid not in bsr_results:
-            log.warning(f"[{label_prefix}{sid}] No new BSR — keeping existing data")
-            continue
+def get_github_file(path):
+    r = requests.get(
+        f"https://api.github.com/repos/{GITHUB_REPO}/contents/{path}",
+        headers={"Authorization": f"token {GITHUB_TOKEN}"}
+    ).json()
+    if "sha" not in r:
+        return None, None
+    content = base64.b64decode(r["content"].replace("\n","") + "==").decode("utf-8")
+    return json.loads(content), r["sha"]
 
-        new_bsr = bsr_results[sid]
-        series.setdefault("data", [])
-        existing = next((e for e in series["data"] if e["date"] == TODAY), None)
+def push_github_file(path, content_str, sha, message):
+    encoded = base64.b64encode(content_str.encode()).decode()
+    payload = {"message": message, "content": encoded}
+    if sha:
+        payload["sha"] = sha
+    r = requests.put(
+        f"https://api.github.com/repos/{GITHUB_REPO}/contents/{path}",
+        headers={"Authorization": f"token {GITHUB_TOKEN}"},
+        json=payload
+    )
+    if r.status_code in (200, 201):
+        print(f"  ✅ {path} gepusht")
+    else:
+        print(f"  ❌ {path} Fehler: {r.status_code} {r.text[:200]}")
 
-        if existing is not None:
-            if existing["bsr"] != new_bsr:
-                log.info(f"[{label_prefix}{sid}] Updating {TODAY}: #{existing['bsr']:,} → #{new_bsr:,}")
-                existing["bsr"] = new_bsr
-            else:
-                log.info(f"[{label_prefix}{sid}] Already up-to-date (#{new_bsr:,})")
+def check_alerts(serie_id, label, prev_data, new_point):
+    """Prüft auf Preis-Änderungen und Amazon Choice Badge-Wechsel"""
+    alerts = []
+
+    if not prev_data:
+        return alerts
+
+    prev = prev_data[-1]
+    is_fx = serie_id.startswith("fxcontacts")
+
+    # Preis-Änderung (>= 5% oder absolut >= 0.50€)
+    old_price = prev.get("price")
+    new_price = new_point.get("price")
+    if old_price and new_price and old_price != new_price:
+        diff = new_price - old_price
+        pct = abs(diff) / old_price * 100
+        if pct >= 5 or abs(diff) >= 0.50:
+            direction = "⬆️ erhöht" if diff > 0 else "⬇️ gesenkt"
+            emoji = "🔴" if (not is_fx and diff < 0) else "📊"
+            alerts.append(f"{emoji} <b>Preisänderung:</b> {label}\n€{old_price} → €{new_price} ({direction}, {pct:.1f}%)")
+
+    # Amazon Choice Badge — gewonnen oder verloren
+    old_ac = prev.get("isAmazonChoice", False)
+    new_ac = new_point.get("isAmazonChoice", False)
+    if old_ac != new_ac:
+        if new_ac:
+            emoji = "🏆" if is_fx else "⚠️"
+            alerts.append(f"{emoji} <b>Amazon's Choice gewonnen:</b> {label}")
         else:
-            series["data"].append({"date": TODAY, "bsr": new_bsr})
-            log.info(f"[{label_prefix}{sid}] Appended {TODAY}: #{new_bsr:,}")
+            emoji = "😬" if is_fx else "✅"
+            alerts.append(f"{emoji} <b>Amazon's Choice verloren:</b> {label}")
 
-        updated += 1
-    return updated
-
-
-# ─────────────────────────── Main ───────────────────────────
+    return alerts
 
 def main():
-    if not GITHUB_TOKEN and not DRY_RUN:
-        raise ValueError("GITHUB_TOKEN env var is required (or set DRY_RUN=1)")
+    print(f"\n🚀 BSR Update {TODAY}")
+    print("=" * 50)
 
-    log.info(f"=== BSR Update — {TODAY} ===")
+    print("\n📥 Lade data.json von GitHub...")
+    data, sha = get_github_file("data.json")
+    if not data:
+        print("Keine data.json gefunden — erstelle neu")
+        data = {}
 
-    # ── Fetch DE ──
-    log.info("--- Fetching DE ---")
-    bsr_de: dict[str, int] = {}
-    for sid, asin in ASINS_DE:
-        bsr = fetch_bsr(asin, domain="de")
-        if bsr is not None:
-            bsr_de[sid] = bsr
+    for key in ["series", "series_it", "series_fr", "series_es"]:
+        if key not in data:
+            data[key] = []
 
-    # ── Fetch IT ──
-    log.info("--- Fetching IT ---")
-    bsr_it: dict[str, int] = {}
-    for sid, asin in ASINS_IT:
-        bsr = fetch_bsr(asin, domain="it")
-        if bsr is not None:
-            bsr_it[sid] = bsr
+    all_alerts = []
 
-    # ── Fetch FR ──
-    log.info("--- Fetching FR ---")
-    bsr_fr: dict[str, int] = {}
-    for sid, asin in ASINS_FR:
-        bsr = fetch_bsr(asin, domain="fr")
-        if bsr is not None:
-            bsr_fr[sid] = bsr
+    for series_key, series_config in CONFIG.items():
+        print(f"\n🌍 {series_key.upper()}")
+        existing = {s["id"]: s for s in data.get(series_key, [])}
 
-    # ── Fetch ES ──
-    log.info("--- Fetching ES ---")
-    bsr_es: dict[str, int] = {}
-    for sid, asin in ASINS_ES:
-        bsr = fetch_bsr(asin, domain="es")
-        if bsr is not None:
-            bsr_es[sid] = bsr
+        for serie_id, cfg in series_config.items():
+            if serie_id in existing:
+                already = [d for d in existing[serie_id].get("data", []) if d["date"] == TODAY]
+                if already:
+                    print(f"  ⏭️  {serie_id}: heute bereits eingetragen")
+                    continue
 
-    total_fetched = len(bsr_de) + len(bsr_it) + len(bsr_fr) + len(bsr_es)
-    if not total_fetched:
-        log.error("No BSR data fetched at all — aborting")
-        return
+            result = scrape_asin(cfg["asin"], cfg["domain"])
+            time.sleep(3)
 
-    # ── Load current data.json ──
-    if DRY_RUN:
-        log.info("DRY_RUN: using stub data")
-        data = {"updated": TODAY, "series": [], "series_it": [], "series_fr": [], "series_es": []}
-        sha = "dummy"
-    else:
-        data, sha = get_current_data()
+            point = {"date": TODAY}
+            if result:
+                point.update({
+                    "bsr": result["bsr"],
+                    "price": result["price"],
+                    "reviews": result["reviews"],
+                    "rating": result["rating"],
+                    "isAmazonChoice": result["isAmazonChoice"],
+                })
+                if result["title"] and "Konkurrent" in cfg["label"]:
+                    cfg["label"] = result["title"][:40]
+            else:
+                point["bsr"] = None
 
-    # ── Update each country's series ──
-    updated_de = update_series(data.get("series", []), bsr_de, "DE/")
-    updated_it = update_series(data.get("series_it", []), bsr_it, "IT/")
-    updated_fr = update_series(data.get("series_fr", []), bsr_fr, "FR/")
-    updated_es = update_series(data.get("series_es", []), bsr_es, "ES/")
+            if serie_id not in existing:
+                existing[serie_id] = {
+                    "id": serie_id,
+                    "label": cfg["label"],
+                    "asin": cfg["asin"],
+                    "color": cfg["color"],
+                    "data": []
+                }
+
+            # Alerts prüfen (vor dem Anhängen)
+            prev_data = existing[serie_id].get("data", [])
+            alerts = check_alerts(serie_id, existing[serie_id]["label"], prev_data, point)
+            all_alerts.extend(alerts)
+
+            existing[serie_id]["data"].append(point)
+
+        data[series_key] = list(existing.values())
 
     data["updated"] = TODAY
 
-    # ── Push ──
-    push_data(data, sha)
+    print(f"\n📤 Pushe data.json nach GitHub...")
+    push_github_file("data.json", json.dumps(data, indent=2, ensure_ascii=False), sha, f"BSR update {TODAY}")
 
-    log.info(
-        f"=== Done. Updated DE:{updated_de} IT:{updated_it} FR:{updated_fr} ES:{updated_es} ==="
-    )
+    # Zusammenfassung
+    print("\n📊 ZUSAMMENFASSUNG")
+    print("=" * 50)
+    summary_lines = [f"📊 <b>BSR Update {TODAY}</b>\n"]
+    for key in ["series", "series_it", "series_fr", "series_es"]:
+        flag = {"series": "🇩🇪", "series_it": "🇮🇹", "series_fr": "🇫🇷", "series_es": "🇪🇸"}.get(key, "")
+        summary_lines.append(f"\n{flag} <b>{key.upper()}</b>")
+        for s in data.get(key, []):
+            last = s["data"][-1] if s["data"] else {}
+            ac = " ⭐" if last.get("isAmazonChoice") else ""
+            line = f"  {s['label'][:30]:30} BSR #{last.get('bsr','n/a')}{ac}"
+            print(line)
+            summary_lines.append(line)
 
+    # Alerts senden
+    if all_alerts:
+        print(f"\n🚨 {len(all_alerts)} ALERT(S):")
+        alert_msg = f"🚨 <b>BSR Alerts {TODAY}</b>\n\n" + "\n\n".join(all_alerts)
+        print(alert_msg)
+        send_telegram(alert_msg)
+    else:
+        print("\n✅ Keine Alerts — alles stabil")
+
+    # Tägliche Zusammenfassung per Telegram
+    summary_msg = "\n".join(summary_lines)
+    summary_msg += f"\n\n🌐 Dashboard: https://brandfarmer4you.github.io/linsenfinder-bsr-tracker/"
+    if all_alerts:
+        summary_msg += f"\n\n🚨 {len(all_alerts)} Alert(s) separat gesendet!"
+    send_telegram(summary_msg)
+
+    print("\n✅ Fertig!")
+    print(f"🌐 Dashboard: https://brandfarmer4you.github.io/linsenfinder-bsr-tracker/")
 
 if __name__ == "__main__":
     main()
