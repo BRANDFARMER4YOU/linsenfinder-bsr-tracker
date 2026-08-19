@@ -73,5 +73,140 @@
         }
       ]
     }
+  ],
+  "series_it": [
+    {
+      "id": "fxcontacts_day",
+      "label": "FXCONTACTS Day",
+      "asin": "B0CGJCPS1Q",
+      "color": "#00C853",
+      "data": []
+    },
+    {
+      "id": "konkurrent_1",
+      "label": "Lenti a contatto giornaliere colorate bianche per costume di",
+      "asin": "B0BQC5VM9T",
+      "color": "#FF5252",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 6839
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_2",
+      "label": "MeralenS Lenti a Contatto Colorate Purple Flower Viola - Her",
+      "asin": "B0D7CW19DR",
+      "color": "#FF6D00",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 9624
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_3",
+      "label": "Meralens Lenti a Contatto Colorate Lupo Rossa rosse Flower L",
+      "asin": "B07NGVRYWX",
+      "color": "#D500F9",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 9369
+        }
+      ]
+    }
+  ],
+  "series_fr": [
+    {
+      "id": "fxcontacts_day",
+      "label": "FXCONTACTS Day",
+      "asin": "B0CGJCPS1Q",
+      "color": "#00C853",
+      "data": []
+    },
+    {
+      "id": "konkurrent_1",
+      "label": "Lentilles couleur rouge noir - vampire red flower. Pour Hall",
+      "asin": "B0CPYG28K3",
+      "color": "#FF5252",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 4290
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_2",
+      "label": "DESIGNLENSES lentilles journalières couleur vert toxique pou",
+      "asin": "B0FBX1YXWK",
+      "color": "#FF6D00",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 5422
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_3",
+      "label": "MeralenS Lentilles couleur rouge - Red Lunatic Halloween, Sh",
+      "asin": "B0CRZCW2JN",
+      "color": "#D500F9",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 9653
+        }
+      ]
+    }
+  ],
+  "series_es": [
+    {
+      "id": "fxcontacts_day",
+      "label": "FXCONTACTS Day",
+      "asin": "B0CGJCPS1Q",
+      "color": "#00C853",
+      "data": []
+    },
+    {
+      "id": "konkurrent_1",
+      "label": "Dos lentillas diarias colores rojos para Halloween vampiro d",
+      "asin": "B0BQC6R35Y",
+      "color": "#FF5252",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 2230
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_2",
+      "label": "Lentillas de color blanco Blind White 1 par. Cómodas y perfe",
+      "asin": "B0CRZC4226",
+      "color": "#FF6D00",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 3746
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_3",
+      "label": "Meralens - Lentes de Contacto \"White Out \" con caja de lente",
+      "asin": "B002Y4I7QE",
+      "color": "#D500F9",
+      "data": [
+        {
+          "date": "2026-08-19",
+          "bsr": 9531
+        }
+      ]
+    }
   ]
 }
