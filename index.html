@@ -7,192 +7,133 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Inter', sans-serif; background: #f0f2f5; color: #1a1a2e; min-height: 100vh; }
-
-  /* Header */
-  .header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-  .header-left h1 { font-size: 22px; font-weight: 700; color: #1a6b3c; }
-  .header-left p { font-size: 13px; color: #6b7280; margin-top: 2px; }
-  .header-right { display: flex; align-items: center; gap: 12px; }
-  .updated { font-size: 12px; color: #9ca3af; }
-
-  /* Nav Pills */
-  .nav-pills { display: flex; gap: 8px; padding: 20px 32px 0; }
-  .nav-pill { padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; border: 2px solid transparent; transition: all 0.2s; background: #fff; color: #6b7280; }
-  .nav-pill:hover, .nav-pill.active { background: #1a6b3c; color: #fff; border-color: #1a6b3c; }
-
-  /* Main */
-  .main { padding: 24px 32px; }
-  .section { margin-bottom: 48px; scroll-margin-top: 80px; }
-  .section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-  .flag { font-size: 22px; }
-
-  /* KPI Cards Grid */
-  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
-  .kpi-card { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid #e5e7eb; transition: transform 0.15s; }
-  .kpi-card:hover { transform: translateY(-2px); }
-  .kpi-card.fx { border-top-color: #1a6b3c; }
-  .kpi-card .prod-name { font-size: 12px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .kpi-card .bsr-val { font-size: 28px; font-weight: 700; color: #1a1a2e; line-height: 1; }
-  .kpi-card .bsr-label { font-size: 11px; color: #9ca3af; margin-top: 2px; margin-bottom: 12px; }
-  .kpi-card .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-  .meta-badge { font-size: 12px; background: #f3f4f6; border-radius: 8px; padding: 3px 8px; color: #374151; }
-  .meta-badge.green { background: #d1fae5; color: #065f46; }
-  .ac-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; background: #fef3c7; color: #92400e; border-radius: 8px; padding: 3px 8px; font-weight: 600; }
-
-  /* Charts */
-  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
-  @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } .kpi-grid { grid-template-columns: repeat(2, 1fr); } }
-  .chart-card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
-  .chart-title { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 16px; }
-  .chart-wrap { position: relative; height: 240px; }
-
-  @media (max-width: 600px) { .main { padding: 16px; } .header { padding: 12px 16px; } .nav-pills { padding: 12px 16px 0; } }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
+.header { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 32px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
+.header h1 { font-size:20px; font-weight:700; color:#1a6b3c; }
+.header p { font-size:12px; color:#6b7280; margin-top:2px; }
+.updated { font-size:12px; color:#9ca3af; }
+.nav { display:flex; gap:8px; padding:20px 32px 0; flex-wrap:wrap; }
+.nav a { padding:8px 18px; border-radius:24px; font-size:13px; font-weight:500; text-decoration:none; background:#fff; color:#6b7280; border:1.5px solid #e5e7eb; transition:all 0.2s; }
+.nav a:hover { background:#1a6b3c; color:#fff; border-color:#1a6b3c; }
+.main { padding:24px 32px; }
+.section { margin-bottom:52px; scroll-margin-top:80px; }
+.section-title { font-size:17px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; margin-bottom:20px; }
+.kpi-card { background:#fff; border-radius:16px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-top:4px solid #e5e7eb; position:relative; }
+.kpi-card.fx { border-top-color:#1a6b3c; }
+.kpi-card .name { font-size:11px; font-weight:600; color:#6b7280; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.kpi-card .bsr { font-size:26px; font-weight:700; color:#1a1a2e; line-height:1; }
+.kpi-card .bsr-lbl { font-size:10px; color:#9ca3af; margin-top:1px; margin-bottom:10px; }
+.badges { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
+.badge { font-size:11px; background:#f3f4f6; border-radius:8px; padding:3px 7px; color:#374151; }
+.badge.green { background:#d1fae5; color:#065f46; }
+.badge.blue { background:#dbeafe; color:#1e40af; }
+.amazon-link { display:block; font-size:11px; color:#1a6b3c; text-decoration:none; margin-top:8px; font-weight:500; }
+.amazon-link:hover { text-decoration:underline; }
+.trend-up { color:#1a6b3c; font-size:16px; }
+.trend-dn { color:#dc2626; font-size:16px; }
+.charts-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+@media(max-width:860px){ .charts-grid{grid-template-columns:1fr;} .kpi-grid{grid-template-columns:repeat(2,1fr);} .main{padding:14px;} .header{padding:12px 16px;} .nav{padding:12px 16px 0;} }
+.chart-card { background:#fff; border-radius:16px; padding:22px; box-shadow:0 2px 10px rgba(0,0,0,0.07); }
+.chart-title { font-size:13px; font-weight:600; color:#374151; margin-bottom:14px; }
+.chart-wrap { position:relative; height:230px; }
 </style>
 </head>
 <body>
-
 <div class="header">
-  <div class="header-left">
-    <h1>📊 BSR Dashboard</h1>
-    <p>FXCONTACTS Halloween Lenses – tägliches Tracking</p>
-  </div>
-  <div class="header-right">
-    <span class="updated" id="updated-label">Lade Daten...</span>
-  </div>
+  <div><h1>📊 BSR Dashboard</h1><p>FXCONTACTS Halloween Lenses – tägliches Tracking</p></div>
+  <span class="updated" id="upd">Lade...</span>
 </div>
-
-<div class="nav-pills">
-  <a class="nav-pill" href="#de">🇩🇪 DE</a>
-  <a class="nav-pill" href="#it">🇮🇹 IT</a>
-  <a class="nav-pill" href="#fr">🇫🇷 FR</a>
-  <a class="nav-pill" href="#es">🇪🇸 ES</a>
+<div class="nav">
+  <a href="#de">🇩🇪 DE</a>
+  <a href="#it">🇮🇹 IT</a>
+  <a href="#fr">🇫🇷 FR</a>
+  <a href="#es">🇪🇸 ES</a>
 </div>
-
 <div class="main">
-  <div id="de" class="section"><div class="section-title"><span class="flag">🇩🇪</span> Deutschland</div><div class="kpi-grid" id="kpi-de"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking (Platz 1 = beste)</div><div class="chart-wrap"><canvas id="rank-de"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-de"></canvas></div></div></div></div>
-  <div id="it" class="section"><div class="section-title"><span class="flag">🇮🇹</span> Italien</div><div class="kpi-grid" id="kpi-it"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-it"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-it"></canvas></div></div></div></div>
-  <div id="fr" class="section"><div class="section-title"><span class="flag">🇫🇷</span> Frankreich</div><div class="kpi-grid" id="kpi-fr"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-fr"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-fr"></canvas></div></div></div></div>
-  <div id="es" class="section"><div class="section-title"><span class="flag">🇪🇸</span> Spanien</div><div class="kpi-grid" id="kpi-es"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-es"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-es"></canvas></div></div></div></div>
+  <div id="de" class="section"><div class="section-title">🇩🇪 Deutschland</div><div class="kpi-grid" id="kpi-de"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking (Platz 1 = beste)</div><div class="chart-wrap"><canvas id="rank-de"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-de"></canvas></div></div></div></div>
+  <div id="it" class="section"><div class="section-title">🇮🇹 Italien</div><div class="kpi-grid" id="kpi-it"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-it"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-it"></canvas></div></div></div></div>
+  <div id="fr" class="section"><div class="section-title">🇫🇷 Frankreich</div><div class="kpi-grid" id="kpi-fr"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-fr"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-fr"></canvas></div></div></div></div>
+  <div id="es" class="section"><div class="section-title">🇪🇸 Spanien</div><div class="kpi-grid" id="kpi-es"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-es"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-es"></canvas></div></div></div></div>
 </div>
-
 <script>
-function computeRankings(seriesData) {
-  const dates = [...new Set(seriesData.flatMap(s => s.data.map(d => d.date)))].sort();
-  const rankings = {};
-  seriesData.forEach(s => rankings[s.id] = []);
+const isFX = id => id.startsWith('fxcontacts');
+
+function computeRankings(series) {
+  const dates = [...new Set(series.flatMap(s => s.data.map(d => d.date)))].sort();
+  const out = {};
+  series.forEach(s => out[s.id] = []);
   dates.forEach(date => {
-    const entries = seriesData
-      .map(s => ({ id: s.id, bsr: (s.data.find(d => d.date === date) || {}).bsr }))
-      .filter(e => e.bsr != null)
-      .sort((a, b) => a.bsr - b.bsr);
-    entries.forEach((e, i) => rankings[e.id].push({ x: date, y: i + 1 }));
+    series.map(s => ({id:s.id, bsr:(s.data.find(d=>d.date===date)||{}).bsr}))
+      .filter(e=>e.bsr!=null).sort((a,b)=>a.bsr-b.bsr)
+      .forEach((e,i) => out[e.id].push({x:date,y:i+1}));
   });
-  return rankings;
+  return out;
 }
 
-function isFX(id) { return id.startsWith('fxcontacts'); }
-
-function renderKPI(containerId, seriesData) {
-  const el = document.getElementById(containerId);
-  seriesData.forEach(s => {
-    const last = s.data[s.data.length - 1] || {};
-    const prev = s.data[s.data.length - 2] || {};
-    const trend = last.bsr && prev.bsr ? (last.bsr < prev.bsr ? '↑' : last.bsr > prev.bsr ? '↓' : '→') : '';
-    const trendColor = trend === '↑' ? '#1a6b3c' : trend === '↓' ? '#dc2626' : '#6b7280';
+function renderKPI(cid, series) {
+  const el = document.getElementById(cid);
+  series.forEach(s => {
+    const last = s.data[s.data.length-1] || {};
+    const prev = s.data[s.data.length-2] || {};
+    const trend = last.bsr && prev.bsr
+      ? (last.bsr < prev.bsr ? '<span class="trend-up">↑</span>' : last.bsr > prev.bsr ? '<span class="trend-dn">↓</span>' : '')
+      : '';
     const fx = isFX(s.id);
-    const shortLabel = s.label.replace('FXCONTACTS', 'FX').substring(0, 28);
-    el.innerHTML += `
-      <div class="kpi-card ${fx ? 'fx' : ''}">
-        <div class="prod-name" title="${s.label}">${shortLabel}</div>
-        <div class="bsr-val">#${last.bsr ? last.bsr.toLocaleString('de') : 'n/a'} <span style="font-size:16px;color:${trendColor}">${trend}</span></div>
-        <div class="bsr-label">BSR</div>
-        <div class="meta">
-          ${last.price ? `<span class="meta-badge">💰 €${last.price}</span>` : ''}
-          ${last.reviews ? `<span class="meta-badge">⭐ ${last.reviews.toLocaleString('de')}</span>` : ''}
-          ${last.rating ? `<span class="meta-badge ${fx ? 'green' : ''}">${last.rating}★</span>` : ''}
-          ${last.isAmazonChoice ? `<span class="ac-badge">⭐ Amazon's Choice</span>` : ''}
-        </div>
-      </div>`;
+    const domain = s.domain || 'de';
+    const amazonUrl = s.url || `https://www.amazon.${domain}/dp/${s.asin}`;
+    const variants = last.variantCount ? `<span class="badge blue">🎨 ${last.variantCount} Var.</span>` : '';
+
+    el.innerHTML += `<div class="kpi-card ${fx?'fx':''}">
+      <div class="name" title="${s.label}">${s.label.substring(0,32)}</div>
+      <div class="bsr">#${last.bsr ? last.bsr.toLocaleString('de') : 'n/a'} ${trend}</div>
+      <div class="bsr-lbl">BSR heute</div>
+      <div class="badges">
+        ${last.price ? `<span class="badge">💰 €${last.price}</span>` : ''}
+        ${last.reviews ? `<span class="badge">⭐ ${last.reviews.toLocaleString('de')}</span>` : ''}
+        ${last.rating ? `<span class="badge ${fx?'green':''}">${last.rating}★</span>` : ''}
+        ${variants}
+      </div>
+      <a class="amazon-link" href="${amazonUrl}" target="_blank">→ Amazon ${domain.toUpperCase()} öffnen</a>
+    </div>`;
   });
 }
 
-function renderRankChart(canvasId, seriesData) {
-  const rankings = computeRankings(seriesData);
-  const dates = [...new Set(seriesData.flatMap(s => s.data.map(d => d.date)))].sort();
-  new Chart(document.getElementById(canvasId), {
-    type: 'line',
-    data: {
-      labels: dates,
-      datasets: seriesData.map(s => ({
-        label: s.label.replace('FXCONTACTS','FX').substring(0,30),
-        data: rankings[s.id] || [],
-        borderColor: s.color,
-        backgroundColor: s.color + '20',
-        borderWidth: isFX(s.id) ? 3 : 1.5,
-        tension: 0.3,
-        pointRadius: 4,
-        parsing: { xAxisKey: 'x', yAxisKey: 'y' }
-      }))
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      scales: {
-        y: { reverse: true, min: 1, ticks: { stepSize: 1, precision: 0 }, title: { display: true, text: 'Rang' } },
-        x: { ticks: { maxTicksLimit: 7 } }
-      },
-      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } }
-    }
-  });
+function renderRank(cid, series) {
+  const r = computeRankings(series);
+  const dates = [...new Set(series.flatMap(s=>s.data.map(d=>d.date)))].sort();
+  new Chart(document.getElementById(cid),{type:'line',data:{labels:dates,datasets:series.map(s=>({
+    label:s.label.substring(0,28), data:r[s.id]||[],
+    borderColor:s.color, backgroundColor:s.color+'18',
+    borderWidth:isFX(s.id)?3:1.5, tension:0.3, pointRadius:4,
+    parsing:{xAxisKey:'x',yAxisKey:'y'}
+  }))},options:{responsive:true,maintainAspectRatio:false,
+    scales:{y:{reverse:true,min:1,ticks:{stepSize:1,precision:0},title:{display:true,text:'Rang'}},x:{ticks:{maxTicksLimit:6}}},
+    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}}});
 }
 
-function renderPriceChart(canvasId, seriesData) {
-  const dates = [...new Set(seriesData.flatMap(s => s.data.map(d => d.date)))].sort();
-  new Chart(document.getElementById(canvasId), {
-    type: 'line',
-    data: {
-      labels: dates,
-      datasets: seriesData.map(s => ({
-        label: s.label.replace('FXCONTACTS','FX').substring(0,30),
-        data: dates.map(d => { const p = s.data.find(e => e.date === d); return p ? p.price : null; }),
-        borderColor: s.color,
-        borderWidth: isFX(s.id) ? 3 : 1.5,
-        tension: 0.3,
-        pointRadius: 3,
-        spanGaps: true
-      }))
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      scales: {
-        y: { ticks: { callback: v => '€' + v } },
-        x: { ticks: { maxTicksLimit: 7 } }
-      },
-      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } }
-    }
-  });
+function renderPrice(cid, series) {
+  const dates = [...new Set(series.flatMap(s=>s.data.map(d=>d.date)))].sort();
+  new Chart(document.getElementById(cid),{type:'line',data:{labels:dates,datasets:series.map(s=>({
+    label:s.label.substring(0,28),
+    data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?p.price:null;}),
+    borderColor:s.color, borderWidth:isFX(s.id)?3:1.5, tension:0.3, pointRadius:3, spanGaps:true
+  }))},options:{responsive:true,maintainAspectRatio:false,
+    scales:{y:{ticks:{callback:v=>'€'+v}},x:{ticks:{maxTicksLimit:6}}},
+    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}}});
 }
 
-fetch('./data.json').then(r => r.json()).then(data => {
-  document.getElementById('updated-label').textContent = 'Zuletzt aktualisiert: ' + (data.updated || '–');
-
-  renderKPI('kpi-de', data.series || []);
-  renderKPI('kpi-it', data.series_it || []);
-  renderKPI('kpi-fr', data.series_fr || []);
-  renderKPI('kpi-es', data.series_es || []);
-
-  renderRankChart('rank-de', data.series || []);
-  renderRankChart('rank-it', data.series_it || []);
-  renderRankChart('rank-fr', data.series_fr || []);
-  renderRankChart('rank-es', data.series_es || []);
-
-  renderPriceChart('price-de', data.series || []);
-  renderPriceChart('price-it', data.series_it || []);
-  renderPriceChart('price-fr', data.series_fr || []);
-  renderPriceChart('price-es', data.series_es || []);
+fetch('./data.json').then(r=>r.json()).then(data=>{
+  document.getElementById('upd').textContent = 'Zuletzt aktualisiert: ' + (data.updated||'–');
+  ['de','it','fr','es'].forEach(cc=>{
+    const key = cc==='de' ? 'series' : `series_${cc}`;
+    const series = data[key] || [];
+    renderKPI(`kpi-${cc}`, series);
+    renderRank(`rank-${cc}`, series);
+    renderPrice(`price-${cc}`, series);
+  });
 });
 </script>
 </body>
 </html>
-<!-- build 15:51:30 -->
