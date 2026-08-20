@@ -9,22 +9,45 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
+
+/* ── Header ── */
 .header { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 32px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
 .header h1 { font-size:20px; font-weight:700; color:#1a6b3c; }
 .header p { font-size:12px; color:#6b7280; margin-top:2px; }
 .updated { font-size:12px; color:#9ca3af; }
+
+/* ── Executive Summary Banner ── */
+.exec-summary { background:#fff; border-bottom:1px solid #e5e7eb; padding:10px 32px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
+.exec-summary .exec-label { font-size:11px; font-weight:600; color:#6b7280; text-transform:uppercase; letter-spacing:0.5px; }
+.exec-summary .exec-items { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+.exec-item { display:flex; align-items:center; gap:5px; font-size:13px; font-weight:600; }
+.exec-item .rank { color:#1a6b3c; font-size:15px; font-weight:700; }
+.exec-item .market { color:#6b7280; font-size:12px; }
+.exec-dot { width:8px; height:8px; border-radius:50%; background:#1a6b3c; display:inline-block; }
+
+/* ── Nav ── */
 .nav { display:flex; gap:8px; padding:20px 32px 0; flex-wrap:wrap; }
 .nav a { padding:8px 18px; border-radius:24px; font-size:13px; font-weight:500; text-decoration:none; background:#fff; color:#6b7280; border:1.5px solid #e5e7eb; transition:all 0.2s; }
 .nav a:hover { background:#1a6b3c; color:#fff; border-color:#1a6b3c; }
+
+/* ── Main ── */
 .main { padding:24px 32px; }
 .section { margin-bottom:52px; scroll-margin-top:80px; }
 .section-title { font-size:17px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+
+/* ── KPI Cards ── */
 .kpi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin-bottom:20px; }
 .kpi-card { background:#fff; border-radius:16px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-top:4px solid #e5e7eb; position:relative; }
 .kpi-card.fx { border-top-color:#1a6b3c; }
+.kpi-card.competitor { opacity:0.82; border-top-color:#d1d5db; }
+.kpi-card.competitor .name { color:#9ca3af; }
 .kpi-card .name { font-size:11px; font-weight:600; color:#6b7280; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 .kpi-card .bsr { font-size:26px; font-weight:700; color:#1a1a2e; line-height:1; }
+.kpi-card .bsr-delta { font-size:12px; font-weight:600; margin-left:4px; }
+.bsr-delta.up { color:#1a6b3c; }
+.bsr-delta.dn { color:#dc2626; }
 .kpi-card .bsr-lbl { font-size:10px; color:#9ca3af; margin-top:1px; margin-bottom:8px; }
+.kpi-card .sub-cat { font-size:10px; color:#6b7280; margin-top:2px; margin-bottom:6px; }
 .sub-bsr-list { margin-bottom:10px; display:flex; flex-direction:column; gap:4px; }
 .sub-bsr-row { display:flex; align-items:baseline; gap:5px; font-size:11px; line-height:1.3; }
 .sub-rank { font-weight:700; color:#1a1a2e; white-space:nowrap; }
@@ -35,199 +58,353 @@ body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
 .badge { font-size:11px; background:#f3f4f6; border-radius:8px; padding:3px 7px; color:#374151; }
 .badge.green { background:#d1fae5; color:#065f46; }
 .badge.blue { background:#dbeafe; color:#1e40af; }
-.amazon-link { display:block; font-size:11px; color:#1a6b3c; text-decoration:none; margin-top:8px; font-weight:500; }
-.amazon-link:hover { text-decoration:underline; }
-.trend-up { color:#1a6b3c; font-size:16px; }
-.trend-dn { color:#dc2626; font-size:16px; }
+.badge.red { background:#fee2e2; color:#991b1b; }
+.badge.orange { background:#fef3c7; color:#92400e; }
 .badge.trend-up { background:#d1fae5; color:#065f46; }
 .badge.trend-dn { background:#fee2e2; color:#991b1b; }
+.amazon-link { display:block; font-size:11px; color:#1a6b3c; text-decoration:none; margin-top:8px; font-weight:500; }
+.amazon-link:hover { text-decoration:underline; }
+
+/* ── Charts ── */
 .charts-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-@media(max-width:860px){ .charts-grid{grid-template-columns:1fr;} .kpi-grid{grid-template-columns:repeat(2,1fr);} #listings-cards{grid-template-columns:repeat(2,1fr)!important;} .main{padding:14px;} .header{padding:12px 16px;} .nav{padding:12px 16px 0;} }
 .chart-card { background:#fff; border-radius:16px; padding:22px; box-shadow:0 2px 10px rgba(0,0,0,0.07); }
 .chart-title { font-size:13px; font-weight:600; color:#374151; margin-bottom:14px; }
 .chart-wrap { position:relative; height:230px; }
+.chart-hint { font-size:11px; color:#9ca3af; text-align:center; margin-top:8px; }
+
+/* ── Variant Monitor ── */
+.variant-section { margin-bottom:52px; scroll-margin-top:80px; }
+.variant-section .section-title { font-size:17px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+.variant-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+.variant-card { background:#fff; border-radius:16px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-top:4px solid #e5e7eb; }
+.variant-card.ok { border-top-color:#1a6b3c; }
+.variant-card.issue { border-top-color:#dc2626; }
+.variant-updated { font-size:11px; color:#9ca3af; margin-top:12px; }
+.issue-list { margin-top:8px; font-size:10px; color:#991b1b; display:flex; flex-direction:column; gap:2px; }
+
+/* ── Footer ── */
+.footer { text-align:center; padding:24px; color:#9ca3af; font-size:11px; border-top:1px solid #e5e7eb; margin-top:8px; background:#fff; }
+
+/* ── Responsive ── */
+@media(max-width:860px){
+  .charts-grid{grid-template-columns:1fr;}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .variant-grid{grid-template-columns:repeat(2,1fr)!important;}
+  .main{padding:14px;}
+  .header{padding:12px 16px;}
+  .nav{padding:12px 16px 0;}
+  .exec-summary{padding:10px 16px;}
+}
 </style>
 </head>
 <body>
+
 <div class="header">
   <div><h1>📊 BSR Dashboard</h1><p>FXCONTACTS Halloween Lenses – tägliches Tracking</p></div>
   <span class="updated" id="upd">Lade...</span>
 </div>
+
+<!-- Executive Summary Banner -->
+<div class="exec-summary" id="exec-summary" style="display:none;">
+  <span class="exec-label">🟢 FXCONTACTS</span>
+  <div class="exec-items" id="exec-items"></div>
+</div>
+
 <div class="nav">
   <a href="#de">🇩🇪 DE</a>
   <a href="#it">🇮🇹 IT</a>
   <a href="#fr">🇫🇷 FR</a>
   <a href="#es">🇪🇸 ES</a>
+  <a href="#variant-monitor">🔍 Varianten</a>
 </div>
-<div class="main">
-  <div id="de" class="section"><div class="section-title">🇩🇪 Deutschland</div><div class="kpi-grid" id="kpi-de"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div><div class="chart-wrap"><canvas id="rank-de"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-de"></canvas></div></div></div></div>
-  <div id="it" class="section"><div class="section-title">🇮🇹 Italien</div><div class="kpi-grid" id="kpi-it"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-it"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-it"></canvas></div></div></div></div>
-  <div id="fr" class="section"><div class="section-title">🇫🇷 Frankreich</div><div class="kpi-grid" id="kpi-fr"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-fr"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-fr"></canvas></div></div></div></div>
-  <div id="es" class="section"><div class="section-title">🇪🇸 Spanien</div><div class="kpi-grid" id="kpi-es"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-es"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-es"></canvas></div></div></div></div>
 
-<section id="variant-monitor" style="margin: 2rem 0;">
-  <h2 style="color:#1a6b3c; font-size:1.3rem; margin-bottom:1rem;">🔍 Variant Monitor</h2>
-  <div id="listings-cards" style="display:grid; grid-template-columns: repeat(5, 1fr); gap:1rem;">
-    <!-- Karten werden per JS gerendert -->
+<div class="main">
+
+  <!-- DE -->
+  <div id="de" class="section">
+    <div class="section-title">🇩🇪 Deutschland</div>
+    <div class="kpi-grid" id="kpi-de"></div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
+        <div class="chart-wrap"><canvas id="rank-de"></canvas></div>
+        <div class="chart-hint" id="hint-rank-de"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">💰 Preisentwicklung</div>
+        <div class="chart-wrap"><canvas id="price-de"></canvas></div>
+      </div>
+    </div>
   </div>
-  <p id="listings-updated" style="color:#888; font-size:0.8rem; margin-top:0.5rem;"></p>
-</section>
+
+  <!-- IT -->
+  <div id="it" class="section">
+    <div class="section-title">🇮🇹 Italien</div>
+    <div class="kpi-grid" id="kpi-it"></div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
+        <div class="chart-wrap"><canvas id="rank-it"></canvas></div>
+        <div class="chart-hint" id="hint-rank-it"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">💰 Preisentwicklung</div>
+        <div class="chart-wrap"><canvas id="price-it"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FR -->
+  <div id="fr" class="section">
+    <div class="section-title">🇫🇷 Frankreich</div>
+    <div class="kpi-grid" id="kpi-fr"></div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
+        <div class="chart-wrap"><canvas id="rank-fr"></canvas></div>
+        <div class="chart-hint" id="hint-rank-fr"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">💰 Preisentwicklung</div>
+        <div class="chart-wrap"><canvas id="price-fr"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ES -->
+  <div id="es" class="section">
+    <div class="section-title">🇪🇸 Spanien</div>
+    <div class="kpi-grid" id="kpi-es"></div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
+        <div class="chart-wrap"><canvas id="rank-es"></canvas></div>
+        <div class="chart-hint" id="hint-rank-es"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">💰 Preisentwicklung</div>
+        <div class="chart-wrap"><canvas id="price-es"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variant Monitor -->
+  <div id="variant-monitor" class="variant-section">
+    <div class="section-title">🔍 Variant Monitor</div>
+    <div class="variant-grid" id="listings-cards"></div>
+    <div class="variant-updated" id="listings-updated"></div>
+  </div>
+
+</div><!-- /main -->
+
+<div class="footer">
+  Automatisches Tracking · täglich 08:00 + 18:00 Uhr · Daten via Apify
+</div>
 
 <script>
 const isFX = id => id.startsWith('fxcontacts');
 
 function getMainCatBSR(dataPoint) {
-  // Hauptkategorie = erster Eintrag in bsr_all (z.B. Health & Personal Care / Drogerie)
-  // Falls bsr_all nicht vorhanden (alte Datenpunkte): bsr direkt nutzen
   const bsrAll = dataPoint.bsr_all || [];
   if (bsrAll.length > 0) return bsrAll[0].rank;
   return dataPoint.bsr || null;
 }
 
+// ── Executive Summary ────────────────────────────────────────────
+function renderExecSummary(data) {
+  const fxMap = {
+    'de': { key: 'series',    id: ['fxcontacts_day','fxcontacts_12m'], label: 'DE' },
+    'it': { key: 'series_it', id: ['fxcontacts_it'],                   label: 'IT' },
+    'fr': { key: 'series_fr', id: ['fxcontacts_fr'],                   label: 'FR' },
+    'es': { key: 'series_es', id: ['fxcontacts_es'],                   label: 'ES' },
+  };
+  const items = [];
+  for (const [cc, cfg] of Object.entries(fxMap)) {
+    const series = data[cfg.key] || [];
+    // Bevorzuge _day, dann erste FXCONTACTS-Serie
+    const s = series.find(x => x.id === cfg.id[0]) || series.find(x => isFX(x.id));
+    if (!s) continue;
+    const last = s.data[s.data.length-1] || {};
+    const bsr = last.bsr;
+    if (!bsr) continue;
+    items.push({ label: cfg.label, bsr });
+  }
+  if (!items.length) return;
+  const container = document.getElementById('exec-items');
+  container.innerHTML = items.map((it, i) =>
+    `<div class="exec-item">${i>0?'<span style="color:#d1d5db">·</span>':''}<span class="rank">#${it.bsr}</span><span class="market">${it.label}</span></div>`
+  ).join('');
+  document.getElementById('exec-summary').style.display = 'flex';
+}
+
+// ── KPI Cards ────────────────────────────────────────────────────
 function renderKPI(cid, series) {
   const el = document.getElementById(cid);
   series.forEach(s => {
     const last = s.data[s.data.length-1] || {};
     const prev = s.data[s.data.length-2] || {};
-    const trend = last.bsr && prev.bsr
-      ? (last.bsr < prev.bsr ? '<span class="trend-up">↑</span>' : last.bsr > prev.bsr ? '<span class="trend-dn">↓</span>' : '')
-      : '';
     const fx = isFX(s.id);
     const domain = s.domain || 'de';
     const amazonUrl = s.url || `https://www.amazon.${domain}/dp/${s.asin}`;
+
+    // Rang-Delta mit Zahl
+    let trendHtml = '';
+    if (last.bsr && prev.bsr) {
+      const delta = prev.bsr - last.bsr; // positiv = besser (BSR gesunken)
+      if (delta > 0) trendHtml = `<span class="bsr-delta up">↑ +${delta}</span>`;
+      else if (delta < 0) trendHtml = `<span class="bsr-delta dn">↓ ${delta}</span>`;
+    }
+
+    // Varianten-Badge
     const variants = last.variantCount ? `<span class="badge blue">🎨 ${last.variantCount} Var.</span>` : '';
 
-    // 3-Tage-Trend: letzten 3 Datenpunkte anschauen
+    // 3-Tage-Trend Badge
     const last3 = s.data.slice(-3);
     let trendScore = 0;
     for (let i = 1; i < last3.length; i++) {
-      if (last3[i].bsr && last3[i-1].bsr) {
-        trendScore += last3[i].bsr < last3[i-1].bsr ? -1 : 1; // -1 = besser (niedriger BSR)
-      }
+      if (last3[i].bsr && last3[i-1].bsr)
+        trendScore += last3[i].bsr < last3[i-1].bsr ? -1 : 1;
     }
-    const trendBadge = trendScore <= -2 ? '<span class="badge trend-up">📈 stark steigend</span>'
-      : trendScore >= 2 ? '<span class="badge trend-dn">📉 stark fallend</span>'
-      : '';
+    const trendBadge = trendScore <= -2 ? '<span class="badge trend-up">📈 Trend ↑</span>'
+      : trendScore >= 2 ? '<span class="badge trend-dn">📉 Trend ↓</span>' : '';
 
-    // Out-of-Stock Warnung
+    // OOS Badge
     const oosBadge = (!last.bsr || last.bsr > 50000)
-      ? '<span class="badge" style="background:#fef3c7;color:#92400e">⚠️ OOS?</span>'
-      : '';
+      ? '<span class="badge orange">⚠️ OOS?</span>' : '';
 
-    // Unterkategorien — alle bsr_all Einträge anzeigen
+    // Sub-Kategorie (bsr_all[1] = tiefste relevante Kategorie)
     const bsrAll = last.bsr_all || [];
     let subCatHtml = '';
-    if (bsrAll.length > 0) {
-      subCatHtml = '<div class="sub-bsr-list">' + bsrAll.map((b, i) => {
-        const isDeepest = i === bsrAll.length - 1 && bsrAll.length > 1;
-        const rankCls = i === 0 && bsrAll.length > 1 ? 'sub-rank main-cat' : 'sub-rank';
-        const catCls = isDeepest ? 'sub-cat-name highlight' : 'sub-cat-name';
-        const label = b.category.length > 26 ? b.category.substring(0,24)+'…' : b.category;
-        return `<div class="sub-bsr-row"><span class="${rankCls}">#${b.rank.toLocaleString('de')}</span><span class="${catCls}" title="${b.category}">${label}</span></div>`;
-      }).join('') + '</div>';
-    } else if (last.bsr) {
-      // Alte Datenpunkte ohne bsr_all — einfach BSR anzeigen
-      subCatHtml = '';
+    if (bsrAll.length > 1) {
+      const sub = bsrAll[bsrAll.length-1];
+      const label = sub.category.length > 30 ? sub.category.substring(0,28)+'…' : sub.category;
+      subCatHtml = `<div class="sub-cat">📂 #${sub.rank.toLocaleString('de')} ${label}</div>`;
+    } else if (bsrAll.length === 1) {
+      subCatHtml = `<div class="sub-cat">📂 ${bsrAll[0].category.substring(0,30)}</div>`;
     }
 
-    const bsrLabel = bsrAll.length > 1 ? 'tiefste Unterkategorie' : 'BSR heute';
-
-    el.innerHTML += `<div class="kpi-card ${fx?'fx':''}">
+    el.innerHTML += `<div class="kpi-card ${fx?'fx':'competitor'}">
       <div class="name" title="${s.label}">${s.label.substring(0,32)}</div>
-      <div class="bsr">#${last.bsr ? last.bsr.toLocaleString('de') : 'n/a'} ${trend}</div>
-      <div class="bsr-lbl">${bsrLabel}</div>
+      <div class="bsr">#${last.bsr ? last.bsr.toLocaleString('de') : 'n/a'} ${trendHtml}</div>
+      <div class="bsr-lbl">BSR Rang heute</div>
       ${subCatHtml}
       <div class="badges">
         ${last.price ? `<span class="badge">💰 €${last.price}</span>` : ''}
         ${last.reviews ? `<span class="badge">⭐ ${last.reviews.toLocaleString('de')}</span>` : ''}
         ${last.rating ? `<span class="badge ${fx?'green':''}">${last.rating}★</span>` : ''}
-        ${variants}
-        ${trendBadge}
-        ${oosBadge}
+        ${variants}${trendBadge}${oosBadge}
       </div>
       <a class="amazon-link" href="${amazonUrl}" target="_blank">→ Amazon ${domain.toUpperCase()} öffnen</a>
     </div>`;
   });
 }
 
-function renderRank(cid, series) {
+// ── Charts ───────────────────────────────────────────────────────
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
+function renderRank(cid, hintId, series) {
   const dates = [...new Set(series.flatMap(s=>s.data.map(d=>d.date)))].sort();
-  new Chart(document.getElementById(cid),{type:'line',data:{labels:dates,datasets:series.map(s=>({
-    label:s.label.substring(0,28),
-    data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?getMainCatBSR(p):null;}),
-    borderColor:s.color, backgroundColor:s.color+'18',
-    borderWidth:isFX(s.id)?3:1.5, tension:0.3, pointRadius:4, spanGaps:true
-  }))},options:{responsive:true,maintainAspectRatio:false,
-    scales:{y:{reverse:true,ticks:{precision:0},title:{display:true,text:'BSR Hauptkategorie'}},x:{ticks:{maxTicksLimit:6}}},
-    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
-      tooltip:{callbacks:{label:function(ctx){return `BSR #${ctx.raw ? ctx.raw.toLocaleString('de') : 'n/a'}`;}}}}}});
+  const maxDates = dates.length;
+  if (hintId && maxDates <= 2) {
+    const hint = document.getElementById(hintId);
+    if (hint) hint.textContent = '📅 Mehr Daten ab Tag 7 sichtbar — läuft täglich weiter';
+  }
+  new Chart(document.getElementById(cid),{
+    type:'line',
+    data:{
+      labels:dates,
+      datasets:series.map(s=>({
+        label:s.label.substring(0,28),
+        data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?getMainCatBSR(p):null;}),
+        borderColor: s.color,
+        backgroundColor: hexToRgba(s.color, isFX(s.id)?0.1:0.04),
+        borderWidth: isFX(s.id) ? 3 : 1.5,
+        borderDash: isFX(s.id) ? [] : [],
+        pointRadius: isFX(s.id) ? 5 : 3,
+        tension:0.3,
+        spanGaps:true,
+        borderOpacity: isFX(s.id) ? 1 : 0.5,
+      }))
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      scales:{
+        y:{ reverse:true, ticks:{precision:0}, title:{display:true,text:'BSR (niedriger = besser)',font:{size:10}} },
+        x:{ ticks:{maxTicksLimit:6} }
+      },
+      plugins:{
+        legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+        tooltip:{callbacks:{label:ctx=>`BSR #${ctx.raw?ctx.raw.toLocaleString('de'):'n/a'}`}}
+      }
+    }
+  });
 }
 
 function renderPrice(cid, series) {
   const dates = [...new Set(series.flatMap(s=>s.data.map(d=>d.date)))].sort();
-  new Chart(document.getElementById(cid),{type:'line',data:{labels:dates,datasets:series.map(s=>({
-    label:s.label.substring(0,28),
-    data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?p.price:null;}),
-    borderColor:s.color, borderWidth:isFX(s.id)?3:1.5, tension:0.3, pointRadius:3, spanGaps:true
-  }))},options:{responsive:true,maintainAspectRatio:false,
-    scales:{y:{ticks:{callback:v=>'€'+v}},x:{ticks:{maxTicksLimit:6}}},
-    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}}});
+  new Chart(document.getElementById(cid),{
+    type:'line',
+    data:{
+      labels:dates,
+      datasets:series.map(s=>({
+        label:s.label.substring(0,28),
+        data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?p.price:null;}),
+        borderColor:s.color,
+        borderWidth:isFX(s.id)?3:1.5,
+        tension:0.3, pointRadius:3, spanGaps:true
+      }))
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      scales:{
+        y:{ticks:{callback:v=>'€'+v}},
+        x:{ticks:{maxTicksLimit:6}}
+      },
+      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}
+    }
+  });
 }
 
-fetch('./data.json').then(r=>r.json()).then(data=>{
-  document.getElementById('upd').textContent = 'Zuletzt aktualisiert: ' + (data.updated||'–');
-  ['de','it','fr','es'].forEach(cc=>{
-    const key = cc==='de' ? 'series' : `series_${cc}`;
-    const series = data[key] || [];
-    renderKPI(`kpi-${cc}`, series);
-    renderRank(`rank-${cc}`, series);
-    renderPrice(`price-${cc}`, series);
-  });
-});
-
-// ── Variant Monitor ─────────────────────────────────────────────
-const MARKET_FLAGS = {
-  'de_day': '🇩🇪 Day', 'de_12m': '🇩🇪 12M', 'it_day': '🇮🇹', 'fr_day': '🇫🇷', 'es_day': '🇪🇸'
-};
+// ── Variant Monitor ──────────────────────────────────────────────
+const MARKET_DEFS = [
+  { key:'de_day',  flag:'🇩🇪', label:'Day' },
+  { key:'de_12m',  flag:'🇩🇪', label:'12M' },
+  { key:'it_day',  flag:'🇮🇹', label:'Day' },
+  { key:'fr_day',  flag:'🇫🇷', label:'Day' },
+  { key:'es_day',  flag:'🇪🇸', label:'Day' },
+];
+const REASON_TXT = { out_of_variant:'Raus aus Variante', offline:'Offline', scrape_error:'Scrape-Fehler' };
 
 function renderListingsSection(data) {
   const container = document.getElementById('listings-cards');
   const updatedEl = document.getElementById('listings-updated');
-  if (!data || !data.markets) { showListingsFallback(); return; }
+  const markets = (data && data.markets) ? data.markets : {};
 
-  const markets = data.markets;
-  const keys = ['de_day', 'de_12m', 'it_day', 'fr_day', 'es_day'];
-
-  container.innerHTML = keys.map(key => {
-    const m = markets[key];
-    if (!m) return `<div class="kpi-card" style="border-top-color:#e5e7eb;"><div class="name">${MARKET_FLAGS[key]||key}</div><div class="bsr" style="font-size:18px;">–</div><div class="bsr-lbl">Keine Daten</div></div>`;
-
-    const ok = m.ok || 0, total = m.total || 0;
-    const issues = m.issues || [];
+  container.innerHTML = MARKET_DEFS.map(def => {
+    const m = markets[def.key];
+    if (!m) {
+      return `<div class="variant-card">
+        <div class="name">${def.flag} ${def.label}</div>
+        <div class="bsr" style="font-size:18px;color:#9ca3af;">–</div>
+        <div class="bsr-lbl">Check läuft täglich 07:50 Uhr</div>
+      </div>`;
+    }
+    const ok = m.ok||0, total = m.total||0;
+    const issues = m.issues||[];
     const hasIssues = issues.length > 0;
     const badge = hasIssues
-      ? `<span class="badge" style="background:#fee2e2;color:#991b1b;">❌ ${issues.length} Issue${issues.length>1?'s':''}</span>`
+      ? `<span class="badge red">❌ ${issues.length} Issue${issues.length>1?'s':''}</span>`
       : `<span class="badge green">✅ Alle OK</span>`;
-
-    let issueList = '';
-    if (hasIssues) {
-      const reasonTxt = {
-        'out_of_variant': 'Raus aus Variante',
-        'offline': 'Offline',
-        'scrape_error': 'Scrape-Fehler'
-      };
-      issueList = '<div style="margin-top:8px;font-size:10px;color:#991b1b;display:flex;flex-direction:column;gap:2px;">' +
-        issues.map(i => {
-          let extra = '';
-          if (i.reason === 'out_of_variant' && i.reviews != null) {
-            extra = ` (${i.reviews} vs ${i.parent_reviews})`;
-          }
-          return `<span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${i.asin} — ${reasonTxt[i.reason]||i.reason}${extra}">• ${i.asin}: ${reasonTxt[i.reason]||i.reason}${extra}</span>`;
-        }).join('') + '</div>';
-    }
-
-    return `<div class="kpi-card" style="border-top-color:${hasIssues?'#dc2626':'#1a6b3c'};">
-      <div class="name" title="${m.label||key}">${MARKET_FLAGS[key]||key}</div>
+    const issueList = hasIssues ? `<div class="issue-list">${
+      issues.map(i=>`<span title="${i.asin}: ${REASON_TXT[i.reason]||i.reason}">• ${i.asin.substring(0,10)}: ${REASON_TXT[i.reason]||i.reason}${i.reason==='out_of_variant'&&i.reviews!=null?' ('+i.reviews+' vs '+i.parent_reviews+')':''}</span>`).join('')
+    }</div>` : '';
+    return `<div class="variant-card ${hasIssues?'issue':'ok'}">
+      <div class="name">${def.flag} ${def.label}</div>
       <div class="bsr">${ok} / ${total}</div>
       <div class="bsr-lbl">OK / Varianten</div>
       <div class="badges">${badge}</div>
@@ -236,20 +413,35 @@ function renderListingsSection(data) {
     </div>`;
   }).join('');
 
-  updatedEl.textContent = 'Letzter Check: ' + (data.updated ? new Date(data.updated).toLocaleDateString('de-DE') : 'unbekannt');
+  updatedEl.textContent = data && data.updated
+    ? 'Letzter Check: ' + new Date(data.updated).toLocaleDateString('de-DE', {day:'2-digit',month:'2-digit',year:'numeric'})
+    : 'Check läuft täglich automatisch um 07:50 Uhr';
 }
 
-function showListingsFallback() {
-  const container = document.getElementById('listings-cards');
-  const updatedEl = document.getElementById('listings-updated');
-  container.innerHTML = `<div style="grid-column:1/-1;background:#fff;border-radius:16px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,0.07);text-align:center;color:#6b7280;font-size:14px;">Noch kein Check durchgeführt</div>`;
-  updatedEl.textContent = '';
-}
+// ── Main fetch & render ──────────────────────────────────────────
+fetch('./data.json').then(r=>r.json()).then(data=>{
+  document.getElementById('upd').textContent = 'Zuletzt aktualisiert: ' + (data.updated||'–');
+
+  renderExecSummary(data);
+
+  const markets = {
+    de: { key:'series',    rankId:'rank-de', priceId:'price-de', kpiId:'kpi-de', hintId:'hint-rank-de' },
+    it: { key:'series_it', rankId:'rank-it', priceId:'price-it', kpiId:'kpi-it', hintId:'hint-rank-it' },
+    fr: { key:'series_fr', rankId:'rank-fr', priceId:'price-fr', kpiId:'kpi-fr', hintId:'hint-rank-fr' },
+    es: { key:'series_es', rankId:'rank-es', priceId:'price-es', kpiId:'kpi-es', hintId:'hint-rank-es' },
+  };
+  for (const [cc, cfg] of Object.entries(markets)) {
+    const series = data[cfg.key] || [];
+    renderKPI(cfg.kpiId, series);
+    renderRank(cfg.rankId, cfg.hintId, series);
+    renderPrice(cfg.priceId, series);
+  }
+});
 
 fetch('listings_status.json')
-  .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
-  .then(data => renderListingsSection(data))
-  .catch(() => showListingsFallback());
+  .then(r=>{ if(!r.ok) throw new Error('not found'); return r.json(); })
+  .then(data=>renderListingsSection(data))
+  .catch(()=>renderListingsSection(null));
 </script>
 </body>
 </html>
