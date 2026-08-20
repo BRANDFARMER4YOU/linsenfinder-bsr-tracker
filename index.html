@@ -58,7 +58,7 @@ body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
   <a href="#es">🇪🇸 ES</a>
 </div>
 <div class="main">
-  <div id="de" class="section"><div class="section-title">🇩🇪 Deutschland</div><div class="kpi-grid" id="kpi-de"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking (Platz 1 = beste)</div><div class="chart-wrap"><canvas id="rank-de"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-de"></canvas></div></div></div></div>
+  <div id="de" class="section"><div class="section-title">🇩🇪 Deutschland</div><div class="kpi-grid" id="kpi-de"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div><div class="chart-wrap"><canvas id="rank-de"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-de"></canvas></div></div></div></div>
   <div id="it" class="section"><div class="section-title">🇮🇹 Italien</div><div class="kpi-grid" id="kpi-it"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-it"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-it"></canvas></div></div></div></div>
   <div id="fr" class="section"><div class="section-title">🇫🇷 Frankreich</div><div class="kpi-grid" id="kpi-fr"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-fr"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-fr"></canvas></div></div></div></div>
   <div id="es" class="section"><div class="section-title">🇪🇸 Spanien</div><div class="kpi-grid" id="kpi-es"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-es"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-es"></canvas></div></div></div></div>
@@ -66,16 +66,12 @@ body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
 <script>
 const isFX = id => id.startsWith('fxcontacts');
 
-function computeRankings(series) {
-  const dates = [...new Set(series.flatMap(s => s.data.map(d => d.date)))].sort();
-  const out = {};
-  series.forEach(s => out[s.id] = []);
-  dates.forEach(date => {
-    series.map(s => ({id:s.id, bsr:(s.data.find(d=>d.date===date)||{}).bsr}))
-      .filter(e=>e.bsr!=null).sort((a,b)=>a.bsr-b.bsr)
-      .forEach((e,i) => out[e.id].push({x:date,y:i+1}));
-  });
-  return out;
+function getMainCatBSR(dataPoint) {
+  // Hauptkategorie = erster Eintrag in bsr_all (z.B. Health & Personal Care / Drogerie)
+  // Falls bsr_all nicht vorhanden (alte Datenpunkte): bsr direkt nutzen
+  const bsrAll = dataPoint.bsr_all || [];
+  if (bsrAll.length > 0) return bsrAll[0].rank;
+  return dataPoint.bsr || null;
 }
 
 function renderKPI(cid, series) {
@@ -126,15 +122,14 @@ function renderKPI(cid, series) {
 }
 
 function renderRank(cid, series) {
-  const r = computeRankings(series);
   const dates = [...new Set(series.flatMap(s=>s.data.map(d=>d.date)))].sort();
   new Chart(document.getElementById(cid),{type:'line',data:{labels:dates,datasets:series.map(s=>({
-    label:s.label.substring(0,28), data:r[s.id]||[],
+    label:s.label.substring(0,28),
+    data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?getMainCatBSR(p):null;}),
     borderColor:s.color, backgroundColor:s.color+'18',
-    borderWidth:isFX(s.id)?3:1.5, tension:0.3, pointRadius:4,
-    parsing:{xAxisKey:'x',yAxisKey:'y'}
+    borderWidth:isFX(s.id)?3:1.5, tension:0.3, pointRadius:4, spanGaps:true
   }))},options:{responsive:true,maintainAspectRatio:false,
-    scales:{y:{reverse:true,min:1,ticks:{stepSize:1,precision:0},title:{display:true,text:'Rang'}},x:{ticks:{maxTicksLimit:6}}},
+    scales:{y:{reverse:true,ticks:{precision:0},title:{display:true,text:'BSR Hauptkategorie'}},x:{ticks:{maxTicksLimit:6}}},
     plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}}});
 }
 
