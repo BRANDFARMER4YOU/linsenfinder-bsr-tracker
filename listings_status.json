@@ -1,4 +1,47 @@
 {
-  "updated": null,
-  "markets": {}
+  "updated": "2026-08-20",
+  "markets": {
+    "de_day": {
+      "label": "FXCONTACTS Day (DE)",
+      "asin": "B0CGJCPS1Q",
+      "total": 11,
+      "ok": 11,
+      "issues": []
+    },
+    "de_12m": {
+      "label": "FXCONTACTS 12M (DE)",
+      "asin": "B0CRBKG853",
+      "total": 11,
+      "ok": 11,
+      "issues": []
+    },
+    "it_day": {
+      "label": "FXCONTACTS Day (IT)",
+      "asin": "B09NQGVSPD",
+      "total": 12,
+      "ok": 12,
+      "issues": []
+    },
+    "fr_day": {
+      "label": "FXCONTACTS Day (FR)",
+      "asin": "B09NQGVSPD",
+      "total": 12,
+      "ok": 11,
+      "issues": [
+        {
+          "asin": "B08CB4MX9H",
+          "reason": "out_of_variant",
+          "reviews": 673,
+          "parent_reviews": 3533
+        }
+      ]
+    },
+    "es_day": {
+      "label": "FXCONTACTS Day (ES)",
+      "asin": "B09NQGVSPD",
+      "total": 11,
+      "ok": 11,
+      "issues": []
+    }
+  }
 }
