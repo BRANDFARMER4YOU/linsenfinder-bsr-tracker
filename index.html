@@ -39,6 +39,8 @@ body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
 .amazon-link:hover { text-decoration:underline; }
 .trend-up { color:#1a6b3c; font-size:16px; }
 .trend-dn { color:#dc2626; font-size:16px; }
+.badge.trend-up { background:#d1fae5; color:#065f46; }
+.badge.trend-dn { background:#fee2e2; color:#991b1b; }
 .charts-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
 @media(max-width:860px){ .charts-grid{grid-template-columns:1fr;} .kpi-grid{grid-template-columns:repeat(2,1fr);} .main{padding:14px;} .header{padding:12px 16px;} .nav{padding:12px 16px 0;} }
 .chart-card { background:#fff; border-radius:16px; padding:22px; box-shadow:0 2px 10px rgba(0,0,0,0.07); }
@@ -87,6 +89,23 @@ function renderKPI(cid, series) {
     const amazonUrl = s.url || `https://www.amazon.${domain}/dp/${s.asin}`;
     const variants = last.variantCount ? `<span class="badge blue">🎨 ${last.variantCount} Var.</span>` : '';
 
+    // 3-Tage-Trend: letzten 3 Datenpunkte anschauen
+    const last3 = s.data.slice(-3);
+    let trendScore = 0;
+    for (let i = 1; i < last3.length; i++) {
+      if (last3[i].bsr && last3[i-1].bsr) {
+        trendScore += last3[i].bsr < last3[i-1].bsr ? -1 : 1; // -1 = besser (niedriger BSR)
+      }
+    }
+    const trendBadge = trendScore <= -2 ? '<span class="badge trend-up">📈 stark steigend</span>'
+      : trendScore >= 2 ? '<span class="badge trend-dn">📉 stark fallend</span>'
+      : '';
+
+    // Out-of-Stock Warnung
+    const oosBadge = (!last.bsr || last.bsr > 50000)
+      ? '<span class="badge" style="background:#fef3c7;color:#92400e">⚠️ OOS?</span>'
+      : '';
+
     // Unterkategorien — alle bsr_all Einträge anzeigen
     const bsrAll = last.bsr_all || [];
     let subCatHtml = '';
@@ -115,6 +134,8 @@ function renderKPI(cid, series) {
         ${last.reviews ? `<span class="badge">⭐ ${last.reviews.toLocaleString('de')}</span>` : ''}
         ${last.rating ? `<span class="badge ${fx?'green':''}">${last.rating}★</span>` : ''}
         ${variants}
+        ${trendBadge}
+        ${oosBadge}
       </div>
       <a class="amazon-link" href="${amazonUrl}" target="_blank">→ Amazon ${domain.toUpperCase()} öffnen</a>
     </div>`;
@@ -130,7 +151,8 @@ function renderRank(cid, series) {
     borderWidth:isFX(s.id)?3:1.5, tension:0.3, pointRadius:4, spanGaps:true
   }))},options:{responsive:true,maintainAspectRatio:false,
     scales:{y:{reverse:true,ticks:{precision:0},title:{display:true,text:'BSR Hauptkategorie'}},x:{ticks:{maxTicksLimit:6}}},
-    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}}});
+    plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+      tooltip:{callbacks:{label:function(ctx){return `BSR #${ctx.raw ? ctx.raw.toLocaleString('de') : 'n/a'}`;}}}}}});
 }
 
 function renderPrice(cid, series) {
