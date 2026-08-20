@@ -17,16 +17,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:43:56.663530",
-          "bsr": 7007,
+          "timestamp": "2026-08-20T18:00:43.634583",
+          "bsr": 8572,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
-              "rank": 7007,
+              "rank": 8572,
               "category": "Health & Personal Care"
             },
             {
-              "rank": 1,
+              "rank": 2,
               "category": "Permanent Colour Lenses"
             }
           ],
@@ -55,12 +55,12 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:44:06.497010",
-          "bsr": 5923,
+          "timestamp": "2026-08-20T18:01:36.504064",
+          "bsr": 7104,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
-              "rank": 5923,
+              "rank": 7104,
               "category": "Health & Personal Care"
             },
             {
@@ -71,7 +71,7 @@
           "price": 8.9,
           "reviews": 4950,
           "rating": 4.2,
-          "variantCount": 11
+          "variantCount": 10
         }
       ],
       "url": "https://www.amazon.de/dp/B0CGJCPS1Q",
@@ -93,16 +93,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:44:20.250670",
-          "bsr": 9011,
+          "timestamp": "2026-08-20T18:02:00.620910",
+          "bsr": 7580,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
-              "rank": 9011,
+              "rank": 7580,
               "category": "Health & Personal Care"
             },
             {
-              "rank": 27,
+              "rank": 25,
               "category": "Monthly Colour Lenses"
             }
           ],
@@ -131,12 +131,12 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:44:31.067082",
-          "bsr": 11778,
+          "timestamp": "2026-08-20T18:02:11.626581",
+          "bsr": 8913,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
-              "rank": 11778,
+              "rank": 8913,
               "category": "Health & Personal Care"
             },
             {
@@ -169,16 +169,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:44:47.827981",
-          "bsr": 11706,
+          "timestamp": "2026-08-20T18:02:22.498747",
+          "bsr": 13090,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
-              "rank": 11706,
+              "rank": 13090,
               "category": "Health & Personal Care"
             },
             {
-              "rank": 3,
+              "rank": 4,
               "category": "Monthly Colour Lenses"
             }
           ],
@@ -207,21 +207,21 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:44:58.099028",
-          "bsr": 12242,
+          "timestamp": "2026-08-20T18:02:35.648462",
+          "bsr": 11608,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
-              "rank": 12242,
+              "rank": 11608,
               "category": "Health & Personal Care"
             },
             {
-              "rank": 25,
+              "rank": 43,
               "category": "Monthly Colour Lenses"
             }
           ],
           "price": 9.9,
-          "reviews": 7371,
+          "reviews": 7372,
           "rating": 4.3,
           "variantCount": 8
         }
@@ -247,23 +247,23 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:45:22.933925",
-          "bsr": 10938,
+          "timestamp": "2026-08-20T18:02:48.881905",
+          "bsr": 11948,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 10938,
+              "rank": 11948,
               "category": "Health & Household"
             },
             {
-              "rank": 20,
+              "rank": 23,
               "category": "Colour Lenses"
             }
           ],
           "price": 9.9,
           "reviews": 4267,
           "rating": 4.2,
-          "variantCount": 12
+          "variantCount": 11
         }
       ],
       "url": "https://www.amazon.it/dp/B09NQGVSPD",
@@ -285,16 +285,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:45:33.482204",
-          "bsr": 6308,
+          "timestamp": "2026-08-20T18:03:01.348181",
+          "bsr": 7642,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 6308,
+              "rank": 7642,
               "category": "Health & Household"
             },
             {
-              "rank": 13,
+              "rank": 16,
               "category": "Colour Lenses"
             }
           ],
@@ -323,21 +323,21 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:45:45.436066",
-          "bsr": 8776,
+          "timestamp": "2026-08-20T18:03:24.009080",
+          "bsr": 6913,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 8776,
+              "rank": 6913,
               "category": "Health & Household"
             },
             {
-              "rank": 16,
+              "rank": 14,
               "category": "Colour Lenses"
             }
           ],
           "price": 11.99,
-          "reviews": 421,
+          "reviews": 422,
           "rating": 4.3,
           "variantCount": 18
         }
@@ -361,16 +361,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:46:09.335088",
-          "bsr": 9224,
+          "timestamp": "2026-08-20T18:03:46.574266",
+          "bsr": 12034,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 9224,
+              "rank": 12034,
               "category": "Health & Household"
             },
             {
-              "rank": 17,
+              "rank": 24,
               "category": "Colour Lenses"
             }
           ],
@@ -401,23 +401,23 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:46:27.368467",
-          "bsr": 4557,
+          "timestamp": "2026-08-20T18:04:06.357188",
+          "bsr": 5306,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 4557,
+              "rank": 5306,
               "category": "Health & Household"
             },
             {
-              "rank": 3,
+              "rank": 4,
               "category": "Contact Lenses"
             }
           ],
           "price": 9.9,
-          "reviews": 3533,
-          "rating": 4.1,
-          "variantCount": 12
+          "reviews": 1290,
+          "rating": 4,
+          "variantCount": 11
         }
       ],
       "url": "https://www.amazon.fr/dp/B09NQGVSPD",
@@ -439,16 +439,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:46:43.668544",
-          "bsr": 4252,
+          "timestamp": "2026-08-20T18:04:20.903322",
+          "bsr": 4534,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 4252,
+              "rank": 4534,
               "category": "Health & Household"
             },
             {
-              "rank": 2,
+              "rank": 3,
               "category": "Contact Lenses"
             }
           ],
@@ -477,16 +477,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:47:18.647492",
-          "bsr": 5187,
+          "timestamp": "2026-08-20T18:04:34.297544",
+          "bsr": 6390,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 5187,
+              "rank": 6390,
               "category": "Health & Household"
             },
             {
-              "rank": 4,
+              "rank": 7,
               "category": "Contact Lenses"
             }
           ],
@@ -515,16 +515,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:47:30.972615",
-          "bsr": 9454,
+          "timestamp": "2026-08-20T18:04:51.537695",
+          "bsr": 8158,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 9454,
+              "rank": 8158,
               "category": "Health & Household"
             },
             {
-              "rank": 13,
+              "rank": 11,
               "category": "Contact Lenses"
             }
           ],
@@ -555,16 +555,16 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:47:44.019468",
-          "bsr": 13855,
+          "timestamp": "2026-08-20T18:05:26.389452",
+          "bsr": 8312,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 13855,
+              "rank": 8312,
               "category": "Health & Household"
             },
             {
-              "rank": 31,
+              "rank": 9,
               "category": "Colour Lenses"
             }
           ],
@@ -593,12 +593,12 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:48:05.702343",
-          "bsr": 2443,
+          "timestamp": "2026-08-20T18:05:36.630486",
+          "bsr": 3253,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 2443,
+              "rank": 3253,
               "category": "Health & Household"
             },
             {
@@ -631,12 +631,12 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:48:28.762210",
-          "bsr": 3685,
+          "timestamp": "2026-08-20T18:05:49.463124",
+          "bsr": 3735,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 3685,
+              "rank": 3735,
               "category": "Health & Household"
             },
             {
@@ -645,7 +645,7 @@
             }
           ],
           "price": 9.99,
-          "reviews": 224,
+          "reviews": 225,
           "rating": 3.9,
           "variantCount": 19
         }
@@ -669,12 +669,12 @@
         {
           "date": "2026-08-20",
           "run": "forced",
-          "timestamp": "2026-08-20T11:48:51.832669",
-          "bsr": 6880,
+          "timestamp": "2026-08-20T18:06:02.844243",
+          "bsr": 8015,
           "bsr_category": "Health & Household",
           "bsr_all": [
             {
-              "rank": 6880,
+              "rank": 8015,
               "category": "Health & Household"
             },
             {
