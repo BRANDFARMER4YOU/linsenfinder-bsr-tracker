@@ -42,7 +42,7 @@ body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
 .badge.trend-up { background:#d1fae5; color:#065f46; }
 .badge.trend-dn { background:#fee2e2; color:#991b1b; }
 .charts-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-@media(max-width:860px){ .charts-grid{grid-template-columns:1fr;} .kpi-grid{grid-template-columns:repeat(2,1fr);} .main{padding:14px;} .header{padding:12px 16px;} .nav{padding:12px 16px 0;} }
+@media(max-width:860px){ .charts-grid{grid-template-columns:1fr;} .kpi-grid{grid-template-columns:repeat(2,1fr);} #listings-cards{grid-template-columns:repeat(2,1fr)!important;} .main{padding:14px;} .header{padding:12px 16px;} .nav{padding:12px 16px 0;} }
 .chart-card { background:#fff; border-radius:16px; padding:22px; box-shadow:0 2px 10px rgba(0,0,0,0.07); }
 .chart-title { font-size:13px; font-weight:600; color:#374151; margin-bottom:14px; }
 .chart-wrap { position:relative; height:230px; }
@@ -64,7 +64,15 @@ body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
   <div id="it" class="section"><div class="section-title">🇮🇹 Italien</div><div class="kpi-grid" id="kpi-it"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-it"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-it"></canvas></div></div></div></div>
   <div id="fr" class="section"><div class="section-title">🇫🇷 Frankreich</div><div class="kpi-grid" id="kpi-fr"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-fr"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-fr"></canvas></div></div></div></div>
   <div id="es" class="section"><div class="section-title">🇪🇸 Spanien</div><div class="kpi-grid" id="kpi-es"></div><div class="charts-grid"><div class="chart-card"><div class="chart-title">📈 Ranking</div><div class="chart-wrap"><canvas id="rank-es"></canvas></div></div><div class="chart-card"><div class="chart-title">💰 Preisentwicklung</div><div class="chart-wrap"><canvas id="price-es"></canvas></div></div></div></div>
-</div>
+
+<section id="variant-monitor" style="margin: 2rem 0;">
+  <h2 style="color:#1a6b3c; font-size:1.3rem; margin-bottom:1rem;">🔍 Variant Monitor</h2>
+  <div id="listings-cards" style="display:grid; grid-template-columns: repeat(5, 1fr); gap:1rem;">
+    <!-- Karten werden per JS gerendert -->
+  </div>
+  <p id="listings-updated" style="color:#888; font-size:0.8rem; margin-top:0.5rem;"></p>
+</section>
+
 <script>
 const isFX = id => id.startsWith('fxcontacts');
 
@@ -176,6 +184,72 @@ fetch('./data.json').then(r=>r.json()).then(data=>{
     renderPrice(`price-${cc}`, series);
   });
 });
+
+// ── Variant Monitor ─────────────────────────────────────────────
+const MARKET_FLAGS = {
+  'de_day': '🇩🇪 Day', 'de_12m': '🇩🇪 12M', 'it_day': '🇮🇹', 'fr_day': '🇫🇷', 'es_day': '🇪🇸'
+};
+
+function renderListingsSection(data) {
+  const container = document.getElementById('listings-cards');
+  const updatedEl = document.getElementById('listings-updated');
+  if (!data || !data.markets) { showListingsFallback(); return; }
+
+  const markets = data.markets;
+  const keys = ['de_day', 'de_12m', 'it_day', 'fr_day', 'es_day'];
+
+  container.innerHTML = keys.map(key => {
+    const m = markets[key];
+    if (!m) return `<div class="kpi-card" style="border-top-color:#e5e7eb;"><div class="name">${MARKET_FLAGS[key]||key}</div><div class="bsr" style="font-size:18px;">–</div><div class="bsr-lbl">Keine Daten</div></div>`;
+
+    const ok = m.ok || 0, total = m.total || 0;
+    const issues = m.issues || [];
+    const hasIssues = issues.length > 0;
+    const badge = hasIssues
+      ? `<span class="badge" style="background:#fee2e2;color:#991b1b;">❌ ${issues.length} Issue${issues.length>1?'s':''}</span>`
+      : `<span class="badge green">✅ Alle OK</span>`;
+
+    let issueList = '';
+    if (hasIssues) {
+      const reasonTxt = {
+        'out_of_variant': 'Raus aus Variante',
+        'offline': 'Offline',
+        'scrape_error': 'Scrape-Fehler'
+      };
+      issueList = '<div style="margin-top:8px;font-size:10px;color:#991b1b;display:flex;flex-direction:column;gap:2px;">' +
+        issues.map(i => {
+          let extra = '';
+          if (i.reason === 'out_of_variant' && i.reviews != null) {
+            extra = ` (${i.reviews} vs ${i.parent_reviews})`;
+          }
+          return `<span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${i.asin} — ${reasonTxt[i.reason]||i.reason}${extra}">• ${i.asin}: ${reasonTxt[i.reason]||i.reason}${extra}</span>`;
+        }).join('') + '</div>';
+    }
+
+    return `<div class="kpi-card" style="border-top-color:${hasIssues?'#dc2626':'#1a6b3c'};">
+      <div class="name" title="${m.label||key}">${MARKET_FLAGS[key]||key}</div>
+      <div class="bsr">${ok} / ${total}</div>
+      <div class="bsr-lbl">OK / Varianten</div>
+      <div class="badges">${badge}</div>
+      ${issueList}
+      <div style="font-size:10px;color:#9ca3af;margin-top:6px;">${m.asin||''}</div>
+    </div>`;
+  }).join('');
+
+  updatedEl.textContent = 'Letzter Check: ' + (data.updated ? new Date(data.updated).toLocaleDateString('de-DE') : 'unbekannt');
+}
+
+function showListingsFallback() {
+  const container = document.getElementById('listings-cards');
+  const updatedEl = document.getElementById('listings-updated');
+  container.innerHTML = `<div style="grid-column:1/-1;background:#fff;border-radius:16px;padding:22px;box-shadow:0 2px 10px rgba(0,0,0,0.07);text-align:center;color:#6b7280;font-size:14px;">Noch kein Check durchgeführt</div>`;
+  updatedEl.textContent = '';
+}
+
+fetch('listings_status.json')
+  .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
+  .then(data => renderListingsSection(data))
+  .catch(() => showListingsFallback());
 </script>
 </body>
 </html>
