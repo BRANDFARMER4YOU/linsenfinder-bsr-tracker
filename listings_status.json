@@ -1,11 +1,11 @@
 {
-  "updated": "2026-08-20",
+  "updated": "2026-08-21",
   "markets": {
     "de_day": {
       "label": "FXCONTACTS Day (DE)",
       "asin": "B0CGJCPS1Q",
-      "total": 11,
-      "ok": 11,
+      "total": 10,
+      "ok": 10,
       "issues": []
     },
     "de_12m": {
@@ -18,21 +18,21 @@
     "it_day": {
       "label": "FXCONTACTS Day (IT)",
       "asin": "B09NQGVSPD",
-      "total": 12,
-      "ok": 12,
+      "total": 11,
+      "ok": 11,
       "issues": []
     },
     "fr_day": {
       "label": "FXCONTACTS Day (FR)",
       "asin": "B09NQGVSPD",
-      "total": 12,
-      "ok": 11,
+      "total": 9,
+      "ok": 8,
       "issues": [
         {
-          "asin": "B08CB4MX9H",
+          "asin": "B00I89JGZA",
           "reason": "out_of_variant",
-          "reviews": 673,
-          "parent_reviews": 3533
+          "reviews": 90,
+          "parent_reviews": 3737
         }
       ]
     },
