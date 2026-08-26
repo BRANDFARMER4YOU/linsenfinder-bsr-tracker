@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-21",
+  "updated": "2026-08-26",
   "markets": {
     "de_day": {
       "label": "FXCONTACTS Day (DE)",
@@ -26,13 +26,17 @@
       "label": "FXCONTACTS Day (FR)",
       "asin": "B09NQGVSPD",
       "total": 9,
-      "ok": 8,
+      "ok": 7,
       "issues": [
         {
           "asin": "B00I89JGZA",
           "reason": "out_of_variant",
           "reviews": 90,
-          "parent_reviews": 3737
+          "parent_reviews": 3787
+        },
+        {
+          "asin": "B08CB4Q2YT",
+          "reason": "scrape_error"
         }
       ]
     },
