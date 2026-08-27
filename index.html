@@ -1,447 +1,595 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BSR Dashboard – FXCONTACTS Halloween</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Inter',sans-serif; background:#f0f2f5; color:#1a1a2e; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linsenfinder BSR Tracker</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --border: #30363d;
+      --accent: #00C853;
+      --accent-light: #69F0AE;
+      --text: #c9d1d9;
+      --text-muted: #8b949e;
+      --text-bright: #f0f6fc;
+    }
 
-/* ── Header ── */
-.header { background:#fff; border-bottom:1px solid #e5e7eb; padding:18px 32px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 1px 4px rgba(0,0,0,0.07); }
-.header h1 { font-size:20px; font-weight:700; color:#1a6b3c; }
-.header p { font-size:12px; color:#6b7280; margin-top:2px; }
-.updated { font-size:12px; color:#9ca3af; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── Executive Summary Banner ── */
-.exec-summary { background:#fff; border-bottom:1px solid #e5e7eb; padding:10px 32px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; }
-.exec-summary .exec-label { font-size:11px; font-weight:600; color:#6b7280; text-transform:uppercase; letter-spacing:0.5px; }
-.exec-summary .exec-items { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
-.exec-item { display:flex; align-items:center; gap:5px; font-size:13px; font-weight:600; }
-.exec-item .rank { color:#1a6b3c; font-size:15px; font-weight:700; }
-.exec-item .market { color:#6b7280; font-size:12px; }
-.exec-dot { width:8px; height:8px; border-radius:50%; background:#1a6b3c; display:inline-block; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+    }
 
-/* ── Nav ── */
-.nav { display:flex; gap:8px; padding:20px 32px 0; flex-wrap:wrap; }
-.nav a { padding:8px 18px; border-radius:24px; font-size:13px; font-weight:500; text-decoration:none; background:#fff; color:#6b7280; border:1.5px solid #e5e7eb; transition:all 0.2s; }
-.nav a:hover { background:#1a6b3c; color:#fff; border-color:#1a6b3c; }
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
 
-/* ── Main ── */
-.main { padding:24px 32px; }
-.section { margin-bottom:52px; scroll-margin-top:80px; }
-.section-title { font-size:17px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+    header h1 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-bright);
+    }
 
-/* ── KPI Cards ── */
-.kpi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin-bottom:20px; }
-.kpi-card { background:#fff; border-radius:16px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-top:4px solid #e5e7eb; position:relative; }
-.kpi-card.fx { border-top-color:#1a6b3c; }
-.kpi-card.competitor { opacity:0.82; border-top-color:#d1d5db; }
-.kpi-card.competitor .name { color:#9ca3af; }
-.kpi-card .name { font-size:11px; font-weight:600; color:#6b7280; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.kpi-card .bsr { font-size:26px; font-weight:700; color:#1a1a2e; line-height:1; }
-.kpi-card .bsr-delta { font-size:12px; font-weight:600; margin-left:4px; }
-.bsr-delta.up { color:#1a6b3c; }
-.bsr-delta.dn { color:#dc2626; }
-.kpi-card .bsr-lbl { font-size:10px; color:#9ca3af; margin-top:1px; margin-bottom:8px; }
-.kpi-card .sub-cat { font-size:10px; color:#6b7280; margin-top:2px; margin-bottom:6px; }
-.sub-bsr-list { margin-bottom:10px; display:flex; flex-direction:column; gap:4px; }
-.sub-bsr-row { display:flex; align-items:baseline; gap:5px; font-size:11px; line-height:1.3; }
-.sub-rank { font-weight:700; color:#1a1a2e; white-space:nowrap; }
-.sub-rank.main-cat { color:#6b7280; font-weight:400; }
-.sub-cat-name { color:#6b7280; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.sub-cat-name.highlight { color:#065f46; font-weight:600; }
-.badges { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
-.badge { font-size:11px; background:#f3f4f6; border-radius:8px; padding:3px 7px; color:#374151; }
-.badge.green { background:#d1fae5; color:#065f46; }
-.badge.blue { background:#dbeafe; color:#1e40af; }
-.badge.red { background:#fee2e2; color:#991b1b; }
-.badge.orange { background:#fef3c7; color:#92400e; }
-.badge.trend-up { background:#d1fae5; color:#065f46; }
-.badge.trend-dn { background:#fee2e2; color:#991b1b; }
-.amazon-link { display:block; font-size:11px; color:#1a6b3c; text-decoration:none; margin-top:8px; font-weight:500; }
-.amazon-link:hover { text-decoration:underline; }
+    header h1 span {
+      color: var(--accent);
+    }
 
-/* ── Charts ── */
-.charts-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-.chart-card { background:#fff; border-radius:16px; padding:22px; box-shadow:0 2px 10px rgba(0,0,0,0.07); }
-.chart-title { font-size:13px; font-weight:600; color:#374151; margin-bottom:14px; }
-.chart-wrap { position:relative; height:230px; }
-.chart-hint { font-size:11px; color:#9ca3af; text-align:center; margin-top:8px; }
+    nav {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
 
-/* ── Variant Monitor ── */
-.variant-section { margin-bottom:52px; scroll-margin-top:80px; }
-.variant-section .section-title { font-size:17px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
-.variant-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
-.variant-card { background:#fff; border-radius:16px; padding:18px; box-shadow:0 2px 10px rgba(0,0,0,0.07); border-top:4px solid #e5e7eb; }
-.variant-card.ok { border-top-color:#1a6b3c; }
-.variant-card.issue { border-top-color:#dc2626; }
-.variant-updated { font-size:11px; color:#9ca3af; margin-top:12px; }
-.issue-list { margin-top:8px; font-size:10px; color:#991b1b; display:flex; flex-direction:column; gap:2px; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
 
-/* ── Footer ── */
-.footer { text-align:center; padding:24px; color:#9ca3af; font-size:11px; border-top:1px solid #e5e7eb; margin-top:8px; background:#fff; }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(0, 200, 83, 0.08);
+    }
 
-/* ── Responsive ── */
-@media(max-width:860px){
-  .charts-grid{grid-template-columns:1fr;}
-  .kpi-grid{grid-template-columns:repeat(2,1fr);}
-  .variant-grid{grid-template-columns:repeat(2,1fr)!important;}
-  .main{padding:14px;}
-  .header{padding:12px 16px;}
-  .nav{padding:12px 16px 0;}
-  .exec-summary{padding:10px 16px;}
-}
-</style>
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 70px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-bright);
+    }
+
+    .last-updated {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .charts-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 900px) {
+      .charts-row { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .card-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .chart-wrapper {
+      position: relative;
+      height: 280px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .product-card:hover {
+      border-color: var(--accent);
+    }
+
+    .product-card.fx {
+      border-color: rgba(0, 200, 83, 0.4);
+      background: rgba(0, 200, 83, 0.04);
+    }
+
+    .product-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-bright);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .product-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      color: var(--text-bright);
+      font-weight: 600;
+    }
+
+    .bsr-value {
+      color: var(--accent-light);
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 300px;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 0.75rem;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error {
+      text-align: center;
+      padding: 3rem;
+      color: #f85149;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 2.5rem 0;
+    }
+
+    .country-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(0, 200, 83, 0.1);
+      border: 1px solid rgba(0, 200, 83, 0.3);
+      color: var(--accent-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
 
-<div class="header">
-  <div><h1>📊 BSR Dashboard</h1><p>FXCONTACTS Halloween Lenses – tägliches Tracking</p></div>
-  <span class="updated" id="upd">Lade...</span>
-</div>
+<header>
+  <h1>📊 Linsenfinder <span>BSR Tracker</span></h1>
+  <nav id="nav">
+    <a href="#de">🇩🇪 DE</a>
+    <a href="#it">🇮🇹 IT</a>
+    <a href="#fr">🇫🇷 FR</a>
+    <a href="#es">🇪🇸 ES</a>
+  </nav>
+</header>
 
-<!-- Executive Summary Banner -->
-<div class="exec-summary" id="exec-summary" style="display:none;">
-  <span class="exec-label">🟢 FXCONTACTS</span>
-  <div class="exec-items" id="exec-items"></div>
-</div>
-
-<div class="nav">
-  <a href="#de">🇩🇪 DE</a>
-  <a href="#it">🇮🇹 IT</a>
-  <a href="#fr">🇫🇷 FR</a>
-  <a href="#es">🇪🇸 ES</a>
-  <a href="#variant-monitor">🔍 Varianten</a>
-</div>
-
-<div class="main">
-
-  <!-- DE -->
-  <div id="de" class="section">
-    <div class="section-title">🇩🇪 Deutschland</div>
-    <div class="kpi-grid" id="kpi-de"></div>
-    <div class="charts-grid">
-      <div class="chart-card">
-        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
-        <div class="chart-wrap"><canvas id="rank-de"></canvas></div>
-        <div class="chart-hint" id="hint-rank-de"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">💰 Preisentwicklung</div>
-        <div class="chart-wrap"><canvas id="price-de"></canvas></div>
-      </div>
-    </div>
+<main id="app">
+  <div class="loading">
+    <div class="spinner"></div>
+    Lade Daten…
   </div>
-
-  <!-- IT -->
-  <div id="it" class="section">
-    <div class="section-title">🇮🇹 Italien</div>
-    <div class="kpi-grid" id="kpi-it"></div>
-    <div class="charts-grid">
-      <div class="chart-card">
-        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
-        <div class="chart-wrap"><canvas id="rank-it"></canvas></div>
-        <div class="chart-hint" id="hint-rank-it"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">💰 Preisentwicklung</div>
-        <div class="chart-wrap"><canvas id="price-it"></canvas></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FR -->
-  <div id="fr" class="section">
-    <div class="section-title">🇫🇷 Frankreich</div>
-    <div class="kpi-grid" id="kpi-fr"></div>
-    <div class="charts-grid">
-      <div class="chart-card">
-        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
-        <div class="chart-wrap"><canvas id="rank-fr"></canvas></div>
-        <div class="chart-hint" id="hint-rank-fr"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">💰 Preisentwicklung</div>
-        <div class="chart-wrap"><canvas id="price-fr"></canvas></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ES -->
-  <div id="es" class="section">
-    <div class="section-title">🇪🇸 Spanien</div>
-    <div class="kpi-grid" id="kpi-es"></div>
-    <div class="charts-grid">
-      <div class="chart-card">
-        <div class="chart-title">📈 BSR Hauptkategorie (niedriger = besser)</div>
-        <div class="chart-wrap"><canvas id="rank-es"></canvas></div>
-        <div class="chart-hint" id="hint-rank-es"></div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-title">💰 Preisentwicklung</div>
-        <div class="chart-wrap"><canvas id="price-es"></canvas></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Variant Monitor -->
-  <div id="variant-monitor" class="variant-section">
-    <div class="section-title">🔍 Variant Monitor</div>
-    <div class="variant-grid" id="listings-cards"></div>
-    <div class="variant-updated" id="listings-updated"></div>
-  </div>
-
-</div><!-- /main -->
-
-<div class="footer">
-  Automatisches Tracking · täglich 08:00 + 18:00 Uhr · Daten via Apify
-</div>
+</main>
 
 <script>
-const isFX = id => id.startsWith('fxcontacts');
-
-function getMainCatBSR(dataPoint) {
-  const bsrAll = dataPoint.bsr_all || [];
-  if (bsrAll.length > 0) return bsrAll[0].rank;
-  return dataPoint.bsr || null;
-}
-
-// ── Executive Summary ────────────────────────────────────────────
-function renderExecSummary(data) {
-  const fxMap = {
-    'de': { key: 'series',    id: ['fxcontacts_day','fxcontacts_12m'], label: 'DE' },
-    'it': { key: 'series_it', id: ['fxcontacts_it'],                   label: 'IT' },
-    'fr': { key: 'series_fr', id: ['fxcontacts_fr'],                   label: 'FR' },
-    'es': { key: 'series_es', id: ['fxcontacts_es'],                   label: 'ES' },
-  };
-  const items = [];
-  for (const [cc, cfg] of Object.entries(fxMap)) {
-    const series = data[cfg.key] || [];
-    // Bevorzuge _day, dann erste FXCONTACTS-Serie
-    const s = series.find(x => x.id === cfg.id[0]) || series.find(x => isFX(x.id));
-    if (!s) continue;
-    const last = s.data[s.data.length-1] || {};
-    const bsr = last.bsr;
-    if (!bsr) continue;
-    items.push({ label: cfg.label, bsr });
-  }
-  if (!items.length) return;
-  const container = document.getElementById('exec-items');
-  container.innerHTML = items.map((it, i) =>
-    `<div class="exec-item">${i>0?'<span style="color:#d1d5db">·</span>':''}<span class="rank">#${it.bsr}</span><span class="market">${it.label}</span></div>`
-  ).join('');
-  document.getElementById('exec-summary').style.display = 'flex';
-}
-
-// ── KPI Cards ────────────────────────────────────────────────────
-function renderKPI(cid, series) {
-  const el = document.getElementById(cid);
-  series.forEach(s => {
-    const last = s.data[s.data.length-1] || {};
-    const prev = s.data[s.data.length-2] || {};
-    const fx = isFX(s.id);
-    const domain = s.domain || 'de';
-    const amazonUrl = s.url || `https://www.amazon.${domain}/dp/${s.asin}`;
-
-    // Rang-Delta mit Zahl
-    let trendHtml = '';
-    if (last.bsr && prev.bsr) {
-      const delta = prev.bsr - last.bsr; // positiv = besser (BSR gesunken)
-      if (delta > 0) trendHtml = `<span class="bsr-delta up">↑ +${delta}</span>`;
-      else if (delta < 0) trendHtml = `<span class="bsr-delta dn">↓ ${delta}</span>`;
-    }
-
-    // Varianten-Badge
-    const variants = last.variantCount ? `<span class="badge blue">🎨 ${last.variantCount} Var.</span>` : '';
-
-    // 3-Tage-Trend Badge
-    const last3 = s.data.slice(-3);
-    let trendScore = 0;
-    for (let i = 1; i < last3.length; i++) {
-      if (last3[i].bsr && last3[i-1].bsr)
-        trendScore += last3[i].bsr < last3[i-1].bsr ? -1 : 1;
-    }
-    const trendBadge = trendScore <= -2 ? '<span class="badge trend-up">📈 Trend ↑</span>'
-      : trendScore >= 2 ? '<span class="badge trend-dn">📉 Trend ↓</span>' : '';
-
-    // OOS Badge
-    const oosBadge = (!last.bsr || last.bsr > 50000)
-      ? '<span class="badge orange">⚠️ OOS?</span>' : '';
-
-    // Sub-Kategorie (bsr_all[1] = tiefste relevante Kategorie)
-    const bsrAll = last.bsr_all || [];
-    let subCatHtml = '';
-    if (bsrAll.length > 1) {
-      const sub = bsrAll[bsrAll.length-1];
-      const label = sub.category.length > 30 ? sub.category.substring(0,28)+'…' : sub.category;
-      subCatHtml = `<div class="sub-cat">📂 #${sub.rank.toLocaleString('de')} ${label}</div>`;
-    } else if (bsrAll.length === 1) {
-      subCatHtml = `<div class="sub-cat">📂 ${bsrAll[0].category.substring(0,30)}</div>`;
-    }
-
-    el.innerHTML += `<div class="kpi-card ${fx?'fx':'competitor'}">
-      <div class="name" title="${s.label}">${s.label.substring(0,32)}</div>
-      <div class="bsr">#${last.bsr ? last.bsr.toLocaleString('de') : 'n/a'} ${trendHtml}</div>
-      <div class="bsr-lbl">BSR Rang heute</div>
-      ${subCatHtml}
-      <div class="badges">
-        ${last.price ? `<span class="badge">💰 €${last.price}</span>` : ''}
-        ${last.reviews ? `<span class="badge">⭐ ${last.reviews.toLocaleString('de')}</span>` : ''}
-        ${last.rating ? `<span class="badge ${fx?'green':''}">${last.rating}★</span>` : ''}
-        ${variants}${trendBadge}${oosBadge}
-      </div>
-      <a class="amazon-link" href="${amazonUrl}" target="_blank">→ Amazon ${domain.toUpperCase()} öffnen</a>
-    </div>`;
+// ─── Ranking-Logik ───────────────────────────────────────────────────────────
+function computeRankings(seriesData) {
+  const dates = [...new Set(seriesData.flatMap(s => s.data.map(d => d.date)))].sort();
+  const rankings = {};
+  seriesData.forEach(s => rankings[s.id] = []);
+  dates.forEach(date => {
+    const entries = seriesData
+      .map(s => ({ id: s.id, bsr: s.data.find(d => d.date === date)?.bsr }))
+      .filter(e => e.bsr != null)
+      .sort((a, b) => a.bsr - b.bsr);
+    entries.forEach((e, i) => rankings[e.id].push({ x: e.date || date, y: i + 1 }));
+    // fix: need date in x
   });
+  // Re-compute properly with date in scope
+  seriesData.forEach(s => rankings[s.id] = []);
+  dates.forEach(date => {
+    const entries = seriesData
+      .map(s => ({ id: s.id, bsr: s.data.find(d => d.date === date)?.bsr }))
+      .filter(e => e.bsr != null)
+      .sort((a, b) => a.bsr - b.bsr);
+    entries.forEach((e, i) => rankings[e.id].push({ x: date, y: i + 1 }));
+  });
+  return { rankings, dates };
 }
 
-// ── Charts ───────────────────────────────────────────────────────
-function hexToRgba(hex, alpha) {
-  const r = parseInt(hex.slice(1,3),16);
-  const g = parseInt(hex.slice(3,5),16);
-  const b = parseInt(hex.slice(5,7),16);
-  return `rgba(${r},${g},${b},${alpha})`;
+// ─── Farben & Stil ──────────────────────────────────────────────────────────
+function isFX(id) {
+  return id && (id.toLowerCase().includes('fx') || id.toLowerCase().includes('fxcontacts'));
 }
 
-function renderRank(cid, hintId, series) {
-  const dates = [...new Set(series.flatMap(s=>s.data.map(d=>d.date)))].sort();
-  const maxDates = dates.length;
-  if (hintId && maxDates <= 2) {
-    const hint = document.getElementById(hintId);
-    if (hint) hint.textContent = '📅 Mehr Daten ab Tag 7 sichtbar — läuft täglich weiter';
-  }
-  new Chart(document.getElementById(cid),{
-    type:'line',
-    data:{
-      labels:dates,
-      datasets:series.map(s=>({
-        label:s.label.substring(0,28),
-        data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?getMainCatBSR(p):null;}),
-        borderColor: s.color,
-        backgroundColor: hexToRgba(s.color, isFX(s.id)?0.1:0.04),
-        borderWidth: isFX(s.id) ? 3 : 1.5,
-        borderDash: isFX(s.id) ? [] : [],
-        pointRadius: isFX(s.id) ? 5 : 3,
-        tension:0.3,
-        spanGaps:true,
-        borderOpacity: isFX(s.id) ? 1 : 0.5,
-      }))
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      scales:{
-        y:{ reverse:true, ticks:{precision:0}, title:{display:true,text:'BSR (niedriger = besser)',font:{size:10}} },
-        x:{ ticks:{maxTicksLimit:6} }
+function getLineStyle(series) {
+  const fx = isFX(series.id);
+  return {
+    borderWidth: fx ? 3 : 1.5,
+    borderDash: fx ? [] : [],
+    pointRadius: fx ? 4 : 2,
+    pointHoverRadius: fx ? 6 : 4,
+    tension: 0.3,
+  };
+}
+
+// ─── Chart-Defaults ──────────────────────────────────────────────────────────
+Chart.defaults.color = '#8b949e';
+Chart.defaults.borderColor = '#30363d';
+Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+
+// ─── Ranking-Chart erstellen ─────────────────────────────────────────────────
+function createRankingChart(canvasId, seriesData) {
+  const { rankings, dates } = computeRankings(seriesData);
+  const maxRank = seriesData.length;
+
+  const datasets = seriesData.map(s => ({
+    label: s.label,
+    data: rankings[s.id],
+    borderColor: s.color,
+    backgroundColor: s.color + '22',
+    parsing: { xAxisKey: 'x', yAxisKey: 'y' },
+    ...getLineStyle(s),
+  }));
+
+  return new Chart(document.getElementById(canvasId), {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { boxWidth: 12, padding: 10, font: { size: 11 } }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: Rang ${ctx.parsed.y}`
+          }
+        }
       },
-      plugins:{
-        legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
-        tooltip:{callbacks:{label:ctx=>`BSR #${ctx.raw?ctx.raw.toLocaleString('de'):'n/a'}`}}
+      scales: {
+        x: {
+          type: 'category',
+          grid: { color: '#21262d' },
+          ticks: { maxRotation: 45, font: { size: 10 } }
+        },
+        y: {
+          reverse: true,
+          min: 1,
+          max: maxRank,
+          ticks: {
+            stepSize: 1,
+            callback: v => `#${v}`,
+            font: { size: 11 }
+          },
+          grid: { color: '#21262d' },
+          title: { display: true, text: 'Rang', font: { size: 11 } }
+        }
       }
     }
   });
 }
 
-function renderPrice(cid, series) {
-  const dates = [...new Set(series.flatMap(s=>s.data.map(d=>d.date)))].sort();
-  new Chart(document.getElementById(cid),{
-    type:'line',
-    data:{
-      labels:dates,
-      datasets:series.map(s=>({
-        label:s.label.substring(0,28),
-        data:dates.map(d=>{const p=s.data.find(e=>e.date===d);return p?p.price:null;}),
-        borderColor:s.color,
-        borderWidth:isFX(s.id)?3:1.5,
-        tension:0.3, pointRadius:3, spanGaps:true
-      }))
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      scales:{
-        y:{ticks:{callback:v=>'€'+v}},
-        x:{ticks:{maxTicksLimit:6}}
+// ─── BSR-Chart erstellen ─────────────────────────────────────────────────────
+function createBsrChart(canvasId, seriesData) {
+  const datasets = seriesData.map(s => ({
+    label: s.label,
+    data: s.data.map(d => ({ x: d.date, y: d.bsr })),
+    borderColor: s.color,
+    backgroundColor: s.color + '22',
+    ...getLineStyle(s),
+  }));
+
+  return new Chart(document.getElementById(canvasId), {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: { boxWidth: 12, padding: 10, font: { size: 11 } }
+        },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: BSR ${ctx.parsed.y.toLocaleString('de-DE')}`
+          }
+        }
       },
-      plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}
+      scales: {
+        x: {
+          type: 'category',
+          grid: { color: '#21262d' },
+          ticks: { maxRotation: 45, font: { size: 10 } }
+        },
+        y: {
+          type: 'logarithmic',
+          grid: { color: '#21262d' },
+          ticks: {
+            callback: v => v.toLocaleString('de-DE'),
+            font: { size: 10 }
+          },
+          title: { display: true, text: 'BSR (Log)', font: { size: 11 } }
+        }
+      }
     }
   });
 }
 
-// ── Variant Monitor ──────────────────────────────────────────────
-const MARKET_DEFS = [
-  { key:'de_day',  flag:'🇩🇪', label:'Day' },
-  { key:'de_12m',  flag:'🇩🇪', label:'12M' },
-  { key:'it_day',  flag:'🇮🇹', label:'Day' },
-  { key:'fr_day',  flag:'🇫🇷', label:'Day' },
-  { key:'es_day',  flag:'🇪🇸', label:'Day' },
-];
-const REASON_TXT = { out_of_variant:'Raus aus Variante', offline:'Offline', scrape_error:'Scrape-Fehler' };
+// ─── Produkt-Cards ───────────────────────────────────────────────────────────
+function renderProductCards(container, seriesData) {
+  const grid = document.createElement('div');
+  grid.className = 'products-grid';
 
-function renderListingsSection(data) {
-  const container = document.getElementById('listings-cards');
-  const updatedEl = document.getElementById('listings-updated');
-  const markets = (data && data.markets) ? data.markets : {};
+  seriesData.forEach(s => {
+    const latest = s.data[s.data.length - 1];
+    if (!latest) return;
 
-  container.innerHTML = MARKET_DEFS.map(def => {
-    const m = markets[def.key];
-    if (!m) {
-      return `<div class="variant-card">
-        <div class="name">${def.flag} ${def.label}</div>
-        <div class="bsr" style="font-size:18px;color:#9ca3af;">–</div>
-        <div class="bsr-lbl">Check läuft täglich 07:50 Uhr</div>
-      </div>`;
-    }
-    const ok = m.ok||0, total = m.total||0;
-    const issues = m.issues||[];
-    const hasIssues = issues.length > 0;
-    const badge = hasIssues
-      ? `<span class="badge red">❌ ${issues.length} Issue${issues.length>1?'s':''}</span>`
-      : `<span class="badge green">✅ Alle OK</span>`;
-    const issueList = hasIssues ? `<div class="issue-list">${
-      issues.map(i=>`<span title="${i.asin}: ${REASON_TXT[i.reason]||i.reason}">• ${i.asin.substring(0,10)}: ${REASON_TXT[i.reason]||i.reason}${i.reason==='out_of_variant'&&i.reviews!=null?' ('+i.reviews+' vs '+i.parent_reviews+')':''}</span>`).join('')
-    }</div>` : '';
-    return `<div class="variant-card ${hasIssues?'issue':'ok'}">
-      <div class="name">${def.flag} ${def.label}</div>
-      <div class="bsr">${ok} / ${total}</div>
-      <div class="bsr-lbl">OK / Varianten</div>
-      <div class="badges">${badge}</div>
-      ${issueList}
-      <div style="font-size:10px;color:#9ca3af;margin-top:6px;">${m.asin||''}</div>
-    </div>`;
-  }).join('');
+    const card = document.createElement('div');
+    card.className = 'product-card' + (isFX(s.id) ? ' fx' : '');
 
-  updatedEl.textContent = data && data.updated
-    ? 'Letzter Check: ' + new Date(data.updated).toLocaleDateString('de-DE', {day:'2-digit',month:'2-digit',year:'numeric'})
-    : 'Check läuft täglich automatisch um 07:50 Uhr';
+    card.innerHTML = `
+      <div class="product-label">
+        <div class="color-dot" style="background:${s.color}"></div>
+        ${s.label}
+      </div>
+      <div class="product-stats">
+        <div class="stat-row">
+          <span class="stat-label">BSR</span>
+          <span class="stat-value bsr-value">#${latest.bsr?.toLocaleString('de-DE') ?? '–'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">💰 Preis</span>
+          <span class="stat-value">${latest.price != null ? latest.price.toFixed(2) + ' €' : '–'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">⭐ Reviews</span>
+          <span class="stat-value">${latest.reviews?.toLocaleString('de-DE') ?? '–'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Rating</span>
+          <span class="stat-value">${latest.rating != null ? '⭐ ' + latest.rating.toFixed(1) : '–'}</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Datum</span>
+          <span class="stat-value" style="color:var(--text-muted);font-size:0.78rem">${latest.date}</span>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+
+  container.appendChild(grid);
 }
 
-// ── Main fetch & render ──────────────────────────────────────────
-fetch('./data.json').then(r=>r.json()).then(data=>{
-  document.getElementById('upd').textContent = 'Zuletzt aktualisiert: ' + (data.updated||'–');
+// ─── Sektion rendern ─────────────────────────────────────────────────────────
+let chartCount = 0;
 
-  renderExecSummary(data);
+function renderSection(app, id, flag, name, seriesData, updated, analysis) {
+  if (!seriesData || seriesData.length === 0) return;
 
-  const markets = {
-    de: { key:'series',    rankId:'rank-de', priceId:'price-de', kpiId:'kpi-de', hintId:'hint-rank-de' },
-    it: { key:'series_it', rankId:'rank-it', priceId:'price-it', kpiId:'kpi-it', hintId:'hint-rank-it' },
-    fr: { key:'series_fr', rankId:'rank-fr', priceId:'price-fr', kpiId:'kpi-fr', hintId:'hint-rank-fr' },
-    es: { key:'series_es', rankId:'rank-es', priceId:'price-es', kpiId:'kpi-es', hintId:'hint-rank-es' },
-  };
-  for (const [cc, cfg] of Object.entries(markets)) {
-    const series = data[cfg.key] || [];
-    renderKPI(cfg.kpiId, series);
-    renderRank(cfg.rankId, cfg.hintId, series);
-    renderPrice(cfg.priceId, series);
+  const rankId = `chart-rank-${++chartCount}`;
+  const bsrId = `chart-bsr-${++chartCount}`;
+
+  const section = document.createElement('div');
+  section.className = 'section';
+  section.id = id;
+
+  section.innerHTML = `
+    <div class="section-header">
+      <div class="section-title">${flag} ${name}</div>
+      <span class="last-updated">Zuletzt aktualisiert: ${updated ?? '–'}</span>
+    </div>
+    <div class="charts-row">
+      <div class="card">
+        <div class="card-title">📈 Ranking-Verlauf</div>
+        <div class="chart-wrapper"><canvas id="${rankId}"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">📊 Absoluter BSR</div>
+        <div class="chart-wrapper"><canvas id="${bsrId}"></canvas></div>
+      </div>
+    </div>
+  `;
+
+  app.appendChild(section);
+
+  // Render charts
+  createRankingChart(rankId, seriesData);
+  createBsrChart(bsrId, seriesData);
+
+  // KI-Analyse Block
+  if (analysis?.text) {
+    const rankEmoji = analysis.fx_rank === 1 ? '🥇' : analysis.fx_rank === 2 ? '🥈' : analysis.fx_rank === 3 ? '🥉' : '📊';
+    const analysisBlock = document.createElement('div');
+    analysisBlock.className = 'card';
+    analysisBlock.style.marginBottom = '1rem';
+    analysisBlock.innerHTML = `
+      <div class="card-title" style="display:flex;align-items:center;gap:0.5rem;">
+        🤖 KI-Lagebericht
+        <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);margin-left:auto">${rankEmoji} Rang ${analysis.fx_rank ?? '?'} von ${analysis.total_products ?? '?'} • BSR #${analysis.fx_bsr?.toLocaleString('de-DE') ?? '–'}</span>
+      </div>
+      <p style="font-size:0.9rem;line-height:1.65;color:var(--text);">${analysis.text}</p>
+    `;
+    section.appendChild(analysisBlock);
   }
-});
 
-fetch('listings_status.json')
-  .then(r=>{ if(!r.ok) throw new Error('not found'); return r.json(); })
-  .then(data=>renderListingsSection(data))
-  .catch(()=>renderListingsSection(null));
+  // Product cards
+  const cardsSection = document.createElement('div');
+  cardsSection.innerHTML = `<div class="card-title" style="margin-bottom:0.75rem;font-size:0.85rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">Aktuelle Produkt-Infos</div>`;
+  renderProductCards(cardsSection, seriesData);
+  section.appendChild(cardsSection);
+
+  // Divider
+  const div = document.createElement('div');
+  div.className = 'divider';
+  app.appendChild(div);
+}
+
+// ─── Haupt-App ───────────────────────────────────────────────────────────────
+async function init() {
+  const app = document.getElementById('app');
+
+  let data;
+  try {
+    const res = await fetch('./data.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    data = await res.json();
+  } catch (err) {
+    app.innerHTML = `<div class="error">
+      <p>⚠️ Fehler beim Laden von data.json</p>
+      <p style="font-size:0.85rem;margin-top:0.5rem;opacity:0.6">${err.message}</p>
+    </div>`;
+    return;
+  }
+
+  app.innerHTML = '';
+
+  const countries = [
+    { id: 'de', flag: '🇩🇪', name: 'Deutschland', key: 'series',    land: 'DE' },
+    { id: 'it', flag: '🇮🇹', name: 'Italien',     key: 'series_it', land: 'IT' },
+    { id: 'fr', flag: '🇫🇷', name: 'Frankreich',  key: 'series_fr', land: 'FR' },
+    { id: 'es', flag: '🇪🇸', name: 'Spanien',     key: 'series_es', land: 'ES' },
+  ];
+
+  const updated = data.updated ?? null;
+
+  // KI-Analyse laden (optional, kein Fehler wenn nicht vorhanden)
+  let analysis = null;
+  try {
+    const aRes = await fetch('./analysis.json');
+    if (aRes.ok) analysis = await aRes.json();
+  } catch (_) {}
+
+  countries.forEach(c => {
+    const series = data[c.key];
+    const countryAnalysis = analysis?.countries?.[c.land] ?? null;
+    renderSection(app, c.id, c.flag, c.name, series, updated, countryAnalysis);
+  });
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.section');
+  const navLinks = document.querySelectorAll('nav a');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(s => observer.observe(s));
+}
+
+init();
 </script>
 </body>
 </html>
