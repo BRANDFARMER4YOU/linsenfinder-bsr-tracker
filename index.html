@@ -659,16 +659,13 @@ function renderKeywordsSection(app, kwData) {
     let tableRows = '';
     kws.forEach(kw => {
       const latest = kw.data && kw.data.length > 0 ? kw.data[kw.data.length - 1] : null;
-      const org  = latest?.organic_rank   ?? null;
-      const spon = latest?.sponsored_rank ?? null;
-      const trendOrg  = getTrendArrow(kw.data, 'organic_rank');
-      const trendSpon = getTrendArrow(kw.data, 'sponsored_rank');
+      const org  = latest?.organic_rank ?? null;
+      const trendOrg = getTrendArrow(kw.data, 'organic_rank');
 
       tableRows += `
         <tr style="border-bottom:1px solid #21262d">
           <td style="padding:0.5rem 0.75rem;font-size:0.83rem;color:#c9d1d9;max-width:220px;word-break:break-word">${kw.kw}</td>
           <td style="padding:0.5rem 0.75rem;text-align:center;font-size:0.83rem">${getRankBadge(org)} <span style="font-size:0.75rem">${trendOrg}</span></td>
-          <td style="padding:0.5rem 0.75rem;text-align:center;font-size:0.83rem">${getRankBadge(spon)} <span style="font-size:0.75rem">${trendSpon}</span></td>
           <td style="padding:0.5rem 0.75rem;font-size:0.75rem;color:#8b949e;font-family:monospace">${latest?.top3_asins?.[0] ?? '–'}</td>
         </tr>
       `;
@@ -685,7 +682,6 @@ function renderKeywordsSection(app, kwData) {
             <tr style="border-bottom:1px solid #30363d">
               <th style="padding:0.5rem 0.75rem;text-align:left;color:#8b949e;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em">Keyword</th>
               <th style="padding:0.5rem 0.75rem;text-align:center;color:#8b949e;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em">Organisch</th>
-              <th style="padding:0.5rem 0.75rem;text-align:center;color:#8b949e;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em">Gesponsert</th>
               <th style="padding:0.5rem 0.75rem;text-align:left;color:#8b949e;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em">#1 ASIN</th>
             </tr>
           </thead>
@@ -699,8 +695,47 @@ function renderKeywordsSection(app, kwData) {
         <span style="margin-left:auto"><span style="color:#00C853">↑</span> verbessert  <span style="color:#F44336">↓</span> verschlechtert  → stabil</span>
       </div>
     `;
-
     section.appendChild(card);
+
+    // ── Werbung-Status Tabelle pro ASIN ───────────────────────────────────
+    const adData = kwData?.ad_status?.[market];
+    if (adData) {
+      const adCard = document.createElement('div');
+      adCard.className = 'card';
+      adCard.style.marginBottom = '1.25rem';
+
+      let adRows = '';
+      Object.entries(adData).forEach(([asin, info]) => {
+        const active = info.ad_active;
+        const badge = active
+          ? '<span style="color:#00C853;font-weight:600">✅ Sichtbar</span>'
+          : '<span style="color:#F44336;font-weight:600">❌ Offline / nicht gefunden</span>';
+        adRows += `
+          <tr style="border-bottom:1px solid #21262d">
+            <td style="padding:0.4rem 0.75rem;font-size:0.8rem;color:#c9d1d9">${info.name}</td>
+            <td style="padding:0.4rem 0.75rem;font-size:0.75rem;color:#8b949e;font-family:monospace">${asin}</td>
+            <td style="padding:0.4rem 0.75rem;text-align:center">${badge}</td>
+          </tr>`;
+      });
+
+      adCard.innerHTML = `
+        <div class="card-title" style="margin-bottom:0.75rem">📢 ${marketFlags[market]} Werbung-Status — alle FXCONTACTS ASINs</div>
+        <p style="font-size:0.78rem;color:#8b949e;margin:0 0 0.75rem">Zeigt ob das ASIN in den aktuellen Amazon-Suchergebnissen sichtbar ist. ❌ = Werbung möglicherweise offline oder ASIN nicht indexiert → Tobias informieren!</p>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse">
+            <thead>
+              <tr style="border-bottom:1px solid #30363d">
+                <th style="padding:0.4rem 0.75rem;text-align:left;color:#8b949e;font-size:0.75rem;text-transform:uppercase">Produkt</th>
+                <th style="padding:0.4rem 0.75rem;text-align:left;color:#8b949e;font-size:0.75rem;text-transform:uppercase">ASIN</th>
+                <th style="padding:0.4rem 0.75rem;text-align:center;color:#8b949e;font-size:0.75rem;text-transform:uppercase">Status</th>
+              </tr>
+            </thead>
+            <tbody>${adRows}</tbody>
+          </table>
+        </div>`;
+
+      section.appendChild(adCard);
+    }
   });
 
   app.appendChild(section);
