@@ -666,7 +666,7 @@ function renderKeywordsSection(app, kwData) {
 
       tableRows += `
         <tr style="border-bottom:1px solid #21262d">
-          <td style="padding:0.5rem 0.75rem;font-size:0.83rem;color:#c9d1d9;max-width:220px;word-break:break-word">${kw.label}</td>
+          <td style="padding:0.5rem 0.75rem;font-size:0.83rem;color:#c9d1d9;max-width:220px;word-break:break-word">${kw.kw}</td>
           <td style="padding:0.5rem 0.75rem;text-align:center;font-size:0.83rem">${getRankBadge(org)} <span style="font-size:0.75rem">${trendOrg}</span></td>
           <td style="padding:0.5rem 0.75rem;text-align:center;font-size:0.83rem">${getRankBadge(spon)} <span style="font-size:0.75rem">${trendSpon}</span></td>
           <td style="padding:0.5rem 0.75rem;font-size:0.75rem;color:#8b949e;font-family:monospace">${latest?.top3_asins?.[0] ?? '–'}</td>
