@@ -3,942 +3,291 @@
   "keywords": {
     "DE": [
       {
-        "kw": "kontaktlinsen halloween",
-        "label": "kontaktlinsen halloween",
-        "data": [
+        "keyword": "halloween kontaktlinsen",
+        "best_organic_pos": 2,
+        "best_asin": "B08CB4T8HY",
+        "best_product": "FX Day Weiß/Vampir",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B082WJSSJD",
-              "B002Y4I7QE",
-              "B0BQC6R35Y"
-            ]
+            "pos": 2,
+            "asin": "B08CB4T8HY",
+            "product": "FX Day Weiß/Vampir"
+          },
+          {
+            "pos": 6,
+            "asin": "B00DH2X3HA",
+            "product": "FX 12M Schwarz"
+          },
+          {
+            "pos": 10,
+            "asin": "B077XGNWMH",
+            "product": "FX LF021 12M"
+          },
+          {
+            "pos": 11,
+            "asin": "B09NQGVSPD",
+            "product": "FX Day Schwarz"
+          },
+          {
+            "pos": 25,
+            "asin": "B08CB4MX9H",
+            "product": "FX LF021 Day"
           }
         ]
       },
       {
-        "kw": "farbige kontaktlinsen halloween",
-        "label": "farbige kontaktlinsen halloween",
-        "data": [
+        "keyword": "farbige kontaktlinsen halloween",
+        "best_organic_pos": 4,
+        "best_asin": "B08CB4T8HY",
+        "best_product": "FX Day Weiß/Vampir",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0F94B51L2",
-              "B0BQC6R35Y",
-              "B0GGH79D8L"
-            ]
+            "pos": 4,
+            "asin": "B08CB4T8HY",
+            "product": "FX Day Weiß/Vampir"
+          },
+          {
+            "pos": 9,
+            "asin": "B09NQGVSPD",
+            "product": "FX Day Schwarz"
+          },
+          {
+            "pos": 10,
+            "asin": "B00DH2X3HA",
+            "product": "FX 12M Schwarz"
+          },
+          {
+            "pos": 31,
+            "asin": "B077XGNWMH",
+            "product": "FX LF021 12M"
           }
         ]
       },
       {
-        "kw": "halloween kontaktlinsen rot",
-        "label": "halloween kontaktlinsen rot",
-        "data": [
+        "keyword": "kontaktlinsen schwarz",
+        "best_organic_pos": 2,
+        "best_asin": "B09NQGVSPD",
+        "best_product": "FX Day Schwarz",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": 11,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0F94B51L2",
-              "B008DJWXA0",
-              "B0CPJNQBBR"
-            ]
+            "pos": 2,
+            "asin": "B09NQGVSPD",
+            "product": "FX Day Schwarz"
+          },
+          {
+            "pos": 3,
+            "asin": "B00DH2X3HA",
+            "product": "FX 12M Schwarz"
+          },
+          {
+            "pos": 34,
+            "asin": "B08CB4T8HY",
+            "product": "FX Day Weiß/Vampir"
           }
         ]
       },
       {
-        "kw": "kontaktlinsen farbig",
-        "label": "kontaktlinsen farbig",
-        "data": [
+        "keyword": "kontaktlinsen vampir",
+        "best_organic_pos": 4,
+        "best_asin": "B00CBE2DF8",
+        "best_product": "FX 12M Weiß",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B07D78HRS4",
-              "B000VVUPPI",
-              "B082WJSSJD"
-            ]
+            "pos": 4,
+            "asin": "B00CBE2DF8",
+            "product": "FX 12M Weiß"
+          },
+          {
+            "pos": 13,
+            "asin": "B08CB4Q2YT",
+            "product": "FX Day Rot/Teufel"
           }
         ]
       },
       {
-        "kw": "kontaktlinsen schwarz",
-        "label": "kontaktlinsen schwarz",
-        "data": [
+        "keyword": "rote kontaktlinsen",
+        "best_organic_pos": 3,
+        "best_asin": "B00CBE2I8K",
+        "best_product": "FX 12M Orange",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0F94DY1XQ",
-              "B09NQGVSPD",
-              "B00DH2X3HA"
-            ]
+            "pos": 3,
+            "asin": "B00CBE2I8K",
+            "product": "FX 12M Orange"
+          },
+          {
+            "pos": 9,
+            "asin": "B0BV39T33K",
+            "product": "FX 241 Day"
+          },
+          {
+            "pos": 19,
+            "asin": "B00CBE2LYQ",
+            "product": "FX 12M Rot"
           }
         ]
       },
       {
-        "kw": "kontaktlinsen zombie",
-        "label": "kontaktlinsen zombie",
-        "data": [
+        "keyword": "rote kontaktlinsen halloween",
+        "best_organic_pos": 4,
+        "best_asin": "B08CB4MX9H",
+        "best_product": "FX LF021 Day",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0DD43QC55",
-              "B00LDSN71M",
-              "B0F333BCQX"
-            ]
+            "pos": 4,
+            "asin": "B08CB4MX9H",
+            "product": "FX LF021 Day"
           }
         ]
       },
       {
-        "kw": "kontaktlinsen vampir",
-        "label": "kontaktlinsen vampir",
-        "data": [
+        "keyword": "halloween linsen",
+        "best_organic_pos": 12,
+        "best_asin": "B08CB4HB1V",
+        "best_product": "FX Day Rot (alt)",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": 4,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0BCL3RB9F",
-              "B08CB4T8HY",
-              "B0BQC6R35Y"
-            ]
+            "pos": 12,
+            "asin": "B08CB4HB1V",
+            "product": "FX Day Rot (alt)"
           }
         ]
       },
       {
-        "kw": "rote kontaktlinsen",
-        "label": "rote kontaktlinsen",
-        "data": [
+        "keyword": "kontaktlinsen zombie",
+        "best_organic_pos": 20,
+        "best_asin": "B0CR45ZZD8",
+        "best_product": "FX 547 12M",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": 12,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CPJNQBBR",
-              "B00CBE2I8K",
-              "B07NGVRYWX"
-            ]
+            "pos": 20,
+            "asin": "B0CR45ZZD8",
+            "product": "FX 547 12M"
           }
         ]
       },
       {
-        "kw": "rote kontaktlinsen halloween",
-        "label": "rote kontaktlinsen halloween",
-        "data": [
+        "keyword": "horror kontaktlinsen",
+        "best_organic_pos": null,
+        "best_asin": null,
+        "best_product": null,
+        "all_hits": []
+      },
+      {
+        "keyword": "motivlinsen halloween",
+        "best_organic_pos": null,
+        "best_asin": null,
+        "best_product": null,
+        "all_hits": []
+      },
+      {
+        "keyword": "farbige kontaktlinsen",
+        "best_organic_pos": null,
+        "best_asin": null,
+        "best_product": null,
+        "all_hits": []
+      },
+      {
+        "keyword": "halloween kontaktlinsen rot",
+        "best_organic_pos": null,
+        "best_asin": null,
+        "best_product": null,
+        "all_hits": []
+      }
+    ],
+    "FR": [
+      {
+        "keyword": "lentilles contact couleur halloween",
+        "best_organic_pos": 18,
+        "best_asin": "B09NQGVSPD",
+        "best_product": "FX Day Schwarz",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": 11,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0F94B51L2",
-              "B008DJWXA0",
-              "B0CPJNQBBR"
-            ]
+            "pos": 18,
+            "asin": "B09NQGVSPD",
+            "product": "FX Day Schwarz"
+          },
+          {
+            "pos": 26,
+            "asin": "B08CB4MX9H",
+            "product": "FX LF021 Day"
           }
         ]
       },
       {
-        "kw": "halloween linsen",
-        "label": "halloween linsen",
-        "data": [
+        "keyword": "lentilles halloween",
+        "best_organic_pos": 16,
+        "best_asin": "B0BZJJK39G",
+        "best_product": "FX Day Braun",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B00DH2X3HA",
-              "B0BWFRWY39",
-              "B0F94B51L2"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "horror kontaktlinsen",
-        "label": "horror kontaktlinsen",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0F94DY1XQ",
-              "B00LDSN71M",
-              "B0F94B51L2"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "motivlinsen halloween",
-        "label": "motivlinsen halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B00LDSNDIO",
-              "B084T316YC",
-              "B004923GW4"
-            ]
+            "pos": 16,
+            "asin": "B0BZJJK39G",
+            "product": "FX Day Braun"
           }
         ]
       }
     ],
     "IT": [
       {
-        "kw": "lenti a contatto halloween",
-        "label": "lenti a contatto halloween",
-        "data": [
+        "keyword": "lenti zombie",
+        "best_organic_pos": 11,
+        "best_asin": "B08CB4HB1V",
+        "best_product": "FX Day Rot (alt)",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": 10,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B00LDSNDIO",
-              "B082WJSSJD",
-              "B0BQC6R35Y"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lenti colorate halloween",
-        "label": "lenti colorate halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B082WJSSJD",
-              "B07NGVRYWX",
-              "B0BQC6R35Y"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti rosse halloween",
-        "label": "lenti rosse halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B07NGVRYWX",
-              "B0BQC6R35Y",
-              "B00LDSP20Q"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti a contatto colorate",
-        "label": "lenti a contatto colorate",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B07D78HRS4",
-              "B000VVUPPI",
-              "B0CH8PX4CN"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti zombie halloween",
-        "label": "lenti zombie halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B00LDSNDIO",
-              "B00LDSN71M",
-              "B01N5O1GL4"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti vampiro halloween",
-        "label": "lenti vampiro halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0BQC6R35Y",
-              "B08CB4T8HY",
-              "B01N5O1GL4"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti a contatto nere",
-        "label": "lenti a contatto nere",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 4,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B002Y4NYDK",
-              "B0CRZBQQ9X",
-              "B01M0AODRW"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lenti cosplay",
-        "label": "lenti cosplay",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 13,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B01N7ZUBRJ",
-              "B00LDSP11G",
-              "B0C8J86798"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lenti senza gradazione colorate",
-        "label": "lenti senza gradazione colorate",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CNKPCDLX",
-              "B0GGT6W8BZ",
-              "B0FBX35V71"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti per halloween costume",
-        "label": "lenti per halloween costume",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B01LSI9YX6",
-              "B01K7XJ0K0",
-              "B01LSGQVXY"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti horror",
-        "label": "lenti horror",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0BQC52C73",
-              "B0BQC6R35Y",
-              "B00LDSNDIO"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lenti a contatto colorate senza gradazione",
-        "label": "lenti a contatto colorate senza gradazione",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B01N9ZCF66",
-              "B0GGT6W8BZ",
-              "B0CNKPCDLX"
-            ]
-          }
-        ]
-      }
-    ],
-    "FR": [
-      {
-        "kw": "lentilles halloween",
-        "label": "lentilles halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 2,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B082WJSSJD",
-              "B09NQGVSPD",
-              "B07L6G7FRD"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentilles de contact halloween",
-        "label": "lentilles de contact halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 4,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B01LSFKYWE",
-              "B07NGVRYWX",
-              "B003XIJWAA"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentilles colorées halloween",
-        "label": "lentilles colorées halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0F94DY1XQ",
-              "B07NGVRYWX",
-              "B01LSFKYWE"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentilles rouges halloween",
-        "label": "lentilles rouges halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CPYG28K3",
-              "B07NGVRYWX",
-              "B0CNXL8ZNH"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentilles de contact colorées",
-        "label": "lentilles de contact colorées",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B07GYSZB2F",
-              "B08FCKPTS1",
-              "B085WWQ3YZ"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentilles zombie",
-        "label": "lentilles zombie",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 17,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B08CB4HB1V",
-              "B0FBX1YXWK",
-              "B08CB4MX9H"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentilles vampire halloween",
-        "label": "lentilles vampire halloween",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B07NGVRYWX",
-              "B0CPYG28K3",
-              "B01LSFKYWE"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentilles noires",
-        "label": "lentilles noires",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 1,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B09NQGVSPD",
-              "B07GYSZB2F",
-              "B0CZLL4M8S"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentilles cosplay",
-        "label": "lentilles cosplay",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 3,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B00LDSOSMO",
-              "B0CQCVZ595",
-              "B09NQGVSPD"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentilles sans correction colorées",
-        "label": "lentilles sans correction colorées",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B08FZMRNJH",
-              "B0FL1GTQZK",
-              "B0FL1G9D1W"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentilles de contact déguisement",
-        "label": "lentilles de contact déguisement",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 15,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CPYG28K3",
-              "B08HCZ4T6N",
-              "B0D94P161K"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentilles horreur",
-        "label": "lentilles horreur",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CPYG28K3",
-              "B07NGVRYWX",
-              "B00LDSP20Q"
-            ]
+            "pos": 11,
+            "asin": "B08CB4HB1V",
+            "product": "FX Day Rot (alt)"
           }
         ]
       }
     ],
     "ES": [
       {
-        "kw": "lentillas halloween",
-        "label": "lentillas halloween",
-        "data": [
+        "keyword": "lentillas de colores halloween",
+        "best_organic_pos": 15,
+        "best_asin": "B0922JX27X",
+        "best_product": "FX LF022 Day",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CRZC4226",
-              "B0FBX2QSVK",
-              "B0BQC52C73"
-            ]
+            "pos": 15,
+            "asin": "B0922JX27X",
+            "product": "FX LF022 Day"
           }
         ]
       },
       {
-        "kw": "lentillas de colores halloween",
-        "label": "lentillas de colores halloween",
-        "data": [
+        "keyword": "lentillas halloween",
+        "best_organic_pos": 40,
+        "best_asin": "B0BV3BDWNK",
+        "best_product": "FX UV Day",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CRZC4226",
-              "B0BQC6R35Y",
-              "B0CRZC9GTV"
-            ]
+            "pos": 40,
+            "asin": "B0BV3BDWNK",
+            "product": "FX UV Day"
           }
         ]
       },
       {
-        "kw": "lentillas rojas halloween",
-        "label": "lentillas rojas halloween",
-        "data": [
+        "keyword": "lentillas rojas halloween",
+        "best_organic_pos": 4,
+        "best_asin": "B08CB4Q2YT",
+        "best_product": "FX Day Rot/Teufel",
+        "all_hits": [
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0BQC6R35Y",
-              "B0CPYJM7Z2",
-              "B018EO641W"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentillas de contacto halloween",
-        "label": "lentillas de contacto halloween",
-        "data": [
+            "pos": 4,
+            "asin": "B08CB4Q2YT",
+            "product": "FX Day Rot/Teufel"
+          },
           {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CRZC9GTV",
-              "B0BQC52C73",
-              "B0CRZC4226"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentillas de colores",
-        "label": "lentillas de colores",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B00LOAYO2K",
-              "B07D78HRS4",
-              "B0DJ1DL3TK"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentillas zombie",
-        "label": "lentillas zombie",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CRZC9GTV",
-              "B015XXV9SU",
-              "B08CB4MX9H"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentillas vampiro",
-        "label": "lentillas vampiro",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 20,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0BQC6R35Y",
-              "B018EO641W",
-              "B00LDSNETC"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentillas negras",
-        "label": "lentillas negras",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 2,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CZLL4M8S",
-              "B09NQGVSPD",
-              "B082KP6LXD"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentillas cosplay",
-        "label": "lentillas cosplay",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 7,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B002Y4I7QE",
-              "B0BQC52C73",
-              "B07PFFRPPH"
-            ],
-            "found_asin": "B09NQGVSPD"
-          }
-        ]
-      },
-      {
-        "kw": "lentillas sin graduacion de colores",
-        "label": "lentillas sin graduacion de colores",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B09FLX28HN",
-              "B07D78HRS4",
-              "B0FS7N5C67"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentillas de contacto de colores",
-        "label": "lentillas de contacto de colores",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": null,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B07D78HRS4",
-              "B00LOAYO2K",
-              "B09FLX28HN"
-            ]
-          }
-        ]
-      },
-      {
-        "kw": "lentillas horror",
-        "label": "lentillas horror",
-        "data": [
-          {
-            "date": "2026-08-27",
-            "organic_rank": 10,
-            "sponsored_rank": null,
-            "top3_asins": [
-              "B0CRZC9GTV",
-              "B002Y4I7QE",
-              "B0BQC6R35Y"
-            ],
-            "found_asin": "B09NQGVSPD"
+            "pos": 23,
+            "asin": "B09NQG6WGS",
+            "product": "FX Day Lila"
           }
         ]
       }
     ]
-  },
-  "ad_status": {
-    "DE": {
-      "B08CB4T8HY": {
-        "name": "Vampir (Tag)",
-        "ad_active": true,
-        "updated": "2026-08-27"
-      },
-      "B08CB4Q2YT": {
-        "name": "Devil (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B09NQGTC8P": {
-        "name": "UV-Vampir (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4MX9H": {
-        "name": "Undead Zombie (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B09NQGVSPD": {
-        "name": "Black (Tag)",
-        "ad_active": true,
-        "updated": "2026-08-27"
-      },
-      "B08CB4HB1V": {
-        "name": "Zombie Weiß (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4ZLJ4": {
-        "name": "Volturi (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0922JX27X": {
-        "name": "Horror Clown (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0922HWXSN": {
-        "name": "Dead Zombie (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B09NQG6WGS": {
-        "name": "Hexe/Black (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0BMB3VH77": {
-        "name": "Vampir X (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0BZJJK39G": {
-        "name": "Avatar (Tag)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0BV39T33K": {
-        "name": "Devil (Jahr)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0BV3BDWNK": {
-        "name": "Zombie Weiß (Jahr)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0B14RNHDX": {
-        "name": "Unbekannt (Jahr)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B0C285BS7K": {
-        "name": "Unbekannt 2 (Jahr)",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      }
-    },
-    "IT": {
-      "B09NQGVSPD": {
-        "name": "Black",
-        "ad_active": true,
-        "updated": "2026-08-27"
-      },
-      "B08CB4Q2YT": {
-        "name": "Devil",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4T8HY": {
-        "name": "Vampir",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4ZLJ4": {
-        "name": "Volturi",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      }
-    },
-    "FR": {
-      "B09NQGVSPD": {
-        "name": "Black",
-        "ad_active": true,
-        "updated": "2026-08-27"
-      },
-      "B08CB4Q2YT": {
-        "name": "Devil",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4T8HY": {
-        "name": "Vampir",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4ZLJ4": {
-        "name": "Volturi",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      }
-    },
-    "ES": {
-      "B09NQGVSPD": {
-        "name": "Black",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4Q2YT": {
-        "name": "Devil",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4T8HY": {
-        "name": "Vampir",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      },
-      "B08CB4ZLJ4": {
-        "name": "Volturi",
-        "ad_active": false,
-        "updated": "2026-08-27"
-      }
-    }
   }
 }
