@@ -27,9 +27,9 @@
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B0F94B51L2",
               "B0BQC6R35Y",
-              "B0GGH79D8L"
+              "B0F94B51L2",
+              "B08HRPNGGL"
             ]
           }
         ]
@@ -75,8 +75,8 @@
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B0F94DY1XQ",
               "B09NQGVSPD",
+              "B0F94DY1XQ",
               "B00DH2X3HA"
             ]
           }
@@ -91,9 +91,9 @@
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B0DD43QC55",
               "B08CB4MX9H",
-              "B0F333BCQX"
+              "B08CB4HB1V",
+              "B077XGNWMH"
             ]
           }
         ]
@@ -107,8 +107,8 @@
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B0BQC6R35Y",
               "B0F94B51L2",
+              "B0BQC6R35Y",
               "B00CBE2DF8"
             ]
           }
@@ -157,7 +157,7 @@
             "top3_asins": [
               "B00DH2X3HA",
               "B0BWFRWY39",
-              "B082WJSSJD"
+              "B0F94B51L2"
             ]
           }
         ]
@@ -224,7 +224,7 @@
             "top3_asins": [
               "B082WJSSJD",
               "B07NGVRYWX",
-              "B01LSFKYWE"
+              "B0BQC6R35Y"
             ]
           }
         ]
@@ -255,8 +255,8 @@
             "sponsored_rank": null,
             "top3_asins": [
               "B07D78HRS4",
-              "B0CH8PX4CN",
-              "B000VVUPPI"
+              "B000VVUPPI",
+              "B0CH8PX4CN"
             ]
           }
         ]
@@ -316,11 +316,11 @@
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": 14,
+            "organic_rank": 13,
             "sponsored_rank": null,
             "top3_asins": [
               "B01N7ZUBRJ",
-              "B07NGVRYWX",
+              "B00LDSP11G",
               "B0C8J86798"
             ],
             "found_asin": "B09NQGVSPD"
@@ -368,9 +368,9 @@
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B0922JX27X",
-              "B077XGNYDH",
-              "B08CB4MX9H"
+              "B0BQC52C73",
+              "B0BQC6R35Y",
+              "B00LDSNDIO"
             ]
           }
         ]
@@ -416,12 +416,12 @@
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": 3,
+            "organic_rank": 4,
             "sponsored_rank": null,
             "top3_asins": [
               "B01LSFKYWE",
               "B07NGVRYWX",
-              "B09NQGVSPD"
+              "B003XIJWAA"
             ],
             "found_asin": "B09NQGVSPD"
           }
@@ -470,7 +470,7 @@
             "top3_asins": [
               "B07GYSZB2F",
               "B08FCKPTS1",
-              "B0CNRPYSMW"
+              "B085WWQ3YZ"
             ]
           }
         ]
@@ -481,7 +481,7 @@
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": 18,
+            "organic_rank": 17,
             "sponsored_rank": null,
             "top3_asins": [
               "B08CB4HB1V",
@@ -519,7 +519,7 @@
             "top3_asins": [
               "B09NQGVSPD",
               "B07GYSZB2F",
-              "B0F94DY1XQ"
+              "B0CZLL4M8S"
             ],
             "found_asin": "B09NQGVSPD"
           }
@@ -695,13 +695,14 @@
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": null,
+            "organic_rank": 20,
             "sponsored_rank": null,
             "top3_asins": [
               "B0BQC6R35Y",
               "B018EO641W",
               "B00LDSNETC"
-            ]
+            ],
+            "found_asin": "B09NQGVSPD"
           }
         ]
       },
@@ -728,7 +729,7 @@
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": 8,
+            "organic_rank": 7,
             "sponsored_rank": null,
             "top3_asins": [
               "B002Y4I7QE",
@@ -777,12 +778,12 @@
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": 9,
+            "organic_rank": 10,
             "sponsored_rank": null,
             "top3_asins": [
               "B0CRZC9GTV",
-              "B0BQC6R35Y",
-              "B002Y4I7QE"
+              "B002Y4I7QE",
+              "B0BQC6R35Y"
             ],
             "found_asin": "B09NQGVSPD"
           }
