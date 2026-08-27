@@ -261,7 +261,6 @@
     <a href="#it">🇮🇹 IT</a>
     <a href="#fr">🇫🇷 FR</a>
     <a href="#es">🇪🇸 ES</a>
-    <a href="#keywords">🔍 Keywords</a>
   </nav>
 </header>
 
@@ -590,19 +589,8 @@ async function init() {
   sections.forEach(s => observer.observe(s));
 }
 
-// (init() is called at the bottom after keyword section setup)
+// (init() is called at the bottom)
 
-// ─── Keyword Rankings Section ─────────────────────────────────────────────
-async function loadKeywordData() {
-  try {
-    const res = await fetch('./keyword_data.json');
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
-  } catch (err) {
-    log.warn && console.warn('keyword_data.json not available:', err.message);
-    return null;
-  }
-}
 
 function getRankColor(rank) {
   if (rank == null) return '#8b949e';       // grey — not found
@@ -628,146 +616,4 @@ function getTrendArrow(data, field) {
   return '<span style="color:#8b949e">→</span>';
 }
 
-function renderKeywordsSection(app, kwData) {
-  const section = document.createElement('div');
-  section.className = 'section';
-  section.id = 'keywords';
 
-  const updated = kwData?.updated ?? '–';
-  const marketFlags = { DE: '🇩🇪', IT: '🇮🇹', FR: '🇫🇷', ES: '🇪🇸' };
-  const marketNames = { DE: 'Deutschland', IT: 'Italien', FR: 'Frankreich', ES: 'Spanien' };
-
-  section.innerHTML = `
-    <div class="section-header">
-      <div class="section-title">🔍 Keyword Rankings</div>
-      <span class="last-updated">Stand: ${updated}</span>
-    </div>
-  `;
-
-  const markets = ['DE', 'IT', 'FR', 'ES'];
-
-  markets.forEach(market => {
-    const kws = kwData?.keywords?.[market];
-    if (!kws || kws.length === 0) return;
-
-    const hasData = kws.some(k => k.data && k.data.length > 0);
-
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.marginBottom = '1.25rem';
-
-    let tableRows = '';
-    kws.forEach(kw => {
-      const latest = kw.data && kw.data.length > 0 ? kw.data[kw.data.length - 1] : null;
-      const org  = latest?.organic_rank ?? null;
-      const trendOrg = getTrendArrow(kw.data, 'organic_rank');
-
-      tableRows += `
-        <tr style="border-bottom:1px solid #21262d">
-          <td style="padding:0.5rem 0.75rem;font-size:0.83rem;color:#c9d1d9;max-width:220px;word-break:break-word">${kw.kw}</td>
-          <td style="padding:0.5rem 0.75rem;text-align:center;font-size:0.83rem">${getRankBadge(org)} <span style="font-size:0.75rem">${trendOrg}</span></td>
-          <td style="padding:0.5rem 0.75rem;font-size:0.75rem;color:#8b949e;font-family:monospace">${latest?.top3_asins?.[0] ?? '–'}</td>
-        </tr>
-      `;
-    });
-
-    card.innerHTML = `
-      <div class="card-title" style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem">
-        ${marketFlags[market]} ${marketNames[market]}
-        ${!hasData ? '<span style="font-size:0.75rem;color:#8b949e;font-weight:400;margin-left:auto">⏳ Noch kein Run — Script ausführen</span>' : ''}
-      </div>
-      <div style="overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
-          <thead>
-            <tr style="border-bottom:1px solid #30363d">
-              <th style="padding:0.5rem 0.75rem;text-align:left;color:#8b949e;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em">Keyword</th>
-              <th style="padding:0.5rem 0.75rem;text-align:center;color:#8b949e;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em">Organisch</th>
-              <th style="padding:0.5rem 0.75rem;text-align:left;color:#8b949e;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em">#1 ASIN</th>
-            </tr>
-          </thead>
-          <tbody>${tableRows}</tbody>
-        </table>
-      </div>
-      <div style="margin-top:0.75rem;display:flex;gap:1rem;flex-wrap:wrap;font-size:0.75rem;color:#8b949e">
-        <span><span style="color:#00C853">■</span> ≤3 Top-3</span>
-        <span><span style="color:#FFD600">■</span> 4-10 Sichtbar</span>
-        <span><span style="color:#F44336">■</span> >10 / nicht gefunden</span>
-        <span style="margin-left:auto"><span style="color:#00C853">↑</span> verbessert  <span style="color:#F44336">↓</span> verschlechtert  → stabil</span>
-      </div>
-    `;
-    section.appendChild(card);
-
-    // ── Werbung-Status Tabelle pro ASIN ───────────────────────────────────
-    const adData = kwData?.ad_status?.[market];
-    if (adData) {
-      const adCard = document.createElement('div');
-      adCard.className = 'card';
-      adCard.style.marginBottom = '1.25rem';
-
-      let adRows = '';
-      Object.entries(adData).forEach(([asin, info]) => {
-        const active = info.ad_active;
-        const badge = active
-          ? '<span style="color:#00C853;font-weight:600">✅ Sichtbar</span>'
-          : '<span style="color:#F44336;font-weight:600">❌ Offline / nicht gefunden</span>';
-        adRows += `
-          <tr style="border-bottom:1px solid #21262d">
-            <td style="padding:0.4rem 0.75rem;font-size:0.8rem;color:#c9d1d9">${info.name}</td>
-            <td style="padding:0.4rem 0.75rem;font-size:0.75rem;color:#8b949e;font-family:monospace">${asin}</td>
-            <td style="padding:0.4rem 0.75rem;text-align:center">${badge}</td>
-          </tr>`;
-      });
-
-      adCard.innerHTML = `
-        <div class="card-title" style="margin-bottom:0.75rem">📢 ${marketFlags[market]} Werbung-Status — alle FXCONTACTS ASINs</div>
-        <p style="font-size:0.78rem;color:#8b949e;margin:0 0 0.75rem">Zeigt ob das ASIN in den aktuellen Amazon-Suchergebnissen sichtbar ist. ❌ = Werbung möglicherweise offline oder ASIN nicht indexiert → Tobias informieren!</p>
-        <div style="overflow-x:auto">
-          <table style="width:100%;border-collapse:collapse">
-            <thead>
-              <tr style="border-bottom:1px solid #30363d">
-                <th style="padding:0.4rem 0.75rem;text-align:left;color:#8b949e;font-size:0.75rem;text-transform:uppercase">Produkt</th>
-                <th style="padding:0.4rem 0.75rem;text-align:left;color:#8b949e;font-size:0.75rem;text-transform:uppercase">ASIN</th>
-                <th style="padding:0.4rem 0.75rem;text-align:center;color:#8b949e;font-size:0.75rem;text-transform:uppercase">Status</th>
-              </tr>
-            </thead>
-            <tbody>${adRows}</tbody>
-          </table>
-        </div>`;
-
-      section.appendChild(adCard);
-    }
-  });
-
-  app.appendChild(section);
-}
-
-// Patch init() to also load keyword data
-const _origInit = init;
-init = async function() {
-  await _origInit();
-  // After BSR sections rendered, append keywords section
-  const app = document.getElementById('app');
-  const kwData = await loadKeywordData();
-  renderKeywordsSection(app, kwData);
-
-  // Re-observe new section for nav highlight
-  const kwSection = document.getElementById('keywords');
-  if (kwSection) {
-    const navLinks = document.querySelectorAll('nav a');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(l => l.classList.remove('active'));
-          const link = document.querySelector(`nav a[href="#${entry.target.id}"]`);
-          if (link) link.classList.add('active');
-        }
-      });
-    }, { threshold: 0.2 });
-    observer.observe(kwSection);
-  }
-};
-
-init();
-</script>
-</body>
-</html>
