@@ -3,31 +3,39 @@
   "countries": {
     "DE": {
       "land_name": "Deutschland",
-      "text": "In Deutschland läuft es aktuell sehr gut: FXCONTACTS Day belegt mit BSR #6.679 den ersten Platz im Wettbewerbsfeld und FXCONTACTS 12M liegt auf Rang 3 mit BSR #7.626 — damit hält FXCONTACTS zwei der drei Top-Positionen gleichzeitig. Der nächste Konkurrent (Aricona Vampire 12M, BSR #7.015) liegt knapp zwischen den beiden FX-Produkten, hat aber mit 12,42€ einen deutlichen Preisnachteil gegenüber FXCONTACTS Day (8,90€). Preislich ist FXCONTACTS im Markt sehr wettbewerbsfähig positioniert — günstiger als 3 von 4 Konkurrenten bei gleichwertigem oder besserem Rating (⭐4,2–4,3). Die Review-Basis mit über 10.000 kombinierten Bewertungen ist die stärkste im Markt. Mit Blick auf Halloween (Saison startet jetzt) empfiehlt es sich, das aktuelle Ads-Budget zu halten und ggf. für FXCONTACTS 12M leicht zu erhöhen, um die Lücke zu Rang 1 zu schließen. Kein dringender Handlungsbedarf, aber Momentum nutzen.",
       "fx_rank": 1,
       "fx_bsr": 6679,
-      "total_products": 6
+      "total_products": 6,
+      "kw_hits": 0,
+      "kw_total": 12,
+      "text": "🇩🇪 **Deutschland — BSR stark, organisch unsichtbar**\n\n**BSR-Lage:** Sehr gut — FXCONTACTS Day ist auf Rang 1 von 6 mit BSR #6.679, FX 12M auf Rang 3 mit BSR #7.626. Wir halten zwei der drei Top-Positionen gleichzeitig.\n\n**Keyword-Ranking (organisch):** ⚠️ Kritischer Befund — bei keinem der 12 Top-Keywords taucht FXCONTACTS in den Top 20 organischen Ergebnissen auf. Das bedeutet: Wer auf Amazon.de nach \"kontaktlinsen halloween\" oder \"schwarze kontaktlinsen\" sucht, sieht uns nicht auf der ersten Ergebnisseite.\n\n**Was das bedeutet:** Unser BSR kommt fast ausschließlich über Werbung (Sponsored Products) — nicht über organische Suchanfragen. Das ist eine strukturelle Schwäche. Sobald wir die Werbung reduzieren, bricht der BSR ein.\n\n**Handlungsempfehlung:**\n• Halloween-Ads in DE sofort auf Maximalbudget hochfahren (wichtigste Saison!)\n• Parallel: Listing-Optimierung für die Top-Keywords (Titel, Bullets) — wir sind offenbar nicht gut indexiert\n• Prüfen ob das DE Parent-ASIN B08CB4Q2YT die organische Sichtbarkeit hat (könnte sein, dass wir das falsche ASIN tracken)\n\n**Für Mona:** Bitte im Seller Central unter \"Brand Analytics → Suchbegriffbericht\" schauen, für welche Keywords wir in DE tatsächlich Impressionen erhalten. Das gibt uns Klarheit."
     },
     "IT": {
       "land_name": "Italien",
-      "text": "In Italien steht FXCONTACTS aktuell auf Rang 3 von 4 mit BSR #9.742 — das ist der schwächste Rang im europäischen Vergleich und zeigt klares Verbesserungspotenzial. Die beiden führenden Konkurrenten (MeralenS Viola BSR #6.952 und Meralens Rosso BSR #8.441) liegen fast 2.800 bzw. 1.300 Plätze vorne. Positiv: FXCONTACTS ist mit 9,90€ der günstigste Anbieter im Markt (Konkurrenten: 11,99–12,99€) und hat mit 4.147 Reviews die zweitgrößte Vertrauensbasis — der niedrige Preis allein reicht aber offensichtlich nicht für eine bessere Platzierung. Da Halloween in Italien ein wachsender Markt ist, sollten die Ads-Kampagnen hier vor dem 01.09. deutlich hochgefahren werden — speziell auf Keywords wie \"lenti colorate Halloween\" und \"lenti a contatto colorate\". Handlungsbedarf: mittel bis hoch.",
       "fx_rank": 3,
       "fx_bsr": 9742,
-      "total_products": 4
+      "total_products": 4,
+      "kw_hits": 3,
+      "kw_total": 12,
+      "text": "🇮🇹 **Italien — Potenzial vorhanden, aber ausbaufähig**\n\n**BSR-Lage:** Rang 3 von 4 mit BSR #9.742. Die beiden Konkurrenten MeralenS Viola (#6.952) und Meralens Rosso (#8.441) liegen deutlich vorne. Das ist unser schwächster BSR-Wert in Europa.\n\n**Keyword-Ranking (organisch):**\n• \"lenti a contatto nere\" → **Rang 4** ✅ (gut!)\n• \"lenti a contatto halloween\" → **Rang 10** 🟡\n• \"lenti cosplay\" → **Rang 13** 🔴\n\nBei 9 von 12 Keywords sind wir nicht in den Top 20 sichtbar.\n\n**Was das bedeutet:** In Italien sind wir als Marke noch nicht stark genug etabliert. Wir haben zwar den günstigsten Preis (9,90€) und die zweitgrößte Review-Basis, aber die Keyword-Abdeckung fehlt.\n\n**Handlungsempfehlung:**\n• Vor dem 01.09. Ads-Kampagnen für IT deutlich hochfahren\n• Besonders auf \"lenti a contatto halloween\" und \"lenti colorate halloween\" fokussieren (höchstes Suchvolumen)\n• Listings in IT auf aktuelle Saison-Keywords optimieren (jetzt sofort!)\n\n**Für Mona:** Italien ist ein wachsender Halloween-Markt. Die niedrigen Rankings zeigen: Wir investieren dort noch zu wenig in Werbung. Das sollte Tobias entscheiden."
     },
     "FR": {
       "land_name": "Frankreich",
-      "text": "Frankreich ist aktuell der stärkste Markt für FXCONTACTS: Rang 1 von 4 mit BSR #4.893 — und damit der beste BSR-Wert von allen vier Ländern. Der Vorsprung auf DESIGNLENSES (BSR #5.015, Rang 2) beträgt nur 122 Plätze, was zeigt dass der Markt eng umkämpft ist und die Führung aktiv verteidigt werden muss. FXCONTACTS ist mit 9,90€ günstiger als DESIGNLENSES (11,88€), hat aber auch weniger Reviews (3.775 vs. 2.780 — beide solide). Der dritte und vierte Platz liegen weit abgeschlagen (BSR #6.533 und #11.994) und sind keine unmittelbare Gefahr. Empfehlung: Ads-Budget in Frankreich stabil halten, keine drastischen Änderungen — aber eng im Blick behalten, da der Abstand zu Rang 2 sehr klein ist. Bei einem Einbruch sofort reagieren.",
       "fx_rank": 1,
       "fx_bsr": 4893,
-      "total_products": 4
+      "total_products": 4,
+      "kw_hits": 6,
+      "kw_total": 12,
+      "text": "🇫🇷 **Frankreich — Bester Markt, organisch top!**\n\n**BSR-Lage:** Rang 1 von 4 mit BSR #4.893 — das ist unser bester BSR-Wert in ganz Europa. Vorsprung auf DESIGNLENSES (BSR #5.015) beträgt nur 122 Plätze — knapp aber klar vorne.\n\n**Keyword-Ranking (organisch):**\n• \"lentilles noires\" → **Rang 1** 🥇 (Top!)\n• \"lentilles halloween\" → **Rang 2** ✅\n• \"lentilles cosplay\" → **Rang 3** ✅\n• \"lentilles de contact halloween\" → **Rang 4** ✅\n• \"lentilles déguisement\" → **Rang 15** 🟡\n• \"lentilles zombie\" → **Rang 17** 🟡\n\nBei 6 von 12 Keywords in den Top 20 — mit Abstand das beste Ergebnis aller Märkte.\n\n**Was das bedeutet:** In Frankreich sind wir organisch sehr gut aufgestellt. Wir ranken für die wichtigsten Halloween-Keywords auf Seite 1. Das zeigt, dass unser Listing gut optimiert ist und Amazon uns als relevanten Anbieter einstuft.\n\n**Handlungsempfehlung:**\n• Frankreich-Budget stabil halten — kein Grund für große Änderungen\n• Engmaschig beobachten: DESIGNLENSES liegt nur 122 Plätze hinter uns\n• \"lentilles zombie\" (Rang 17) und \"lentilles déguisement\" (Rang 15) durch gezielte Ads verbessern\n\n**Für Mona:** Frankreich läuft von selbst gut. Hier einfach beobachten und bei Verschlechterung sofort melden."
     },
     "ES": {
       "land_name": "Spanien",
-      "text": "Spanien ist aktuell der problematischste Markt: FXCONTACTS liegt auf Rang 3 von 4 mit BSR #7.522, während die beiden führenden Konkurrenten mit BSR #4.216 und BSR #4.389 über 3.000 Plätze vorne liegen — das ist ein erheblicher Rückstand. Erschwerend kommt hinzu, dass Konkurrent 1 (BSR #4.216) bei einem höheren Preis (11,99€) trotzdem besser rankt, was auf eine stärkere Ads-Aktivität oder bessere organische Sichtbarkeit hinweist. FXCONTACTS hat mit 4.549 Reviews die mit Abstand größte Bewertungsbasis im spanischen Markt und ein gutes Rating (⭐4,2) — das Potenzial ist also vorhanden. Konkurrent 2 ist zudem schwach (nur 225 Reviews, ⭐3,9) und angreifbar. Dringende Empfehlung: Spanien benötigt vor Halloween deutlich mehr Ads-Budget und gezielte Keyword-Kampagnen auf \"lentillas de colores Halloween\". Handlungsbedarf: hoch.",
       "fx_rank": 3,
       "fx_bsr": 7522,
-      "total_products": 4
+      "total_products": 4,
+      "kw_hits": 4,
+      "kw_total": 12,
+      "text": "🇪🇸 **Spanien — Größter Handlungsbedarf**\n\n**BSR-Lage:** Rang 3 von 4 mit BSR #7.522. Die Konkurrenten auf Rang 1 und 2 liegen über 3.000 BSR-Punkte vorne (BSR #4.216 und #4.389). Das ist ein erheblicher Rückstand.\n\n**Keyword-Ranking (organisch):**\n• \"lentillas negras\" → **Rang 2** ✅ (gut!)\n• \"lentillas cosplay\" → **Rang 7** 🟡\n• \"lentillas horror\" → **Rang 10** 🟡\n• \"lentillas vampiro\" → **Rang 20** 🔴\n\nBei 8 von 12 Keywords nicht in den Top 20 sichtbar. Bei den wichtigsten Halloween-Keywords (\"lentillas halloween\", \"lentillas de colores halloween\") tauchen wir gar nicht auf.\n\n**Was das bedeutet:** In Spanien ist DESIGNLENSES (ASIN B0CRZC4226) momentan klar dominierend bei Halloween-Keywords. Wir haben zwar die größte Review-Basis (4.549 Bewertungen) und ein gutes Rating (4,2⭐), aber die organische Sichtbarkeit fehlt fast vollständig.\n\n**Handlungsempfehlung:**\n• Dringend: Ads-Budget für ES vor Halloween deutlich erhöhen\n• Fokus auf \"lentillas halloween\" und \"lentillas de colores halloween\" — da sind wir nicht sichtbar, obwohl das die wichtigsten Keywords sind\n• Listing in ES auf Saison-Keywords optimieren (Titel + Bullets)\n\n**Für Mona:** Spanien braucht sofort Aufmerksamkeit. Bitte Tobias informieren, dass wir hier Werbebudget erhöhen müssen — jetzt, vor dem 01.09."
     }
   }
 }
