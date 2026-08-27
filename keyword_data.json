@@ -4,7 +4,7 @@
     "DE": [
       {
         "kw": "kontaktlinsen halloween",
-        "label": "halloween KL",
+        "label": "kontaktlinsen halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -20,27 +20,27 @@
       },
       {
         "kw": "farbige kontaktlinsen halloween",
-        "label": "farbige KL halloween",
+        "label": "farbige kontaktlinsen halloween",
         "data": [
           {
             "date": "2026-08-27",
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B0BQC6R35Y",
               "B0F94B51L2",
-              "B08HRPNGGL"
+              "B0BQC6R35Y",
+              "B0GGH79D8L"
             ]
           }
         ]
       },
       {
         "kw": "halloween kontaktlinsen rot",
-        "label": "halloween KL rot",
+        "label": "halloween kontaktlinsen rot",
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": null,
+            "organic_rank": 11,
             "sponsored_rank": null,
             "top3_asins": [
               "B0F94B51L2",
@@ -52,7 +52,7 @@
       },
       {
         "kw": "kontaktlinsen farbig",
-        "label": "farbige KL allg.",
+        "label": "kontaktlinsen farbig",
         "data": [
           {
             "date": "2026-08-27",
@@ -68,15 +68,15 @@
       },
       {
         "kw": "kontaktlinsen schwarz",
-        "label": "KL schwarz",
+        "label": "kontaktlinsen schwarz",
         "data": [
           {
             "date": "2026-08-27",
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B09NQGVSPD",
               "B0F94DY1XQ",
+              "B09NQGVSPD",
               "B00DH2X3HA"
             ]
           }
@@ -84,43 +84,43 @@
       },
       {
         "kw": "kontaktlinsen zombie",
-        "label": "zombie KL",
+        "label": "kontaktlinsen zombie",
         "data": [
           {
             "date": "2026-08-27",
             "organic_rank": null,
             "sponsored_rank": null,
             "top3_asins": [
-              "B08CB4MX9H",
-              "B08CB4HB1V",
-              "B077XGNWMH"
+              "B0DD43QC55",
+              "B00LDSN71M",
+              "B0F333BCQX"
             ]
           }
         ]
       },
       {
         "kw": "kontaktlinsen vampir",
-        "label": "vampir KL",
+        "label": "kontaktlinsen vampir",
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": null,
+            "organic_rank": 4,
             "sponsored_rank": null,
             "top3_asins": [
-              "B0F94B51L2",
-              "B0BQC6R35Y",
-              "B00CBE2DF8"
+              "B0BCL3RB9F",
+              "B08CB4T8HY",
+              "B0BQC6R35Y"
             ]
           }
         ]
       },
       {
         "kw": "rote kontaktlinsen",
-        "label": "rote KL",
+        "label": "rote kontaktlinsen",
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": null,
+            "organic_rank": 12,
             "sponsored_rank": null,
             "top3_asins": [
               "B0CPJNQBBR",
@@ -132,11 +132,11 @@
       },
       {
         "kw": "rote kontaktlinsen halloween",
-        "label": "rote KL halloween",
+        "label": "rote kontaktlinsen halloween",
         "data": [
           {
             "date": "2026-08-27",
-            "organic_rank": null,
+            "organic_rank": 11,
             "sponsored_rank": null,
             "top3_asins": [
               "B0F94B51L2",
@@ -164,7 +164,7 @@
       },
       {
         "kw": "horror kontaktlinsen",
-        "label": "horror KL",
+        "label": "horror kontaktlinsen",
         "data": [
           {
             "date": "2026-08-27",
@@ -198,7 +198,7 @@
     "IT": [
       {
         "kw": "lenti a contatto halloween",
-        "label": "lenti halloween",
+        "label": "lenti a contatto halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -247,7 +247,7 @@
       },
       {
         "kw": "lenti a contatto colorate",
-        "label": "lenti colorate",
+        "label": "lenti a contatto colorate",
         "data": [
           {
             "date": "2026-08-27",
@@ -263,7 +263,7 @@
       },
       {
         "kw": "lenti zombie halloween",
-        "label": "lenti zombie",
+        "label": "lenti zombie halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -279,7 +279,7 @@
       },
       {
         "kw": "lenti vampiro halloween",
-        "label": "lenti vampiro",
+        "label": "lenti vampiro halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -295,7 +295,7 @@
       },
       {
         "kw": "lenti a contatto nere",
-        "label": "lenti nere",
+        "label": "lenti a contatto nere",
         "data": [
           {
             "date": "2026-08-27",
@@ -329,7 +329,7 @@
       },
       {
         "kw": "lenti senza gradazione colorate",
-        "label": "lenti senza gradazione",
+        "label": "lenti senza gradazione colorate",
         "data": [
           {
             "date": "2026-08-27",
@@ -345,7 +345,7 @@
       },
       {
         "kw": "lenti per halloween costume",
-        "label": "lenti costume",
+        "label": "lenti per halloween costume",
         "data": [
           {
             "date": "2026-08-27",
@@ -377,7 +377,7 @@
       },
       {
         "kw": "lenti a contatto colorate senza gradazione",
-        "label": "lenti colorate sg",
+        "label": "lenti a contatto colorate senza gradazione",
         "data": [
           {
             "date": "2026-08-27",
@@ -412,7 +412,7 @@
       },
       {
         "kw": "lentilles de contact halloween",
-        "label": "lentilles contact halloween",
+        "label": "lentilles de contact halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -445,7 +445,7 @@
       },
       {
         "kw": "lentilles rouges halloween",
-        "label": "lentilles rouges",
+        "label": "lentilles rouges halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -461,7 +461,7 @@
       },
       {
         "kw": "lentilles de contact colorées",
-        "label": "lentilles colorées",
+        "label": "lentilles de contact colorées",
         "data": [
           {
             "date": "2026-08-27",
@@ -494,7 +494,7 @@
       },
       {
         "kw": "lentilles vampire halloween",
-        "label": "lentilles vampire",
+        "label": "lentilles vampire halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -544,7 +544,7 @@
       },
       {
         "kw": "lentilles sans correction colorées",
-        "label": "lentilles sans correction",
+        "label": "lentilles sans correction colorées",
         "data": [
           {
             "date": "2026-08-27",
@@ -560,7 +560,7 @@
       },
       {
         "kw": "lentilles de contact déguisement",
-        "label": "lentilles déguisement",
+        "label": "lentilles de contact déguisement",
         "data": [
           {
             "date": "2026-08-27",
@@ -611,7 +611,7 @@
       },
       {
         "kw": "lentillas de colores halloween",
-        "label": "lentillas colores halloween",
+        "label": "lentillas de colores halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -627,7 +627,7 @@
       },
       {
         "kw": "lentillas rojas halloween",
-        "label": "lentillas rojas",
+        "label": "lentillas rojas halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -643,7 +643,7 @@
       },
       {
         "kw": "lentillas de contacto halloween",
-        "label": "lentillas contacto halloween",
+        "label": "lentillas de contacto halloween",
         "data": [
           {
             "date": "2026-08-27",
@@ -659,7 +659,7 @@
       },
       {
         "kw": "lentillas de colores",
-        "label": "lentillas colores",
+        "label": "lentillas de colores",
         "data": [
           {
             "date": "2026-08-27",
@@ -742,7 +742,7 @@
       },
       {
         "kw": "lentillas sin graduacion de colores",
-        "label": "lentillas sin graduacion",
+        "label": "lentillas sin graduacion de colores",
         "data": [
           {
             "date": "2026-08-27",
@@ -758,7 +758,7 @@
       },
       {
         "kw": "lentillas de contacto de colores",
-        "label": "lentillas contacto colores",
+        "label": "lentillas de contacto de colores",
         "data": [
           {
             "date": "2026-08-27",
