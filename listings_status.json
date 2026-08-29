@@ -1,65 +1,47 @@
 {
-  "updated": "2026-08-27",
+  "updated": "2026-08-29",
   "markets": {
     "de_day": {
       "label": "FXCONTACTS Day (DE)",
       "asin": "B0CGJCPS1Q",
-      "total": 0,
-      "ok": 0,
-      "issues": [
-        {
-          "asin": "B0CGJCPS1Q",
-          "reason": "scrape_error"
-        }
-      ]
+      "total": 10,
+      "ok": 10,
+      "issues": []
     },
     "de_12m": {
       "label": "FXCONTACTS 12M (DE)",
       "asin": "B0CRBKG853",
-      "total": 0,
-      "ok": 0,
-      "issues": [
-        {
-          "asin": "B0CRBKG853",
-          "reason": "scrape_error"
-        }
-      ]
+      "total": 11,
+      "ok": 11,
+      "issues": []
     },
     "it_day": {
       "label": "FXCONTACTS Day (IT)",
       "asin": "B09NQGVSPD",
-      "total": 0,
-      "ok": 0,
-      "issues": [
-        {
-          "asin": "B09NQGVSPD",
-          "reason": "scrape_error"
-        }
-      ]
+      "total": 11,
+      "ok": 11,
+      "issues": []
     },
     "fr_day": {
       "label": "FXCONTACTS Day (FR)",
       "asin": "B09NQGVSPD",
-      "total": 0,
-      "ok": 0,
+      "total": 9,
+      "ok": 8,
       "issues": [
         {
-          "asin": "B09NQGVSPD",
-          "reason": "scrape_error"
+          "asin": "B00I89JGZA",
+          "reason": "out_of_variant",
+          "reviews": 90,
+          "parent_reviews": 3750
         }
       ]
     },
     "es_day": {
       "label": "FXCONTACTS Day (ES)",
       "asin": "B09NQGVSPD",
-      "total": 0,
-      "ok": 0,
-      "issues": [
-        {
-          "asin": "B09NQGVSPD",
-          "reason": "scrape_error"
-        }
-      ]
+      "total": 11,
+      "ok": 11,
+      "issues": []
     }
   }
 }
