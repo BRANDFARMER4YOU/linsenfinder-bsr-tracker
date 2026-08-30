@@ -195,7 +195,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:00:37.989434",
+          "timestamp": "2026-08-30T10:02:32.908332",
           "bsr": 5553,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
@@ -396,7 +396,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:01:20.478263",
+          "timestamp": "2026-08-30T10:02:42.792721",
           "bsr": 3843,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
@@ -612,7 +612,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:01:33.322095",
+          "timestamp": "2026-08-30T10:02:54.304726",
           "bsr": 7169,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
@@ -828,7 +828,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:01:44.152876",
+          "timestamp": "2026-08-30T10:03:03.989746",
           "bsr": 7424,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
@@ -1057,7 +1057,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:01:55.251165",
+          "timestamp": "2026-08-30T10:03:17.149096",
           "bsr": 11544,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
@@ -1286,7 +1286,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:02:08.262958",
+          "timestamp": "2026-08-30T10:03:27.422461",
           "bsr": 10948,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
@@ -1517,7 +1517,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:02:20.284169",
+          "timestamp": "2026-08-30T10:03:37.589716",
           "bsr": 8036,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -1733,7 +1733,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:02:33.229487",
+          "timestamp": "2026-08-30T10:03:47.972132",
           "bsr": 8772,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -1949,7 +1949,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:02:47.392528",
+          "timestamp": "2026-08-30T10:04:05.277237",
           "bsr": 9081,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -2165,7 +2165,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:02:58.849134",
+          "timestamp": "2026-08-30T10:04:18.723052",
           "bsr": 11129,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -2396,7 +2396,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:03:10.816922",
+          "timestamp": "2026-08-30T10:04:29.339835",
           "bsr": 5177,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -2612,7 +2612,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:03:21.572928",
+          "timestamp": "2026-08-30T10:04:43.709412",
           "bsr": 6424,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -2828,7 +2828,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:03:30.613390",
+          "timestamp": "2026-08-30T10:04:55.663351",
           "bsr": 5268,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -2841,7 +2841,7 @@
               "category": "Contact Lenses"
             }
           ],
-          "price": null,
+          "price": 11.88,
           "reviews": 2790,
           "rating": 4.1,
           "variantCount": 16
@@ -3044,7 +3044,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:03:40.852799",
+          "timestamp": "2026-08-30T10:05:08.923744",
           "bsr": 6819,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -3262,7 +3262,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:03:51.293507",
+          "timestamp": "2026-08-30T10:05:18.632092",
           "bsr": 4881,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -3478,7 +3478,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:04:03.401228",
+          "timestamp": "2026-08-30T10:05:29.104572",
           "bsr": 3819,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -3694,7 +3694,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:04:17.405031",
+          "timestamp": "2026-08-30T10:05:38.548597",
           "bsr": 5450,
           "bsr_category": "Health & Household",
           "bsr_all": [
@@ -3910,7 +3910,7 @@
         },
         {
           "date": "2026-08-30",
-          "timestamp": "2026-08-30T10:04:28.514601",
+          "timestamp": "2026-08-30T10:05:49.566135",
           "bsr": 6802,
           "bsr_category": "Health & Household",
           "bsr_all": [
