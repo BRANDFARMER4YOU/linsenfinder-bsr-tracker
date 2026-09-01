@@ -481,7 +481,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:00:52.147238",
-          "bsr": null,
+          "bsr": 1,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -739,7 +739,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:01:10.329577",
-          "bsr": null,
+          "bsr": 16,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -1268,7 +1268,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:01:34.890003",
-          "bsr": null,
+          "bsr": 4,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -1539,7 +1539,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:01:45.581623",
-          "bsr": null,
+          "bsr": 23,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -1568,7 +1568,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 3
         }
       ]
     }
@@ -2627,7 +2627,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 20
         }
       ]
     },
@@ -2639,7 +2639,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 16
         }
       ]
     },
@@ -2651,7 +2651,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 19
         }
       ]
     },
@@ -2663,7 +2663,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 13
         }
       ]
     }
@@ -4789,7 +4789,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 14
         }
       ]
     },
@@ -4801,7 +4801,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 5
         }
       ]
     },
@@ -4813,7 +4813,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 6
         }
       ]
     },
@@ -4825,7 +4825,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": null
+          "bsr": 17
         }
       ]
     }
