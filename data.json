@@ -238,7 +238,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:00:30.227706",
-          "bsr": 4873,
+          "bsr": null,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -481,7 +481,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:00:52.147238",
-          "bsr": 4134,
+          "bsr": null,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -739,7 +739,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:01:10.329577",
-          "bsr": 5721,
+          "bsr": null,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -1268,7 +1268,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:01:34.890003",
-          "bsr": 12406,
+          "bsr": null,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -1539,7 +1539,7 @@
         {
           "date": "2026-09-01",
           "timestamp": "2026-09-01T10:01:45.581623",
-          "bsr": 9215,
+          "bsr": null,
           "bsr_category": "Health & Personal Care",
           "bsr_all": [
             {
@@ -1568,7 +1568,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": 9548
+          "bsr": null
         }
       ]
     }
@@ -2627,7 +2627,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": 8670
+          "bsr": null
         }
       ]
     },
@@ -2639,7 +2639,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": 8242
+          "bsr": null
         }
       ]
     },
@@ -2651,7 +2651,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": 8631
+          "bsr": null
         }
       ]
     },
@@ -2663,7 +2663,7 @@
       "data": [
         {
           "date": "2026-09-01",
-          "bsr": 7762
+          "bsr": null
         }
       ]
     }
