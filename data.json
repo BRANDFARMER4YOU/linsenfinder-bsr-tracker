@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-03",
+  "updated": "2026-09-04",
   "series": [
     {
       "id": "fxcontacts_12m",
@@ -295,6 +295,26 @@
           "reviews": 5664,
           "rating": 4.3,
           "variantCount": 11
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:00:16.115165",
+          "bsr": 4436,
+          "bsr_category": "Health & Personal Care",
+          "bsr_all": [
+            {
+              "rank": 4436,
+              "category": "Health & Personal Care"
+            },
+            {
+              "rank": 1,
+              "category": "Permanent Colour Lenses"
+            }
+          ],
+          "price": 9.9,
+          "reviews": 5665,
+          "rating": 4.3,
+          "variantCount": 11
         }
       ],
       "url": "https://www.amazon.de/dp/B0CRBKG853",
@@ -579,6 +599,26 @@
           "reviews": 4843,
           "rating": 4.2,
           "variantCount": 10
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:01:02.312884",
+          "bsr": 3346,
+          "bsr_category": "Health & Personal Care",
+          "bsr_all": [
+            {
+              "rank": 3346,
+              "category": "Health & Personal Care"
+            },
+            {
+              "rank": 3,
+              "category": "Daily Colour Lenses"
+            }
+          ],
+          "price": 8.9,
+          "reviews": 4844,
+          "rating": 4.2,
+          "variantCount": 10
         }
       ],
       "url": "https://www.amazon.de/dp/B0CGJCPS1Q",
@@ -861,6 +901,26 @@
           ],
           "price": 8.03,
           "reviews": 2007,
+          "rating": 4.2,
+          "variantCount": 22
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:01:15.253456",
+          "bsr": 3969,
+          "bsr_category": "Health & Personal Care",
+          "bsr_all": [
+            {
+              "rank": 3969,
+              "category": "Health & Personal Care"
+            },
+            {
+              "rank": 14,
+              "category": "Monthly Colour Lenses"
+            }
+          ],
+          "price": 8.09,
+          "reviews": 2008,
           "rating": 4.2,
           "variantCount": 22
         }
@@ -1159,6 +1219,26 @@
             }
           ],
           "price": 13.46,
+          "reviews": 2866,
+          "rating": 4.2,
+          "variantCount": 31
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:01:28.457222",
+          "bsr": 7922,
+          "bsr_category": "Health & Personal Care",
+          "bsr_all": [
+            {
+              "rank": 7922,
+              "category": "Health & Personal Care"
+            },
+            {
+              "rank": 2,
+              "category": "Permanent Colour Lenses"
+            }
+          ],
+          "price": 12.61,
           "reviews": 2866,
           "rating": 4.2,
           "variantCount": 31
@@ -1474,6 +1554,26 @@
           "reviews": 3079,
           "rating": 4.2,
           "variantCount": 14
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:01:41.910461",
+          "bsr": 7699,
+          "bsr_category": "Health & Personal Care",
+          "bsr_all": [
+            {
+              "rank": 7699,
+              "category": "Health & Personal Care"
+            },
+            {
+              "rank": 2,
+              "category": "Monthly Colour Lenses"
+            }
+          ],
+          "price": null,
+          "reviews": 3084,
+          "rating": 4.2,
+          "variantCount": 14
         }
       ],
       "url": "https://www.amazon.de/dp/B0BQC6R35Y",
@@ -1784,6 +1884,26 @@
           ],
           "price": 9.9,
           "reviews": 7516,
+          "rating": 4.3,
+          "variantCount": 15
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:01:53.012628",
+          "bsr": 8591,
+          "bsr_category": "Health & Personal Care",
+          "bsr_all": [
+            {
+              "rank": 8591,
+              "category": "Health & Personal Care"
+            },
+            {
+              "rank": 25,
+              "category": "Monthly Colour Lenses"
+            }
+          ],
+          "price": 9.9,
+          "reviews": 7518,
           "rating": 4.3,
           "variantCount": 15
         }
@@ -2112,6 +2232,26 @@
           "reviews": 4109,
           "rating": 4.3,
           "variantCount": 11
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:02:05.495701",
+          "bsr": 8713,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 8713,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 20,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": 9.9,
+          "reviews": 4109,
+          "rating": 4.3,
+          "variantCount": 11
         }
       ],
       "url": "https://www.amazon.it/dp/B09NQGVSPD",
@@ -2409,6 +2549,26 @@
           ],
           "price": 11.99,
           "reviews": 2785,
+          "rating": 4.2,
+          "variantCount": 12
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:02:16.865885",
+          "bsr": 7146,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 7146,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 13,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": 11.99,
+          "reviews": 2790,
           "rating": 4.2,
           "variantCount": 12
         }
@@ -2710,6 +2870,26 @@
           "reviews": 421,
           "rating": 4.3,
           "variantCount": 18
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:02:27.356404",
+          "bsr": 6768,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 6768,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 12,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": 12.99,
+          "reviews": 422,
+          "rating": 4.3,
+          "variantCount": 18
         }
       ],
       "url": "https://www.amazon.it/dp/B0D7CW19DR",
@@ -3007,6 +3187,26 @@
           ],
           "price": 11.99,
           "reviews": 10840,
+          "rating": 4.2,
+          "variantCount": 14
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:02:41.928738",
+          "bsr": 8368,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 8368,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 18,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": 11.99,
+          "reviews": 10842,
           "rating": 4.2,
           "variantCount": 14
         }
@@ -3371,6 +3571,26 @@
           "reviews": 1982,
           "rating": 4.3,
           "variantCount": 5
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:02:51.766916",
+          "bsr": 8923,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 8923,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 17,
+              "category": "Contact Lenses"
+            }
+          ],
+          "price": 9.9,
+          "reviews": 1982,
+          "rating": 4.3,
+          "variantCount": 5
         }
       ],
       "url": "https://www.amazon.fr/dp/B09NQGVSPD",
@@ -3670,6 +3890,26 @@
           "reviews": 174,
           "rating": 4.1,
           "variantCount": 1
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:03:06.561736",
+          "bsr": 5013,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 5013,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 3,
+              "category": "Contact Lenses"
+            }
+          ],
+          "price": 8.99,
+          "reviews": 174,
+          "rating": 4.1,
+          "variantCount": 1
         }
       ],
       "url": "https://www.amazon.fr/dp/B0CPYG28K3",
@@ -3947,6 +4187,26 @@
             },
             {
               "rank": 94,
+              "category": "Contact Lenses"
+            }
+          ],
+          "price": 11.88,
+          "reviews": 35,
+          "rating": 4.2,
+          "variantCount": 0
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:03:17.761773",
+          "bsr": 21375,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 21375,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 74,
               "category": "Contact Lenses"
             }
           ],
@@ -4246,6 +4506,26 @@
             },
             {
               "rank": 16,
+              "category": "Contact Lenses"
+            }
+          ],
+          "price": 6.99,
+          "reviews": 123,
+          "rating": 4.1,
+          "variantCount": 18
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:03:33.061645",
+          "bsr": 7941,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 7941,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 13,
               "category": "Contact Lenses"
             }
           ],
@@ -4602,6 +4882,26 @@
           "reviews": 4511,
           "rating": 4.2,
           "variantCount": 11
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:03:42.884443",
+          "bsr": 7821,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 7821,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 8,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": 9.9,
+          "reviews": 4512,
+          "rating": 4.2,
+          "variantCount": 11
         }
       ],
       "url": "https://www.amazon.es/dp/B09NQGVSPD",
@@ -4900,6 +5200,26 @@
           "price": 11.99,
           "reviews": 2865,
           "rating": 4.3,
+          "variantCount": 16
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:03:53.397686",
+          "bsr": 3852,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 3852,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 3,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": 11.99,
+          "reviews": 2872,
+          "rating": 4.2,
           "variantCount": 16
         }
       ],
@@ -5200,6 +5520,26 @@
           "reviews": 226,
           "rating": 3.9,
           "variantCount": 19
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:04:06.107457",
+          "bsr": 4523,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 4523,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 4,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": null,
+          "reviews": 226,
+          "rating": 3.9,
+          "variantCount": 19
         }
       ],
       "url": "https://www.amazon.es/dp/B0CRZC4226",
@@ -5477,6 +5817,26 @@
             },
             {
               "rank": 14,
+              "category": "Colour Lenses"
+            }
+          ],
+          "price": 11.99,
+          "reviews": 2325,
+          "rating": 4.3,
+          "variantCount": 0
+        },
+        {
+          "date": "2026-09-04",
+          "timestamp": "2026-09-04T10:04:15.923848",
+          "bsr": 10710,
+          "bsr_category": "Health & Household",
+          "bsr_all": [
+            {
+              "rank": 10710,
+              "category": "Health & Household"
+            },
+            {
+              "rank": 15,
               "category": "Colour Lenses"
             }
           ],
