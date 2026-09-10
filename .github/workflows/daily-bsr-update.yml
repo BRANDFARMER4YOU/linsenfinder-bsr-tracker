@@ -26,6 +26,7 @@ jobs:
       - name: Run BSR updater
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
         run: python3 update_bsr.py
 
