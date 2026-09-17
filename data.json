@@ -398,74 +398,6 @@
           "reviews": 5675,
           "rating": 4.3,
           "variantCount": 11
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
-          "date": "2026-09-10",
-          "bsr": 1,
-          "price": 9.9,
-          "reviews": 5675,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-11",
-          "bsr": 1,
-          "price": 9.9,
-          "reviews": 5675,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-12",
-          "bsr": 1,
-          "price": 9.9,
-          "reviews": 5675,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-13",
-          "bsr": 1,
-          "price": 13.9,
-          "reviews": 5675,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-14",
-          "bsr": 1,
-          "price": 13.9,
-          "reviews": 5676,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-15",
-          "bsr": 1,
-          "price": 9.9,
-          "reviews": 5677,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-16",
-          "bsr": 1,
-          "price": 9.9,
-          "reviews": 5679,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-17",
-          "bsr": 1,
-          "price": 9.9,
-          "reviews": 5679,
-          "rating": 4.3,
-          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.de/dp/B0CRBKG853",
@@ -853,10 +785,6 @@
           "reviews": 4846,
           "rating": 4.2,
           "variantCount": 10
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -1293,10 +1221,6 @@
           "reviews": 2010,
           "rating": 4.2,
           "variantCount": 22
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -1763,10 +1687,6 @@
           "reviews": 2868,
           "rating": 4.2,
           "variantCount": 31
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -2248,10 +2168,6 @@
           "variantCount": 14
         },
         {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
           "date": "2026-09-10",
           "bsr": 2,
           "price": 9.9,
@@ -2729,10 +2645,6 @@
           "reviews": 7502,
           "rating": 4.3,
           "variantCount": 14
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -3228,10 +3140,6 @@
           "variantCount": 11
         },
         {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
           "date": "2026-09-10",
           "bsr": 14,
           "price": 9.9,
@@ -3696,10 +3604,6 @@
           "reviews": 2800,
           "rating": 4.2,
           "variantCount": 12
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -4168,10 +4072,6 @@
           "variantCount": 18
         },
         {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
           "date": "2026-09-10",
           "bsr": 15,
           "price": null,
@@ -4636,10 +4536,6 @@
           "reviews": 10847,
           "rating": 4.2,
           "variantCount": 14
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -5171,10 +5067,6 @@
           "variantCount": 5
         },
         {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
           "date": "2026-09-10",
           "bsr": 4,
           "price": 9.9,
@@ -5641,10 +5533,6 @@
           "variantCount": 1
         },
         {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
           "date": "2026-09-10",
           "bsr": 3,
           "price": 8.99,
@@ -6094,10 +5982,6 @@
           "reviews": 35,
           "rating": 4.2,
           "variantCount": 0
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -6564,10 +6448,6 @@
           "reviews": 124,
           "rating": 4.1,
           "variantCount": 18
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -7086,10 +6966,6 @@
           "variantCount": 11
         },
         {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
           "date": "2026-09-10",
           "bsr": 9,
           "price": 9.9,
@@ -7102,14 +6978,6 @@
           "bsr": 7,
           "price": 9.9,
           "reviews": 4515,
-          "rating": 4.2,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-12",
-          "bsr": 1,
-          "price": 9.9,
-          "reviews": 4518,
           "rating": 4.2,
           "isAmazonChoice": false
         },
@@ -7556,10 +7424,6 @@
           "variantCount": 16
         },
         {
-          "date": "2026-09-09",
-          "bsr": null
-        },
-        {
           "date": "2026-09-10",
           "bsr": 4,
           "price": 11.99,
@@ -7605,14 +7469,6 @@
           "price": 11.99,
           "reviews": 2897,
           "rating": 4.2,
-          "isAmazonChoice": false
-        },
-        {
-          "date": "2026-09-16",
-          "bsr": 1,
-          "price": 11.99,
-          "reviews": 2904,
-          "rating": 4.3,
           "isAmazonChoice": false
         },
         {
@@ -8024,10 +7880,6 @@
           "reviews": 228,
           "rating": 3.9,
           "variantCount": 19
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
@@ -8479,10 +8331,6 @@
           "reviews": 2327,
           "rating": 4.3,
           "variantCount": 0
-        },
-        {
-          "date": "2026-09-09",
-          "bsr": null
         },
         {
           "date": "2026-09-10",
