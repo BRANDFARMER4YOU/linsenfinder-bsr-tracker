@@ -871,96 +871,18 @@
       "domain": "de"
     },
     {
-      "id": "aricona_yellow_fear",
-      "label": "aricona Yellow Fear (12M)",
-      "asin": "B08HRSM9ZF",
-      "color": "#FF5252",
-      "data": []
-    },
-    {
-      "id": "aricona_blood_red",
-      "label": "aricona Blood Red (12M)",
-      "asin": "B0FBMDM68N",
-      "color": "#FF6D00",
-      "data": []
-    },
-    {
-      "id": "meralens_lunatic",
-      "label": "MERALENS Lunatic Lunar",
-      "asin": "B0DWXP9G6T",
-      "color": "#D500F9",
-      "data": []
-    },
-    {
-      "id": "meralens_blue",
-      "label": "MERALENS Blue Alper",
-      "asin": "B0CS3TPT8T",
-      "color": "#00B0FF",
-      "data": []
-    },
-    {
-      "id": "aricona_bars",
-      "label": "Aricona (Behind Bars)",
-      "asin": "B08HRWT4HT",
-      "color": "#FF5252",
-      "data": [
-        {
-          "date": "2026-09-18",
-          "bsr": 10,
-          "price": 8.25,
-          "reviews": 2016,
-          "rating": 4.2,
-          "isAmazonChoice": false
-        }
-      ]
-    },
-    {
-      "id": "aricona_vampire",
-      "label": "Aricona (Vampire 12M)",
+      "id": "aricona_vampire_12m",
       "asin": "B00H2H5MTI",
-      "color": "#FF6D00",
-      "data": [
-        {
-          "date": "2026-09-18",
-          "bsr": 3,
-          "price": 15.95,
-          "reviews": 2871,
-          "rating": 4.2,
-          "isAmazonChoice": false
-        }
-      ]
+      "label": "aricona Vampire (12M) #3",
+      "color": "#FF5252",
+      "data": []
     },
     {
-      "id": "designlenses",
-      "label": "DESIGNLENSES (Day)",
+      "id": "designlenses_monthly",
       "asin": "B0BQC6R35Y",
-      "color": "#D500F9",
-      "data": [
-        {
-          "date": "2026-09-18",
-          "bsr": 2,
-          "price": 9.9,
-          "reviews": 3124,
-          "rating": 4.2,
-          "isAmazonChoice": false
-        }
-      ]
-    },
-    {
-      "id": "crazyfun",
-      "label": "Crazy Fun (Red Flower)",
-      "asin": "B07NGVRYWX",
-      "color": "#FF1744",
-      "data": [
-        {
-          "date": "2026-09-18",
-          "bsr": 12,
-          "price": 9.9,
-          "reviews": 7505,
-          "rating": 4.3,
-          "isAmazonChoice": false
-        }
-      ]
+      "label": "DESIGNLENSES (Monatslinsen) #2",
+      "color": "#FF6D00",
+      "data": []
     }
   ],
   "series_it": [
