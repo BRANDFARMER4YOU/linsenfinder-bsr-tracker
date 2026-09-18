@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17",
+  "updated": "2026-09-18",
   "series": [
     {
       "id": "fxcontacts_12m",
@@ -398,6 +398,14 @@
           "reviews": 5675,
           "rating": 4.3,
           "variantCount": 11
+        },
+        {
+          "date": "2026-09-18",
+          "bsr": 1,
+          "price": 9.9,
+          "reviews": 5681,
+          "rating": 4.3,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.de/dp/B0CRBKG853",
@@ -849,6 +857,14 @@
           "reviews": 4464,
           "rating": 4.2,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-09-18",
+          "bsr": 4,
+          "price": 8.9,
+          "reviews": 4481,
+          "rating": 4.2,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.de/dp/B0CGJCPS1Q",
@@ -881,6 +897,70 @@
       "asin": "B0CS3TPT8T",
       "color": "#00B0FF",
       "data": []
+    },
+    {
+      "id": "aricona_bars",
+      "label": "Aricona (Behind Bars)",
+      "asin": "B08HRWT4HT",
+      "color": "#FF5252",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 10,
+          "price": 8.25,
+          "reviews": 2016,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "aricona_vampire",
+      "label": "Aricona (Vampire 12M)",
+      "asin": "B00H2H5MTI",
+      "color": "#FF6D00",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 3,
+          "price": 15.95,
+          "reviews": 2871,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "designlenses",
+      "label": "DESIGNLENSES (Day)",
+      "asin": "B0BQC6R35Y",
+      "color": "#D500F9",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 2,
+          "price": 9.9,
+          "reviews": 3124,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "crazyfun",
+      "label": "Crazy Fun (Red Flower)",
+      "asin": "B07NGVRYWX",
+      "color": "#FF1744",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 12,
+          "price": 9.9,
+          "reviews": 7505,
+          "rating": 4.3,
+          "isAmazonChoice": false
+        }
+      ]
     }
   ],
   "series_it": [
@@ -1358,6 +1438,14 @@
           "reviews": 4122,
           "rating": 4.3,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-09-18",
+          "bsr": 9,
+          "price": 9.9,
+          "reviews": 4125,
+          "rating": 4.3,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.it/dp/B09NQGVSPD",
@@ -1376,6 +1464,54 @@
       "asin": "B0CNRMYZ9D",
       "color": "#FF6D00",
       "data": []
+    },
+    {
+      "id": "konkurrent_it_1",
+      "label": "White Colorful Daily Contact Lenses for ",
+      "asin": "B0BQC5VM9T",
+      "color": "#FF5252",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 15,
+          "price": 11.99,
+          "reviews": 2968,
+          "rating": 4.1,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_it_2",
+      "label": "MeralenS Purple Flower Purple Coloured C",
+      "asin": "B0D7CW19DR",
+      "color": "#FF6D00",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 13,
+          "price": 12.99,
+          "reviews": 423,
+          "rating": 4.3,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_it_3",
+      "label": "Meralens Red Wolf Coloured Contact Lense",
+      "asin": "B07NGVRYWX",
+      "color": "#D500F9",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 18,
+          "price": 11.99,
+          "reviews": 10852,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        }
+      ]
     }
   ],
   "series_fr": [
@@ -1853,6 +1989,14 @@
           "reviews": 4155,
           "rating": 4.2,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-09-18",
+          "bsr": 2,
+          "price": 9.9,
+          "reviews": 4158,
+          "rating": 4.2,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.fr/dp/B09NQGVSPD",
@@ -1871,6 +2015,54 @@
       "asin": "B0CNRPYSMW",
       "color": "#FF6D00",
       "data": []
+    },
+    {
+      "id": "konkurrent_fr_1",
+      "label": "Red Black Vampire Red Flower Lenses Hall",
+      "asin": "B0CPYG28K3",
+      "color": "#FF5252",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 7,
+          "price": 9.99,
+          "reviews": 176,
+          "rating": 4.1,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_fr_2",
+      "label": "DESIGNLENSES lentilles journalières coul",
+      "asin": "B0FBX1YXWK",
+      "color": "#FF6D00",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 80,
+          "price": 11.88,
+          "reviews": 36,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_fr_3",
+      "label": "MeralenS Red Color Lenses - Red Lunatic ",
+      "asin": "B0CRZCW2JN",
+      "color": "#D500F9",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 6,
+          "price": 6.99,
+          "reviews": 125,
+          "rating": 4.1,
+          "isAmazonChoice": false
+        }
+      ]
     }
   ],
   "series_es": [
@@ -2327,6 +2519,14 @@
           "reviews": 4526,
           "rating": 4.2,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-09-18",
+          "bsr": 3,
+          "price": 9.9,
+          "reviews": 4530,
+          "rating": 4.2,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.es/dp/B09NQGVSPD",
@@ -2345,6 +2545,54 @@
       "asin": "B0CNRPYSMW",
       "color": "#FF6D00",
       "data": []
+    },
+    {
+      "id": "konkurrent_es_1",
+      "label": "Two Daily Red Lenses for Halloween Vampi",
+      "asin": "B0BQC6R35Y",
+      "color": "#FF5252",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 4,
+          "price": 11.99,
+          "reviews": 2911,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_es_2",
+      "label": "Blind White 1 Pair Comfortable and Perfe",
+      "asin": "B0CRZC4226",
+      "color": "#FF6D00",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 4,
+          "price": 11.99,
+          "reviews": 232,
+          "rating": 3.9,
+          "isAmazonChoice": false
+        }
+      ]
+    },
+    {
+      "id": "konkurrent_es_3",
+      "label": "Meralens - Contact Lenses \"White Out\" wi",
+      "asin": "B002Y4I7QE",
+      "color": "#D500F9",
+      "data": [
+        {
+          "date": "2026-09-18",
+          "bsr": 12,
+          "price": 11.99,
+          "reviews": 2328,
+          "rating": 4.3,
+          "isAmazonChoice": false
+        }
+      ]
     }
   ],
   "last_run": "2026-08-19T15:22:47.197715"
