@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-01",
+  "updated": "2026-11-02",
   "series": [
     {
       "id": "fxcontacts_12m",
@@ -756,6 +756,14 @@
           "bsr": 1,
           "price": 10.9,
           "reviews": 5499,
+          "rating": 4.3,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 1,
+          "price": 8.9,
+          "reviews": 5502,
           "rating": 4.3,
           "isAmazonChoice": false
         }
@@ -1569,6 +1577,14 @@
           "reviews": 4620,
           "rating": 4.3,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 2,
+          "price": 8.9,
+          "reviews": 4616,
+          "rating": 4.3,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.de/dp/B0CGJCPS1Q",
@@ -1945,6 +1961,14 @@
           "reviews": 2031,
           "rating": 4.2,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 3,
+          "price": 10.75,
+          "reviews": 2033,
+          "rating": 4.2,
+          "isAmazonChoice": false
         }
       ]
     },
@@ -2303,6 +2327,14 @@
           "bsr": 5,
           "price": 16.95,
           "reviews": 2886,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 5,
+          "price": 16.45,
+          "reviews": 2887,
           "rating": 4.2,
           "isAmazonChoice": false
         }
@@ -2665,6 +2697,14 @@
           "reviews": 3293,
           "rating": 4.1,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 1,
+          "price": 9.9,
+          "reviews": 3314,
+          "rating": 4.1,
+          "isAmazonChoice": false
         }
       ]
     },
@@ -3023,6 +3063,14 @@
           "bsr": 2,
           "price": 9.9,
           "reviews": 7566,
+          "rating": 4.3,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 2,
+          "price": 9.9,
+          "reviews": 7568,
           "rating": 4.3,
           "isAmazonChoice": false
         }
@@ -3864,6 +3912,14 @@
           "reviews": 4212,
           "rating": 4.2,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 8,
+          "price": 10.9,
+          "reviews": 4219,
+          "rating": 4.2,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.it/dp/B09NQGVSPD",
@@ -4248,6 +4304,14 @@
           "reviews": 3131,
           "rating": 4.1,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 1,
+          "price": 15.99,
+          "reviews": 3142,
+          "rating": 4.1,
+          "isAmazonChoice": false
         }
       ]
     },
@@ -4616,6 +4680,14 @@
           "reviews": 439,
           "rating": 4.3,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 3,
+          "price": 9.99,
+          "reviews": 441,
+          "rating": 4.3,
+          "isAmazonChoice": false
         }
       ]
     },
@@ -4982,6 +5054,14 @@
           "bsr": 4,
           "price": 11.99,
           "reviews": 10947,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 4,
+          "price": 11.99,
+          "reviews": 10949,
           "rating": 4.2,
           "isAmazonChoice": false
         }
@@ -5823,6 +5903,14 @@
           "reviews": 4294,
           "rating": 4.2,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 3,
+          "price": 11.9,
+          "reviews": 4288,
+          "rating": 4.2,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.fr/dp/B09NQGVSPD",
@@ -6207,6 +6295,14 @@
           "reviews": 188,
           "rating": 4.1,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 4,
+          "price": 11.9,
+          "reviews": 188,
+          "rating": 4.1,
+          "isAmazonChoice": false
         }
       ]
     },
@@ -6573,6 +6669,14 @@
           "bsr": 13,
           "price": 11.88,
           "reviews": 43,
+          "rating": 4.2,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 14,
+          "price": 11.88,
+          "reviews": 44,
           "rating": 4.2,
           "isAmazonChoice": false
         }
@@ -6942,6 +7046,14 @@
           "price": 9.99,
           "reviews": 133,
           "rating": 4.1,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 7,
+          "price": 9.99,
+          "reviews": 135,
+          "rating": 4,
           "isAmazonChoice": false
         }
       ]
@@ -7761,6 +7873,14 @@
           "reviews": 4280,
           "rating": 4.3,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 4,
+          "price": 11.9,
+          "reviews": 4277,
+          "rating": 4.2,
+          "isAmazonChoice": false
         }
       ],
       "url": "https://www.amazon.es/dp/B09NQGVSPD",
@@ -8145,6 +8265,14 @@
           "reviews": 3073,
           "rating": 4.2,
           "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 1,
+          "price": 11.99,
+          "reviews": 3089,
+          "rating": 4.1,
+          "isAmazonChoice": false
         }
       ]
     },
@@ -8507,6 +8635,14 @@
           "bsr": 2,
           "price": 12.99,
           "reviews": 255,
+          "rating": 3.9,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
+          "bsr": 2,
+          "price": 12.99,
+          "reviews": 256,
           "rating": 3.9,
           "isAmazonChoice": false
         }
@@ -8872,6 +9008,14 @@
         },
         {
           "date": "2026-11-01",
+          "bsr": 5,
+          "price": 11.99,
+          "reviews": 2349,
+          "rating": 4.3,
+          "isAmazonChoice": false
+        },
+        {
+          "date": "2026-11-02",
           "bsr": 5,
           "price": 11.99,
           "reviews": 2349,
